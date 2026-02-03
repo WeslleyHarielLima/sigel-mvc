@@ -29,7 +29,7 @@ gem "devise", "~> 4.9"
 gem "discard", "~> 1.3"
 
 # Paginação
-gem "pagy", "~> 6.0"
+gem "pagy", "~> 43.2"
 
 # Busca e Filtros
 gem "ransack", "~> 4.0"
