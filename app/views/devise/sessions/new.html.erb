@@ -1,45 +1,48 @@
-<div class="row justify-content-center">
-  <div class="col-md-6 col-lg-4">
-    <div class="card mt-5">
-      <div class="card-header text-center">
-        <h3><i class="bi bi-box-arrow-in-right"></i> Entrar</h3>
-      </div>
-      <div class="card-body">
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="mb-3">
-            <%= f.input :email,
-                        required: false,
-                        autofocus: true,
-                        label: "E-mail",
-                        placeholder: "seu@email.com",
-                        input_html: { autocomplete: "email", class: "form-control" } %>
-          </div>
-          <div class="mb-3">
-            <%= f.input :password,
-                        required: false,
-                        label: "Senha",
-                        placeholder: "Sua senha",
-                        input_html: { autocomplete: "current-password", class: "form-control" } %>
-          </div>
-          <% if devise_mapping.rememberable? %>
-            <div class="mb-3">
-              <%= f.input :remember_me,
-                          as: :boolean,
-                          label: "Lembrar-me",
-                          wrapper_html: { class: "form-check" },
-                          input_html: { class: "form-check-input" },
-                          label_html: { class: "form-check-label" } %>
-            </div>
-          <% end %>
+<div class="card mb-0">
+  <div class="card-body">
+    <a href="/" class="text-nowrap logo-img text-center d-block py-3 w-100">
+      <img src="/images/logos/logo-light.svg" width="180" alt="SIGEL">
+    </a>
+    <p class="text-center">Sistema Integrado de Gestão de Leilões</p>
 
-          <div class="d-grid">
-            <%= f.button :submit, "Entrar", class: "btn btn-primary btn-lg" %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="mb-3">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    label: "E-mail",
+                    placeholder: "seu@email.com",
+                    input_html: { autocomplete: "email", class: "form-control" } %>
+      </div>
+      <div class="mb-4">
+        <%= f.input :password,
+                    required: false,
+                    label: "Senha",
+                    placeholder: "Sua senha",
+                    input_html: { autocomplete: "current-password", class: "form-control" } %>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check">
+            <%= f.input :remember_me,
+                        as: :boolean,
+                        label: "Lembrar-me",
+                        wrapper: false,
+                        input_html: { class: "form-check-input primary" },
+                        label_html: { class: "form-check-label text-dark" } %>
           </div>
         <% end %>
+        <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+          <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "text-primary fw-bold" %>
+        <% end %>
       </div>
-      <div class="card-footer text-center">
-        <%= render "devise/shared/links" %>
+
+      <%= f.button :submit, "Entrar", class: "btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" %>
+
+      <div class="d-flex align-items-center justify-content-center">
+        <p class="fs-4 mb-0 fw-bold">Ainda não tem conta?</p>
+        <%= link_to "Criar conta", new_registration_path(resource_name), class: "text-primary fw-bold ms-2" %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

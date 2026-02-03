@@ -10,28 +10,58 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/css/styles.min.css">
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= yield :head %>
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+    <% if user_signed_in? %>
+      <!-- Main Wrapper -->
+      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
 
-    <main class="container mt-4">
-      <%= render "shared/flash" %>
-      <%= yield %>
-    </main>
+        <!-- Sidebar -->
+        <%= render "shared/sidebar" %>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Body Wrapper -->
+        <div class="body-wrapper">
+          <!-- Header -->
+          <%= render "shared/header" %>
+
+          <div class="container-fluid">
+            <%= render "shared/flash" %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <!-- Layout para usuários não logados -->
+      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6">
+        <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+          <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="row justify-content-center w-100">
+              <div class="col-md-8 col-lg-6 col-xxl-3">
+                <%= render "shared/flash" %>
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Scripts -->
+    <script src="/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/simplebar/dist/simplebar.js"></script>
+    <script src="/js/sidebarmenu.js"></script>
+    <script src="/js/app.min.js"></script>
   </body>
 </html>
