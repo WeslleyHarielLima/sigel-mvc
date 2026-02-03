@@ -1,0 +1,102 @@
+<%= simple_form_for(@g_veiculo, html: { class: "needs-validation" }) do |f| %>
+  <% if @g_veiculo.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(@g_veiculo.errors.count, "erro", "erros") %> encontrado(s):</h5>
+      <ul class="mb-0">
+        <% @g_veiculo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Identificação</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <%= f.input :numero_interno, label: "Número Interno", placeholder: "Ex: V001", input_html: { class: "form-control" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :placa, label: "Placa", placeholder: "Ex: ABC1234", input_html: { class: "form-control text-uppercase" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :chassi, label: "Chassi", placeholder: "17 caracteres", input_html: { class: "form-control text-uppercase" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :renavam, label: "Renavam", placeholder: "11 dígitos", input_html: { class: "form-control" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Características</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <%= f.input :marca, label: "Marca", placeholder: "Ex: Volkswagen", input_html: { class: "form-control" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :modelo, label: "Modelo", placeholder: "Ex: Gol", input_html: { class: "form-control" } %>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <%= f.input :ano, label: "Ano", placeholder: "Ex: 2020", input_html: { class: "form-control", type: "number", min: 1900, max: Date.current.year + 1 } %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <%= f.input :cor, label: "Cor", placeholder: "Ex: Branco", input_html: { class: "form-control" } %>
+            </div>
+          </div>
+          <div class="mb-3">
+            <%= f.input :motor, label: "Motor", placeholder: "Ex: 1.0 Flex", input_html: { class: "form-control" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Classificação</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <%= f.input :g_tipo_veiculo_id, label: "Tipo de Veículo", collection: GTipoVeiculo.order(:descricao), label_method: :descricao, value_method: :id, include_blank: "Selecione...", input_html: { class: "form-select" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :tombamento, label: "Tombamento", placeholder: "Número de tombamento", input_html: { class: "form-control" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Situação</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <%= f.input :status, label: "Status", collection: GVeiculo::STATUSES.map { |k, v| [v, k] }, include_blank: false, input_html: { class: "form-select" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :apto, as: :boolean, label: "Apto para Leilão", wrapper_html: { class: "form-check" }, input_html: { class: "form-check-input" }, label_html: { class: "form-check-label" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Cancelar", g_veiculos_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

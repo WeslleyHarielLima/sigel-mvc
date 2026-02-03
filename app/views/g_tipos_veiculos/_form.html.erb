@@ -1,0 +1,21 @@
+<%= simple_form_for(@g_tipo_veiculo, html: { class: "needs-validation" }) do |f| %>
+  <% if @g_tipo_veiculo.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(@g_tipo_veiculo.errors.count, "erro", "erros") %> encontrado(s):</h5>
+      <ul class="mb-0">
+        <% @g_tipo_veiculo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.input :descricao, label: "Descrição", placeholder: "Ex: Automóvel, Motocicleta, Caminhão...", input_html: { class: "form-control", autofocus: true } %>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Cancelar", g_tipos_veiculos_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

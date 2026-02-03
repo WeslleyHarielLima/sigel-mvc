@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1><i class="bi bi-car-front"></i> Veículo</h1>
+  <div>
+    <%= link_to edit_g_veiculo_path(@g_veiculo), class: "btn btn-warning" do %>
+      <i class="bi bi-pencil"></i> Editar
+    <% end %>
+    <%= link_to g_veiculos_path, class: "btn btn-secondary" do %>
+      <i class="bi bi-arrow-left"></i> Voltar
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Informações do Veículo</h5>
+      </div>
+      <div class="card-body">
+        <dl class="row">
+          <dt class="col-sm-4">Número Interno</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.numero_interno || "-" %></dd>
+
+          <dt class="col-sm-4">Placa</dt>
+          <dd class="col-sm-8"><strong><%= @g_veiculo.placa || "-" %></strong></dd>
+
+          <dt class="col-sm-4">Chassi</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.chassi || "-" %></dd>
+
+          <dt class="col-sm-4">Renavam</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.renavam || "-" %></dd>
+
+          <dt class="col-sm-4">Marca</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.marca || "-" %></dd>
+
+          <dt class="col-sm-4">Modelo</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.modelo || "-" %></dd>
+
+          <dt class="col-sm-4">Ano</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.ano || "-" %></dd>
+
+          <dt class="col-sm-4">Cor</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.cor || "-" %></dd>
+
+          <dt class="col-sm-4">Motor</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.motor || "-" %></dd>
+
+          <dt class="col-sm-4">Tombamento</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.tombamento || "-" %></dd>
+
+          <dt class="col-sm-4">Tipo de Veículo</dt>
+          <dd class="col-sm-8"><%= @g_veiculo.g_tipo_veiculo&.descricao || "-" %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Status</h5>
+      </div>
+      <div class="card-body text-center">
+        <span class="badge badge-<%= @g_veiculo.status %> text-white fs-5 mb-3 d-block p-2">
+          <%= @g_veiculo.status_label %>
+        </span>
+
+        <div class="mb-2">
+          <strong>Apto para Leilão:</strong><br>
+          <% if @g_veiculo.apto? %>
+            <span class="badge bg-success fs-6"><i class="bi bi-check-lg"></i> Sim</span>
+          <% else %>
+            <span class="badge bg-secondary fs-6"><i class="bi bi-x-lg"></i> Não</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Datas</h5>
+      </div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-sm-5">Criado em</dt>
+          <dd class="col-sm-7"><%= @g_veiculo.created_at.strftime("%d/%m/%Y %H:%M") %></dd>
+
+          <dt class="col-sm-5">Atualizado em</dt>
+          <dd class="col-sm-7"><%= @g_veiculo.updated_at.strftime("%d/%m/%Y %H:%M") %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
