@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Recursos principais
-  resources :g_tipos_veiculos
   resources :g_veiculos
 
   # Health check

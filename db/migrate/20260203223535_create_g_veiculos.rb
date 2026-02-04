@@ -13,7 +13,6 @@ class CreateGVeiculos < ActiveRecord::Migration[7.2]
       t.string :tombamento
       t.boolean :apto, default: false
       t.string :status, default: 'pendente'
-      t.references :g_tipo_veiculo, null: false, foreign_key: { to_table: :g_tipos_veiculos }
       t.datetime :discarded_at
 
       t.timestamps

@@ -14,15 +14,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_03_223535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "g_tipos_veiculos", force: :cascade do |t|
-    t.string "descricao", null: false
-    t.datetime "discarded_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["descricao"], name: "index_g_tipos_veiculos_on_descricao"
-    t.index ["discarded_at"], name: "index_g_tipos_veiculos_on_discarded_at"
-  end
-
   create_table "g_veiculos", force: :cascade do |t|
     t.string "numero_interno"
     t.string "placa"
@@ -36,12 +27,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_03_223535) do
     t.string "tombamento"
     t.boolean "apto", default: false
     t.string "status", default: "pendente"
-    t.bigint "g_tipo_veiculo_id", null: false
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_g_veiculos_on_discarded_at"
-    t.index ["g_tipo_veiculo_id"], name: "index_g_veiculos_on_g_tipo_veiculo_id"
     t.index ["placa"], name: "index_g_veiculos_on_placa"
     t.index ["status"], name: "index_g_veiculos_on_status"
   end
@@ -66,6 +55,4 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_03_223535) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_foreign_key "g_veiculos", "g_tipos_veiculos", column: "g_tipo_veiculo_id"
 end

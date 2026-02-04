@@ -26,16 +26,6 @@
             class: "form-select sigel-form-select" %>
       </div>
       <!-- Tipo de Veículo -->
-      <div class="col-md-3">
-        <label class="sigel-form-label">
-          <iconify-icon icon="solar:layers-bold" class="me-1"></iconify-icon>
-          Tipo de Veículo
-        </label>
-        <%= f.select :g_tipo_veiculo_id_eq, 
-            options_for_select(GTipoVeiculo.order(:descricao).pluck(:descricao, :id), params.dig(:q, :g_tipo_veiculo_id_eq)), 
-            { include_blank: "Todos os Tipos" }, 
-            class: "form-select sigel-form-select" %>
-      </div>
       <!-- Apto para Leilão -->
       <div class="col-md-3">
         <label class="sigel-form-label">
