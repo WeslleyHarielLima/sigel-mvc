@@ -3,8 +3,20 @@
   <head>
     <title>SIGEL</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/layout/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/layout/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/layout/assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/layout/assets/img/favicon.ico">
+    <link rel="manifest" href="/layout/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/layout/assets/img/judge.png" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#0d6efd">
+    <meta name="theme-color" content="#0d6efd">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- CSS do template -->
     <%= stylesheet_link_tag "/layout/assets/css/animate.min.css",                         "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/styles.css",                              "data-turbo-track": "reload" %>
@@ -33,5 +45,6 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </body>
 </html>
