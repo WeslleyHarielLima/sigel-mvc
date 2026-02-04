@@ -10,6 +10,7 @@
   <!-- Sidebar navigation -->
   <nav class="sidebar-nav scroll-sidebar" data-simplebar>
     <ul id="sidebarnav">
+      <!-- Dashboard -->
       <li class="sidebar-item">
         <%= link_to home_index_path, class: "sidebar-link" do %>
           <span>
@@ -18,12 +19,13 @@
           <span class="hide-menu">Dashboard</span>
         <% end %>
       </li>
+      <!-- Cadastros -->
       <li class="nav-small-cap">
         <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
         <span class="hide-menu">Cadastros</span>
       </li>
       <li class="sidebar-item">
-        <%= link_to root_path, class: "sidebar-link" do %>
+        <%= link_to g_veiculos_path, class: "sidebar-link" do %>
           <span>
             <iconify-icon icon="solar:car-bold-duotone" class="fs-6"></iconify-icon>
           </span>
@@ -31,24 +33,64 @@
         <% end %>
       </li>
       <li class="sidebar-item">
-        <%= link_to root_path, class: "sidebar-link" do %>
+        <%= link_to "#", class: "sidebar-link" do %>
           <span>
-            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class: "fs-6"></iconify-icon>
+            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
           </span>
           <span class="hide-menu">Tipos de Veículo</span>
         <% end %>
       </li>
+      <!-- Referenciais -->
+      <li class="nav-small-cap">
+        <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6"></iconify-icon>
+        <span class="hide-menu">Referenciais</span>
+      </li>
+      <!-- Localidades (submenu com Bootstrap) -->
+      <li class="sidebar-item">
+        <a class="sidebar-link d-flex justify-content-between align-items-center"
+           data-bs-toggle="collapse"
+           href="#submenu-localidades"
+           role="button"
+           aria-expanded="false"
+           aria-controls="submenu-localidades">
+          <span>
+            <iconify-icon icon="solar:map-point-bold-duotone" class="fs-6"></iconify-icon>
+            <span class="hide-menu ms-2">Localidades</span>
+          </span>
+          <i class="ti ti-chevron-down"></i>
+        </a>
+        <ul class="collapse first-level" id="submenu-localidades">
+          <li class="sidebar-item">
+            <%= link_to g_paises_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Países</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_estados_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Estados</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_municipios_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Municípios</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_distritos_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Distritos</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_localidades_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Localidades</span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <!-- Inventário -->
       <li class="nav-small-cap">
         <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6"></iconify-icon>
         <span class="hide-menu">Inventário</span>
-      </li>
-      <li class="sidebar-item">
-        <%= link_to new_user_session_path, class: "sidebar-link" do %>
-          <span>
-            <iconify-icon icon="solar:login-3-bold-duotone" class="fs-6"></iconify-icon>
-          </span>
-          <span class="hide-menu">Comissão</span>
-        <% end %>
       </li>
     </ul>
   </nav>
