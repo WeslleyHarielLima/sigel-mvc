@@ -23,7 +23,7 @@ gem "jbuilder"
 # === SIGEL - Gems Adicionais ===
 
 # Autenticação
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 
 # Soft Delete
 gem "discard", "~> 1.3"
