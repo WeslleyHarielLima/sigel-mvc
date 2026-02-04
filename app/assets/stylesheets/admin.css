@@ -1,0 +1,102 @@
+/* Header colado no topo da área de conteúdo */
+.app-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent; /* deixa o bg vir do navbar */
+}
+
+/* Navbar colado no topo */
+.app-header .navbar {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove espaçamento extra acima do conteúdo */
+.body-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Ajuste fino do container do conteúdo */
+.body-wrapper .container-fluid {
+  padding-top: 16px; /* respiro abaixo do navbar */
+}
+/* Melhor UX dos links do navbar */
+.app-header-navbar .nav-link {
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.app-header-navbar .nav-link:hover,
+.app-header-navbar .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+/* Garante que o dropdown apareça por cima */
+.app-header {
+  position: relative;
+  z-index: 1020;
+}
+
+.app-header .dropdown-menu {
+  z-index: 1050 !important;
+}
+
+/* Evita que o body-wrapper corte o dropdown */
+.body-wrapper {
+  overflow: visible !important;
+}
+/* Header colado no topo da área de conteúdo */
+.app-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent; /* deixa o bg vir do navbar */
+}
+
+/* Navbar colado no topo */
+.app-header .navbar {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove espaçamento extra acima do conteúdo */
+.body-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Ajuste fino do container do conteúdo */
+.body-wrapper .container-fluid {
+  padding-top: 16px; /* respiro abaixo do navbar */
+}
+/* Melhor UX dos links do navbar */
+.app-header-navbar .nav-link {
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.app-header-navbar .nav-link:hover,
+.app-header-navbar .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+/* Garante que o dropdown apareça por cima */
+.app-header {
+  position: relative;
+  z-index: 1020;
+}
+
+.app-header .dropdown-menu {
+  z-index: 1050 !important;
+}
+
+/* Evita que o body-wrapper corte o dropdown */
+.body-wrapper {
+  overflow: visible !important;
+}
+.app-header-navbar .dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: #ffffff !important;
+}

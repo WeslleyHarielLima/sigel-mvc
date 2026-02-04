@@ -3,26 +3,35 @@
   <head>
     <title>SIGEL</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <!-- Metadados Rails -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- CSS do template (public/layout/assets) COM RELOAD -->
+    <!-- CSS do template -->
     <%= stylesheet_link_tag "/layout/assets/css/animate.min.css",                         "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/styles.css",                              "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/icons/tabler-icons/tabler-icons.css",     "data-turbo-track": "reload" %>
     <!-- CSS do Rails -->
     <%= stylesheet_link_tag "application",                                                "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "admin",                                                      "data-turbo-track": "reload" %>
-    <!-- JS do template (public/layout/assets) COM RELOAD -->
+    <!-- JS base -->
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                        "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/vendor/visualization/echarts/echarts.min.js", "data-turbo-track": "reload" %>
   </head>
   <body>
-    <%= render "shared/navbar" %>
-    <main class="container mt-4">
-      <%= render "shared/flash" %>
-      <%= yield %>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="static">
+      <aside class="left-sidebar">
+        <%= render "shared/sidebar/sidebar" %>
+      </aside>
+      <div class="body-wrapper">
+        <header class="app-header">
+          <%= render "shared/navbar" %>
+        </header>
+        <div class="container-fluid">
+          <%= yield :context_nav %>
+          <%= render "shared/flash" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
