@@ -162,12 +162,6 @@ h6 {
   letter-spacing: -0.02em;
 }
 
-.sigel-brand-title {
-  font-family: "Merriweather", Georgia, serif;
-  font-weight: 700;
-  color: var(--sigel-verde-escuro);
-}
-
 /* SIDEBAR GOVERNAMENTAL */
 .left-sidebar {
   background: linear-gradient(

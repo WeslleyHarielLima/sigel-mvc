@@ -1,0 +1,167 @@
+<%% render "shared/context_nav", title: t("activerecord.models.#{<%= class_name %>.model_name.i18n_key}.other"), new_path: new_<%= singular_table_name %>_path do  %>
+<span class="breadcrumb-item active"><%%= t("activerecord.models.#{<%= class_name %>.model_name.i18n_key}.other") %></span>
+<%% end %>
+<!-- Page Header -->
+<div class="sigel-page-header mb-4">
+  <div class="sigel-page-title">
+    <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.5rem;"></iconify-icon>
+    <h1 style="font-size: 2.5rem; font-weight: 700; margin: 0;"><%%= t("activerecord.models.#{<%= class_name %>.model_name.i18n_key}.other") %></h1>
+  </div>
+  <%%= link_to new_<%= singular_table_name %>_path, class: "btn btn-sigel-primary d-flex align-items-center gap-2" do %>
+  <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
+  <span>Novo Registro</span>
+  <%% end %>
+</div>
+<!-- Filtros - Colapsável -->
+<div class="mb-4">
+  <button class="btn w-100 sigel-card" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosForm" style="border: none; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--sigel-verde-claro) 0%, #f0f8f4 100%); text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--sigel-verde-escuro);">
+    <span style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem;">
+      <iconify-icon icon="solar:filter-bold-duotone"></iconify-icon>
+      Filtros de Pesquisa
+    </span>
+    <iconify-icon icon="solar:chevron-down-bold" class="collapse-icon" style="transition: transform 0.3s ease;"></iconify-icon>
+  </button>
+  <div class="collapse" id="filtrosForm" style="margin-top: 0.5rem;">
+    <div class="sigel-card" style="border-top: none; border-top-left-radius: 0; border-top-right-radius: 0;">
+      <div class="sigel-card-body">
+        <%%= search_form_for @q, url: <%= plural_table_name %>_path, method: :get do |f| %>
+        <div class="row g-3">
+          <% attributes_to_ignore = ['deleted_at', 'created_by', 'updated_by', 'original_user_create', 'last_user_update'] %>
+          <%- attributes.each do |attribute| -%>
+            <% unless attributes_to_ignore.include?(attribute.name) %>
+              <div class="col-lg-3 col-md-6">
+                <label class="sigel-form-label">
+                  <strong><%%= attribute.humanize %></strong>
+                </label>
+                <%% if <%= attribute.reference? %> %>
+                <%%= f.select :<%= attribute.name %>_eq, 
+                options_for_select(<%= class_name %>.<%= pluralize(attribute.name.chomp('_id')) %>.order(:name).pluck(:name, :id), params.dig(:q, :<%= attribute.name %>_eq)), 
+                { include_blank: "Todos" }, 
+                class: "form-select sigel-form-select" %>
+                <%% else %>
+                <%%= f.search_field :<%= attribute.name %>_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
+                <%% end %>
+              </div>
+            <% end %>
+          <%- end -%>
+          <div class="col-12 d-flex gap-2">
+            <%%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
+            <%%= link_to <%= plural_table_name %>_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+            <iconify-icon icon="solar:restart-bold-duotone"></iconify-icon>
+            Limpar
+            <%% end %>
+          </div>
+        </div>
+        <%% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tabela de Registros -->
+<div class="sigel-card">
+  <div class="sigel-card-header">
+    <h5>
+      <iconify-icon icon="solar:clipboard-list-bold-duotone" class="me-2"></iconify-icon>
+      Lista de Registros
+    </h5>
+    <span class="badge" style="background: var(--sigel-dourado); color: var(--sigel-verde-escuro); font-size: 0.9rem; padding: 0.5rem 1rem;">
+      <%%= @<%= plural_table_name %>.total_count rescue @<%= plural_table_name %>.count %> registros
+    </span>
+  </div>
+  <div class="sigel-card-body p-0">
+    <%% if @<%= plural_table_name %>.any? %>
+    <div class="table-responsive">
+      <table class="table sigel-table mb-0">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 80px;">Ações</th>
+            <% attributes_to_ignore = ['deleted_at', 'created_by', 'updated_by', 'original_user_create', 'last_user_update'] %>
+            <%- attributes.each do |attribute| -%>
+              <% unless attributes_to_ignore.include?(attribute.name) %>
+                <th>
+                  <%%= sort_link(@q, :<%= attribute.name %>, <%= attribute.name.humanize.inspect %>) %>
+                </th>
+              <% end %>
+            <%- end -%>
+          </tr>
+        </thead>
+        <tbody>
+          <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+          <tr>
+            <td class="text-center" style="white-space: nowrap;">
+              <div class="d-flex gap-2 justify-content-center">
+                <%%= link_to <%= singular_table_name %>_path(<%= singular_table_name %>), class: "sigel-actions-btn sigel-actions-btn-visualizar" do %>
+                <iconify-icon icon="solar:eye-bold"></iconify-icon>
+                <%% end %>
+                <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "sigel-actions-btn sigel-actions-btn-editar" do %>
+                <iconify-icon icon="solar:pen-bold"></iconify-icon>
+                <%% end %>
+                <%%= button_to <%= singular_table_name %>_path(<%= singular_table_name %>),
+                method: :delete,
+                class: "sigel-actions-btn sigel-actions-btn-excluir",
+                data: { turbo_confirm: "Tem certeza?" },
+                style: "border: none;" do %>
+                <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                <%% end %>
+              </div>
+            </td>
+            <% attributes_to_ignore = ['deleted_at', 'created_by', 'updated_by', 'original_user_create', 'last_user_update'] %>
+            <%- attributes.each do |attribute| -%>
+              <% unless attributes_to_ignore.include?(attribute.name) %>
+                <td>
+                  <%%= truncate(<%= singular_table_name %>.<%= attribute.name %>.to_s, length: 50) %>
+                </td>
+              <% end %>
+            <%- end -%>
+          </tr>
+          <%% end %>
+        </tbody>
+      </table>
+    </div>
+    <!-- Paginação -->
+    <div class="sigel-card-footer">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="text-muted">
+          Exibindo <strong><%%= @<%= plural_table_name %>.size %></strong> de
+          <strong><%%= @<%= plural_table_name %>.total_count rescue @<%= plural_table_name %>.count %></strong> registros
+        </div>
+        <div>
+          <%% if defined?(@pagy) && @pagy.pages > 1 %>
+          <%%== pagy_bootstrap_nav(@pagy) %>
+          <%% end %>
+        </div>
+      </div>
+    </div>
+    <%% else %>
+    <div class="p-5 text-center">
+      <iconify-icon icon="solar:folder-open-bold-duotone" style="font-size: 5rem; color: var(--sigel-cinza-400);"></iconify-icon>
+      <h5 class="mt-3" style="color: var(--sigel-cinza-600);">Nenhum registro encontrado</h5>
+      <p class="text-muted">Cadastre um novo registro para começar</p>
+      <%%= link_to new_<%= singular_table_name %>_path, class: "btn btn-sigel-primary mt-3" do %>
+      <iconify-icon icon="solar:add-circle-bold-duotone" class="me-2"></iconify-icon>
+      Novo Registro
+      <%% end %>
+    </div>
+    <%% end %>
+  </div>
+</div>
+<style>
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .table tbody tr {
+    transition: background-color 0.2s ease;
+  }
+
+  .table tbody tr:hover {
+    background-color: rgba(26, 71, 42, 0.05);
+  }
+</style>
