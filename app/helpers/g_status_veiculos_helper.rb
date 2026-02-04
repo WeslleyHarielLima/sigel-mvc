@@ -1,0 +1,2 @@
+module GStatusVeiculosHelper
+end

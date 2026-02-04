@@ -1,0 +1,506 @@
+pt-BR:
+  cancan:
+    access_denied: "Acesso negado: você não tem permissão para acessar esta página."
+  pagy:
+    items:
+      one: "item"
+      other: "itens"
+    page:
+      one: "Página"
+      other: "Páginas"
+    prev: "Anterior"
+    next: "Próxima"
+
+  activerecord:
+    models:
+      a_status:
+        one: "Status"
+        other: "Status"
+      a_tipo_unidade:
+        one: "Tipo de Unidade"
+        other: "Tipos de Unidade"
+      a_tipo_usuario:
+        one: "Tipo de Usuário"
+        other: "Tipos de Usuários"
+      a_usuario_historico_cargo_unidade:
+        one: "Histórico de Cargo da Unidade do Usuário"
+        other: "Históricos de Cargos das Unidades dos Usuários"
+      a_unidade:
+        one: "Unidade"
+        other: "Unidades"
+      a_cargo:
+        one: "Cargo"
+        other: "Cargos"
+      a_papel:
+        one: "Papel"
+        other: "Papéis"
+      a_permissao:
+        one: "Permissão do Papel"
+        other: "Permissões dos Papéis"
+      a_papel_permissao:
+        one: "Papel Permissão"
+        other: "Papéis Permissões"
+      a_usuario_papel:
+        one: "Usuário Papel"
+        other: "Usuários Papéis"
+      f_empresa_fornecedora:
+        one: "Empresa Fornecedora"
+        other: "Empresas Fornecedoras"
+      f_empresa_servico:
+        one: "Empresa de Serviço"
+        other: "Empresas de Serviços"
+      f_financeiro:
+        one: "Financeiro"
+        other: "Financeiros"
+      f_financeiro_movimento:
+        one: "Movimento Financeiro"
+        other: "Movimentos Financeiros"
+      g_status:
+        one: "Status de Gestão"
+        other: "Status de Gestão"
+      g_tipo_veiculo:
+        one: "Tipo de Veículo"
+        other: "Tipos de Veículos"
+      g_tipo_centro_custo:
+        one: "Tipo de Centro de Custo"
+        other: "Tipos de Centros de Custos"
+      g_centro_custo:
+        one: "Centro de Custo"
+        other: "Centros de Custos"
+      g_pais:
+        one: "País"
+        other: "Países"
+      g_estado:
+        one: "Estado"
+        other: "Estados"
+      g_municipio:
+        one: "Município"
+        other: "Municípios"
+      g_bairro:
+        one: "Bairro"
+        other: "Bairros"
+      g_distrito:
+        one: "Distrito"
+        other: "Distritos"
+      g_localidade:
+        one: "Localidade"
+        other: "Localidades"
+      g_tipo_movimento:
+        one: "Tipo de Movimento"
+        other: "Tipos de Movimentos"
+      g_centro_custo_movimento:
+        one: "Movimento do Centro de Custo"
+        other: "Movimentos dos Centros de Custos"
+      g_veiculo:
+        one: "Veículo"
+        other: "Veículos"
+      g_condutor:
+        one: "Condutor"
+        other: "Condutores"
+      g_condutor_veiculo:
+        one: "Condutor Veículo"
+        other: "Condutores Veículos"
+      g_categoria_carteira_condutor:
+        one: "Categoria da Carteira do Condutor"
+        other: "Categorias das Carteiras dos Condutores"
+      g_carteira_orgao_emissor:
+        one: "Órgão Emissor da Carteira"
+        other: "Órgãos Emissores das Carteiras"
+      o_status:
+        one: "Status do Orçamento"
+        other: "Status dos Orçamentos"
+      o_tipo_solicitacao:
+        one: "Tipo de Solicitação"
+        other: "Tipos de Solicitações"
+      o_categoria_servico:
+        one: "Categoria de Serviço"
+        other: "Categorias de Serviços"
+      o_urgencia:
+        one: "Urgência"
+        other: "Urgências"
+      o_visibilidade:
+        one: "Visibilidade"
+        other: "Visibilidades"
+      o_solicitacao:
+        one: "Solicitação"
+        other: "Solicitações"
+      o_cotacao:
+        one: "Cotação"
+        other: "Cotações"
+      o_cotacao_item:
+        one: "Item da Cotação"
+        other: "Itens da Cotação"
+      o_proposta:
+        one: "Proposta"
+        other: "Propostas"
+      o_proposta_item:
+        one: "Item da Proposta"
+        other: "Itens da Proposta"
+      o_status_nf:
+        one: "Status da Nota Fiscal"
+        other: "Status das Notas Fiscais"
+      o_nota_fiscal:
+        one: "Nota Fiscal"
+        other: "Notas Fiscais"
+      t_taxa:
+        one: "Taxa"
+        other: "Taxas"
+      t_taxa_empresa_fornecedora:
+        one: "Taxa da Empresa Fornecedora"
+        other: "Taxas das Empresas Fornecedoras"
+      t_taxa_adiantamento:
+        one: "Taxa de Adiantamento"
+        other: "Taxas de Adiantamentos"
+      o_ordem_servico:
+        one: "Ordem de Serviço"
+        other: "Ordens de Serviços"
+      user:
+        one: "Usuário"
+        other: "Usuários"
+      c_posto:
+        one: Posto de Gasolina
+        other: Postos de Gasolina
+      c_tipo_combustivel:
+        one: "Tipo de Combustível"
+        other: "Tipos de Combustíveis"
+      c_combustivel:
+        one: "Tipo de Combustivel"
+        other: "Tipos de Combustiveis"
+      c_posto_combustivel:
+        one: "Associação Posto/Combustível "
+        other: "Associação Posto/Combustível "
+      c_cartao_combustivel:
+        one: "Cartão do Combustível"
+        other: "Cartões do Combustível"
+      c_limite_mensal:
+        one: "Limite Mensao"
+        other: "Limites Mensais"
+      c_requisicao_combustivel:
+        one: "Requisição do Combustível"
+        other: "Requisições do Combustível"
+      c_status_voucher:
+        one: "Status do Voucher"
+        other: "Status dos Vouchers"
+    attributes:
+      a_status:
+        descricao: "Descrição"
+      a_tipo_unidade:
+        descricao: "Descrição"
+      a_tipo_usuario:
+        descricao: "Descrição"
+      f_empresa_fornecedora:
+        nome_fantasia: "Nome Fantasia"
+        razao_social: "Razão Social"
+        cnpj: "Cnpj"
+        telefone: "Telefone"
+        email: "Email"
+        endereco: "Endereço"
+        numero: "Número"
+        complemento: "Complemento"
+        g_municipio_id: "Município"
+        a_status_id: "Status"
+        t_taxa_id: "Taxa"
+      f_empresa_servico:
+        f_empresa_fornecedora_id: "Empresa Fornecedora"
+        o_categoria_servico_id: "Categoria de Serviço"
+      financeiro:
+        f_empresa_fornecedora_id: "Empresa Fornecedora"
+        o_categoria_servico_id: "Categoria de Serviço"
+        saldo_total: "Saldo Total"
+        saldo_disponivel: "Saldo Disponível"
+        saldo_reservado: "Saldo Reservado"
+      f_financeiro_movimento:
+        descricao: "Descrição"
+        f_financeiro_id: "Financeiro"
+        g_tipo_movimento_id: "Tipo de Movimento"
+        valor: "Valor"
+        observacao: "Observação"
+      g_status:
+        descricao: "Descrição"
+      g_tipo_veiculo:
+        descricao: "Descrição"
+      g_tipo_centro_custo:
+        descricao: "Descrição"
+      g_pais:
+        descricao: "Descrição"
+        sigla: "Sigla"
+      g_estado:
+        descricao: "Descrição"
+        uf: "Uf"
+        g_pais_id: "País"
+      g_municipio:
+        codigo_ibge: "Código Ibge"
+        descricao: "Descrição"
+        g_estado_id: "Estado"
+      g_bairro:
+        descricao: "Descrição"
+        g_municipio_id: "Município"
+      g_distrito:
+        descricao: "Descrição"
+        codigo_ibge: "Código Ibge"
+        g_municipio_id: "Município"
+      g_localidade:
+        descricao: "Descrição"
+        cep: "Cep"
+        g_distrito_id: "Distrito"
+      user:
+        nome: "Nome"
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        a_tipo_usuario_id: "Tipo de Usuário"
+        a_status_id: "Status"
+        a_unidade_id: "Unidade"
+        a_cargo_id: "Cargo"
+        f_empresa_fornecedora_id: "Empresa Fornecedora"
+
+    errors:
+      messages:
+        record_invalid: "A validação falhou: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+          has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+          not_authorized: "Você não tem permissão para acessar esta página"
+          created_successfully: "Registro criado com sucesso"
+          updated_successfully: "Registro atualizado com sucesso"
+          deleted_successfully: "Registro excluído com sucesso"
+          delete_failed_due_to_dependencies: "Não foi possível excluir, existem dependências"
+          not_found: "Registro não encontrado"
+      attributes:
+        a_status:
+          descricao: "Descrição"
+        a_tipo_unidade:
+          descricao: "Descrição"
+        a_tipo_usuario:
+          descricao: "Descrição"
+        g_status:
+          descricao: "Descrição"
+        g_tipo_veiculo:
+          descricao: "Descrição"
+        g_tipo_centro_custo:
+          descricao: "Descrição"
+        o_status:
+          descricao: "Descrição"
+  messages:
+    not_authorized: "Você não tem permissão para acessar esta página"
+    created_successfully: "Registro criado com sucesso"
+    updated_successfully: "Registro atualizado com sucesso"
+    deleted_successfully: "Registro excluído com sucesso"
+    delete_failed_due_to_dependencies: "Não foi possível excluir, existem dependências"
+    not_found: "Registro não encontrado"
+  date:
+    abbr_day_names:
+      - dom
+      - seg
+      - ter
+      - qua
+      - qui
+      - sex
+      - sáb
+    abbr_month_names:
+      -
+      - jan
+      - fev
+      - mar
+      - abr
+      - mai
+      - jun
+      - jul
+      - ago
+      - set
+      - out
+      - nov
+      - dez
+    day_names:
+      - domingo
+      - segunda-feira
+      - terça-feira
+      - quarta-feira
+      - quinta-feira
+      - sexta-feira
+      - sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
+    month_names:
+      -
+      - janeiro
+      - fevereiro
+      - março
+      - abril
+      - maio
+      - junho
+      - julho
+      - agosto
+      - setembro
+      - outubro
+      - novembro
+      - dezembro
+    order:
+      - :day
+      - :month
+      - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: aproximadamente %{count} hora
+        other: aproximadamente %{count} horas
+      about_x_months:
+        one: aproximadamente %{count} mês
+        other: aproximadamente %{count} meses
+      about_x_years:
+        one: aproximadamente %{count} ano
+        other: aproximadamente %{count} anos
+      almost_x_years:
+        one: quase %{count} ano
+        other: quase %{count} anos
+      half_a_minute: meio minuto
+      less_than_x_seconds:
+        one: menos de %{count} segundo
+        other: menos de %{count} segundos
+      less_than_x_minutes:
+        one: menos de um minuto
+        other: menos de %{count} minutos
+      over_x_years:
+        one: mais de %{count} ano
+        other: mais de %{count} anos
+      x_seconds:
+        one: "%{count} segundo"
+        other: "%{count} segundos"
+      x_minutes:
+        one: "%{count} minuto"
+        other: "%{count} minutos"
+      x_days:
+        one: "%{count} dia"
+        other: "%{count} dias"
+      x_months:
+        one: "%{count} mês"
+        other: "%{count} meses"
+      x_years:
+        one: "%{count} ano"
+        other: "%{count} anos"
+    prompts:
+      second: Segundo
+      minute: Minuto
+      hour: Hora
+      day: Dia
+      month: Mês
+      year: Ano
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      in: deve estar em %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: "A validação falhou: %{errors}"
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      other_than: deve ser diferente de %{count}
+      present: deve ficar em branco
+      required: é obrigatório(a)
+      taken: já está em uso
+      too_long:
+        one: "é muito longo (máximo: %{count} caracter)"
+        other: "é muito longo (máximo: %{count} caracteres)"
+      too_short:
+        one: "é muito curto (mínimo: %{count} caracter)"
+        other: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length:
+        one: não possui o tamanho esperado (%{count} caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+      header:
+        one: "Não foi possível gravar %{model}: %{count} erro"
+        other: "Não foi possível gravar %{model}: %{count} erros"
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u %n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: "."
+      precision: 3
+      round_mode: default
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: bilhão
+            other: bilhões
+          million:
+            one: milhão
+            other: milhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+          thousand: mil
+          trillion:
+            one: trilhão
+            other: trilhões
+          unit: ""
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: "."
+        format: "%n%"
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+    pm: pm

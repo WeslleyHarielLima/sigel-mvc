@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :g_status_leiloes_veiculos
+  resources :g_status_veiculos
   devise_for :users
 
   root "g_veiculos#index"

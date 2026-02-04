@@ -1,0 +1,25 @@
+<div class="container">
+  <%= render "shared/notice" %>
+  <div class="card border-0 shadow shadow-sm">
+    <div class="card-header border-0 d-flex justify-content-between">
+      <span class="fs-4">Visualizar G Status Leilao Veiculo</span>
+    </div>
+    <div class="card-body">
+      <div id="<%= dom_id @g_status_leilao_veiculo %>">
+          <p>
+            <strong>Descricao:</strong>
+            <%= @g_status_leilao_veiculo.descricao %>
+          </p>
+      </div>
+    </div>
+    <div class="card-footer border-0 d-flex justify-content-between">
+      <div>
+        <%= link_to edit_g_status_leilao_veiculo_path(@g_status_leilao_veiculo), class: "btn btn-primary" do %>
+        <i class="bi bi-pencil-square"></i> Editar
+        <% end %>
+        <%= link_to "Voltar", g_status_leiloes_veiculos_path, class: "btn btn-secondary" %>
+      </div>
+      <%= button_to "Deletar", @g_status_leilao_veiculo, method: :delete, class: "btn btn-outline-danger border-0" %>
+    </div>
+  </div>
+</div>

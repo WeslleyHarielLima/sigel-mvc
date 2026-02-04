@@ -25,21 +25,21 @@
           <div class="row g-3">
             <div class="col-lg-3 col-md-6">
               <label class="sigel-form-label">
-                <strong>Descricao</strong>
+                <strong>Município</strong>
               </label>
               <%= f.search_field :descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label">
+                <strong>Estado</strong>
+              </label>
+              <%= f.search_field :g_estado_descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
             </div>
             <div class="col-lg-3 col-md-6">
               <label class="sigel-form-label">
                 <strong>Codigo ibge</strong>
               </label>
               <%= f.search_field :codigo_ibge_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <label class="sigel-form-label">
-                <strong>Estados</strong>
-              </label>
-              <%= f.search_field :g_estado_descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
             </div>
             <div class="col-12 d-flex gap-2">
               <%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
