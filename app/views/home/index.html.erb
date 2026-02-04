@@ -1,0 +1,289 @@
+<!-- Dashboard Header -->
+<div class="mb-4">
+  <div class="row align-items-center">
+    <div class="col">
+      <h1 class="mb-2" style="font-size: 2.25rem; font-weight: 800; color: var(--sigel-verde-escuro);">
+        Painel de Controle
+      </h1>
+      <p class="text-muted mb-0">Bem-vindo ao Sistema Integrado de Gestão de Leilões</p>
+    </div>
+    <div class="col-auto">
+      <div class="d-flex align-items-center gap-3 p-3" style="background: linear-gradient(135deg, var(--sigel-verde-escuro) 0%, var(--sigel-verde-medio) 100%); border-radius: 12px; box-shadow: var(--sigel-sombra-md);">
+        <iconify-icon icon="solar:calendar-bold-duotone" class="fs-1 text-white"></iconify-icon>
+        <div class="text-white">
+          <div style="font-size: 0.75rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Data Atual</div>
+          <div style="font-size: 1.1rem; font-weight: 700;"><%= l(Date.current, format: :long) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Stats Cards -->
+<div class="row mb-4">
+  <div class="col-md-3">
+    <div class="sigel-stats-card">
+      <div class="sigel-stats-icon">
+        <iconify-icon icon="solar:tram-broken"></iconify-icon>
+      </div>
+      <!-- Proteção: Se @g_veiculos for nil, mostra 0 -->
+      <div class="sigel-stats-value"><%= @g_veiculos&.count || 0 %></div>
+      <div class="sigel-stats-label">Total de Veículos</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="sigel-stats-card sucesso">
+      <div class="sigel-stats-icon" style="background: #d4edda; color: #28a745;">
+        <iconify-icon icon="solar:check-circle-bold-duotone"></iconify-icon>
+      </div>
+      <div class="sigel-stats-value"><%= (GVeiculo.where(status: 'disponivel').count rescue 0) %></div>
+      <div class="sigel-stats-label">Disponíveis</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="sigel-stats-card dourado">
+      <div class="sigel-stats-icon">
+        <iconify-icon icon="solar:hand-money-bold-duotone"></iconify-icon>
+      </div>
+      <div class="sigel-stats-value"><%= (GVeiculo.where(status: 'em_leilao').count rescue 0) %></div>
+      <div class="sigel-stats-label">Em Leilão</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="sigel-stats-card alerta">
+      <div class="sigel-stats-icon" style="background: #fff3cd; color: #856404;">
+        <iconify-icon icon="solar:shield-check-bold-duotone"></iconify-icon>
+      </div>
+      <div class="sigel-stats-value"><%= (GVeiculo.where(apto: true).count rescue 0) %></div>
+      <div class="sigel-stats-label">Aptos p/ Leilão</div>
+    </div>
+  </div>
+</div>
+<!-- Quick Actions -->
+<div class="row mb-4">
+  <div class="col-12">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+      </div>
+      <div class="sigel-card-body">
+        <div class="row g-3">
+          <div class="col-lg-3 col-md-6">
+            <%= link_to "#", class: "text-decoration-none" do %>
+              <div class="p-4 text-center" style="background: var(--sigel-dourado-claro); border: 2px solid var(--sigel-dourado); border-radius: 12px; transition: all 0.3s ease;">
+                <iconify-icon icon="solar:calendar-add-bold-duotone" class="fs-1 mb-3" style="color: var(--sigel-dourado-escuro);"></iconify-icon>
+                <div style="font-weight: 700; color: var(--sigel-dourado-escuro); font-size: 1rem;">Agendar Leilão</div>
+                <div style="font-size: 0.85rem; color: var(--sigel-cinza-600); margin-top: 0.5rem;">Criar novo evento de leilão</div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <%= link_to "#", class: "text-decoration-none" do %>
+              <div class="p-4 text-center" style="background: #d1ecf1; border: 2px solid #17a2b8; border-radius: 12px; transition: all 0.3s ease;">
+                <iconify-icon icon="solar:document-add-bold-duotone" class="fs-1 mb-3" style="color: #0c5460;"></iconify-icon>
+                <div style="font-weight: 700; color: #0c5460; font-size: 1rem;">Gerar Relatório</div>
+                <div style="font-size: 0.85rem; color: var(--sigel-cinza-600); margin-top: 0.5rem;">Exportar dados e estatísticas</div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <%= link_to root_path, class: "text-decoration-none" do %>
+              <div class="p-4 text-center" style="background: #f8d7da; border: 2px solid #dc3545; border-radius: 12px; transition: all 0.3s ease;">
+                <iconify-icon icon="solar:settings-bold-duotone" class="fs-1 mb-3" style="color: #721c24;"></iconify-icon>
+                <div style="font-weight: 700; color: #721c24; font-size: 1rem;">Configurações</div>
+                <div style="font-size: 0.85rem; color: var(--sigel-cinza-600); margin-top: 0.5rem;">Gerenciar tipos e categorias</div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Recent Activity & Charts -->
+<div class="row">
+  <div class="col-lg-8 mb-4">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5>
+          <iconify-icon icon="solar:chart-2-bold-duotone"></iconify-icon>
+          Distribuição por Status
+        </h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row text-center">
+          <% statuses = {
+            disponivel: { label: 'Disponíveis', color: '#28a745', icon: 'solar:check-circle-bold' },
+            em_leilao: { label: 'Em Leilão', color: '#ffc107', icon: 'solar:hand-money-bold' },
+            vendido: { label: 'Vendidos', color: '#17a2b8', icon: 'solar:dollar-bold' },
+            em_manutencao: { label: 'Em Manutenção', color: '#dc3545', icon: 'solar:settings-bold' }
+          } %>
+          <% statuses.each do |status, config| %>
+            <%# Proteção aqui: %>
+            <% count = (GVeiculo.where(status: status).count rescue 0) %>
+            <% total = (GVeiculo.count rescue 0) %>
+            <% percentage = total > 0 ? (count.to_f / total * 100).round : 0 %>
+            <div class="col-md-3 mb-4">
+              <div class="p-4" style="background: <%= config[:color] %>15; border-radius: 12px;">
+                <iconify-icon icon="<%= config[:icon] %>" class="fs-1 mb-2" style="color: <%= config[:color] %>;"></iconify-icon>
+                <div style="font-size: 2rem; font-weight: 800; color: <%= config[:color] %>; line-height: 1;">
+                  <%= count %>
+                </div>
+                <div style="font-size: 0.9rem; color: var(--sigel-cinza-700); font-weight: 600; margin-top: 0.5rem;">
+                  <%= config[:label] %>
+                </div>
+                <div class="mt-2" style="font-size: 1.1rem; font-weight: 700; color: <%= config[:color] %>;">
+                  <%= percentage %>%
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 mb-4">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5>
+          <iconify-icon icon="solar:clipboard-check-bold-duotone"></iconify-icon>
+          Resumo Geral
+        </h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="d-flex flex-column gap-3">
+          <div class="d-flex justify-content-between align-items-center p-3" style="background: var(--sigel-cinza-100); border-radius: 8px;">
+            <div class="d-flex align-items-center gap-2">
+              <iconify-icon icon="solar:layers-bold" class="fs-5" style="color: var(--sigel-verde-escuro);"></iconify-icon>
+              <span style="font-weight: 600; color: var(--sigel-cinza-700);">Tipos Cadastrados</span>
+            </div>
+            <span style="font-size: 1.3rem; font-weight: 800; color: var(--sigel-verde-escuro);">
+              <%# AQUI ESTAVA O ERRO PRINCIPAL: Adicionado rescue 0 %>
+              <%= (GTipoVeiculo.count rescue 0) %>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center p-3" style="background: var(--sigel-cinza-100); border-radius: 8px;">
+            <div class="d-flex align-items-center gap-2">
+              <iconify-icon icon="solar:calendar-mark-bold" class="fs-5" style="color: var(--sigel-dourado-escuro);"></iconify-icon>
+              <span style="font-weight: 600; color: var(--sigel-cinza-700);">Leilões Agendados</span>
+            </div>
+            <span style="font-size: 1.3rem; font-weight: 800; color: var(--sigel-dourado-escuro);">
+              0
+            </span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center p-3" style="background: var(--sigel-cinza-100); border-radius: 8px;">
+            <div class="d-flex align-items-center gap-2">
+              <iconify-icon icon="solar:users-group-rounded-bold" class="fs-5" style="color: #17a2b8;"></iconify-icon>
+              <span style="font-weight: 600; color: var(--sigel-cinza-700);">Arrematantes</span>
+            </div>
+            <span style="font-size: 1.3rem; font-weight: 800; color: #17a2b8;">
+              0
+            </span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center p-3" style="background: var(--sigel-cinza-100); border-radius: 8px;">
+            <div class="d-flex align-items-center gap-2">
+              <iconify-icon icon="solar:chart-bold" class="fs-5" style="color: #28a745;"></iconify-icon>
+              <span style="font-weight: 600; color: var(--sigel-cinza-700);">Taxa de Aprovação</span>
+            </div>
+            <span style="font-size: 1.3rem; font-weight: 800; color: #28a745;">
+              <% total_veiculos = (GVeiculo.count rescue 0) %>
+              <% aptos = (GVeiculo.where(apto: true).count rescue 0) %>
+              <%= total_veiculos > 0 ? (aptos.to_f / total_veiculos * 100).round : 0 %>%
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Recent Vehicles -->
+<div class="row">
+  <div class="col-12">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5>
+          <iconify-icon icon="solar:clock-circle-bold-duotone"></iconify-icon>
+          Veículos Cadastrados Recentemente
+        </h5>
+        <!-- Verifica se rota existe antes de criar link -->
+        <% if defined?(g_veiculos_path) %>
+          <%= link_to g_veiculos_path, class: "btn btn-sm btn-sigel-secondary" do %>
+            Ver todos
+            <iconify-icon icon="solar:arrow-right-bold" class="ms-1"></iconify-icon>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="sigel-card-body p-0">
+        <%# Proteção na busca de recentes %>
+        <% recent_vehicles = (defined?(GVeiculo) ? GVeiculo.order(created_at: :desc).limit(5) : []) %>
+        <% if recent_vehicles.any? %>
+          <div class="table-responsive">
+            <table class="table sigel-table mb-0">
+              <thead>
+                <tr>
+                  <th>Placa</th>
+                  <th>Veículo</th>
+                  <th>Ano</th>
+                  <th>Status</th>
+                  <th>Data Cadastro</th>
+                  <th class="text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% recent_vehicles.each do |veiculo| %>
+                  <tr>
+                    <td>
+                      <strong style="font-family: 'JetBrains Mono', monospace; color: var(--sigel-verde-escuro);">
+                        <%= veiculo.placa %>
+                      </strong>
+                    </td>
+                    <td>
+                      <div style="font-weight: 600;"><%= veiculo.marca %> <%= veiculo.modelo %></div>
+                    </td>
+                    <td><%= veiculo.ano %></td>
+                    <td>
+                      <% case veiculo.status %>
+                      <% when 'disponivel' %>
+                        <span class="sigel-badge sigel-badge-disponivel">Disponível</span>
+                      <% when 'em_leilao' %>
+                        <span class="sigel-badge sigel-badge-leilao">Em Leilão</span>
+                      <% when 'vendido' %>
+                        <span class="sigel-badge sigel-badge-vendido">Vendido</span>
+                      <% else %>
+                        <span class="sigel-badge sigel-badge-manutencao">Manutenção</span>
+                      <% end %>
+                    </td>
+                    <td>
+                      <span style="font-size: 0.9rem; color: var(--sigel-cinza-600);">
+                        <%= l(veiculo.created_at, format: :short) %>
+                      </span>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-2 justify-content-center">
+                        <%= link_to g_veiculo_path(veiculo), class: "sigel-actions-btn sigel-actions-btn-visualizar" do %>
+                          <iconify-icon icon="solar:eye-bold"></iconify-icon>
+                        <% end %>
+                        <%= link_to edit_g_veiculo_path(veiculo), class: "sigel-actions-btn sigel-actions-btn-editar" do %>
+                          <iconify-icon icon="solar:pen-bold"></iconify-icon>
+                        <% end %>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% else %>
+          <div class="p-5 text-center">
+            <iconify-icon icon="solar:inbox-line-bold-duotone" style="font-size: 4rem; color: var(--sigel-cinza-400);"></iconify-icon>
+            <p class="mt-3 text-muted">Nenhum veículo cadastrado ainda</p>
+            <% if defined?(new_g_veiculo_path) %>
+              <%= link_to new_g_veiculo_path, class: "btn btn-sigel-primary mt-2" do %>
+                <iconify-icon icon="solar:add-circle-bold-duotone" class="me-2"></iconify-icon>
+                Cadastrar Primeiro Veículo
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

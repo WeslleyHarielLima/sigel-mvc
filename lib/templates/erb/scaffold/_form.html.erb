@@ -1,15 +1,205 @@
-<%# frozen_string_literal: true %>
-<%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
-  <%%= f.error_notification %>
-  <%%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%%= simple_form_for(@<%= singular_table_name %>, html: { class: "needs-validation", id: "sigelFormWizard" }) do |f| %>
+  <%% if @<%= singular_table_name %>.errors.any? %>
+    <div class="sigel-alert sigel-alert-erro mb-4">
+      <iconify-icon icon="solar:danger-triangle-bold-duotone" class="fs-4"></iconify-icon>
+      <div>
+        <strong><%%= pluralize(@<%= singular_table_name %>.errors.count, "erro", "erros") %> encontrado(s):</strong>
+        <ul class="mb-0 mt-2">
+          <%% @<%= singular_table_name %>.errors.full_messages.each do |message| %>
+            <li><%%= message %></li>
+          <%% end %>
+        </ul>
+      </div>
+    </div>
+  <%% end %>
 
-  <div class="form-inputs">
-  <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
-  <%- end -%>
+  <%# --- LÓGICA DO GERADOR (Executa no terminal) --- %>
+  <% attributes_to_ignore = ['deleted_at', 'created_by', 'updated_by', 'original_user_create', 'last_user_update'] %>
+  <% filtered_attributes = attributes.reject { |a| attributes_to_ignore.include?(a.name) } %>
+  
+  <div class="sigel-card mb-4">
+    <div class="sigel-card-body">
+      <div class="sigel-stepper">
+        <%# Calcula passos baseados na quantidade de atributos %>
+        <% total_steps = (filtered_attributes.count.to_f / 4).ceil %>
+        <% total_steps = 1 if total_steps == 0 %>
+        
+        <% (1..total_steps).each do |step| %>
+          <div class="sigel-step <%= step == 1 ? 'active' : '' %>" data-step="<%= step %>">
+            <div class="sigel-step-icon">
+              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+              <div class="sigel-step-number"><%= step %></div>
+            </div>
+            <div class="sigel-step-label">Etapa <%= step %></div>
+          </div>
+          <% if step < total_steps %>
+            <div class="sigel-step-line"></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%%= f.button :submit %>
+  <% step = 1 %>
+  <% current_field = 0 %>
+
+  <%# Loop principal gerando os campos %>
+  <% filtered_attributes.each_with_index do |attribute, idx| %>
+    <%# Abre o container da etapa a cada 4 campos ou no inicio %>
+    <% if current_field % 4 == 0 %>
+      <div class="sigel-form-step <%= step == 1 ? 'active' : '' %>" data-step="<%= step %>">
+        <div class="sigel-card">
+          <div class="sigel-card-header">
+            <h5>
+              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+              Etapa <%= step %>: Dados do Registro
+            </h5>
+          </div>
+          <div class="sigel-card-body">
+            <div class="row">
+    <% end %>
+
+            <div class="col-md-6 mb-4">
+              <label class="sigel-form-label">
+                <strong><%= attribute.human_name %></strong>
+              </label>
+              <% if attribute.type == :boolean %>
+                <div class="p-4" style="background: var(--sigel-cinza-100); border-radius: 8px; border: 2px solid var(--sigel-cinza-300);">
+                  <%%= f.input :<%= attribute.name %>, as: :boolean, label: "<%= attribute.human_name %>",
+                      wrapper_html: { class: "form-check mb-0" },
+                      input_html: { class: "form-check-input", style: "width: 1.5rem; height: 1.5rem; cursor: pointer;" },
+                      label_html: { class: "form-check-label ms-2", style: "font-weight: 600; color: var(--sigel-verde-escuro); cursor: pointer;" } %>
+                </div>
+              <% elsif attribute.type == :text %>
+                <%%= f.input :<%= attribute.name %>,
+                    as: :text,
+                    label: false,
+                    placeholder: "<%= attribute.human_name %>",
+                    input_html: { class: "form-control sigel-form-control", rows: 4 } %>
+              <% else %>
+                <%%= f.input :<%= attribute.name %>,
+                    label: false,
+                    placeholder: "<%= attribute.human_name %>",
+                    input_html: { class: "form-control sigel-form-control" } %>
+              <% end %>
+            </div>
+
+    <% current_field += 1 %>
+
+    <%# Fecha o container da etapa se completou 4 campos ou se é o último atributo %>
+    <% if current_field % 4 == 0 || idx == filtered_attributes.count - 1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% step += 1 %>
+    <% end %>
+  <% end %>
+
+  <div class="sigel-card">
+    <div class="sigel-card-body">
+      <div class="d-flex gap-3 justify-content-between align-items-center">
+        <div>
+          <%%= link_to <%= plural_table_name %>_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+            <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
+            <span>Cancelar</span>
+          <%% end %>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display: none;">
+            <iconify-icon icon="solar:arrow-left-bold"></iconify-icon>
+            <span>Anterior</span>
+          </button>
+          
+          <button type="button" class="btn btn-sigel-primary d-flex align-items-center gap-2" id="nextBtn">
+            <span>Próximo</span>
+            <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+          </button>
+
+          <%%= f.submit @<%= singular_table_name %>.new_record? ? "Criar" : "Atualizar",
+              class: "btn btn-sigel-primary d-flex align-items-center gap-2",
+              id: "submitBtn",
+              style: "display: none;" %>
+        </div>
+      </div>
+    </div>
   </div>
 <%% end %>
+
+<script>
+  (function() {
+    let currentStep = 1;
+    const totalSteps = document.querySelectorAll('.sigel-form-step').length;
+
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showStep(step) {
+      // Hide all steps
+      document.querySelectorAll('.sigel-form-step').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+
+      // Show current step
+      const currentStepEl = document.querySelector(`.sigel-form-step[data-step="${step}"]`);
+      if (currentStepEl) {
+        currentStepEl.style.display = 'block';
+        currentStepEl.classList.add('active');
+      }
+
+      // Update stepper header
+      document.querySelectorAll('.sigel-step').forEach(el => {
+        const stepNum = parseInt(el.dataset.step);
+        el.classList.remove('active', 'completed');
+
+        if (stepNum < step) el.classList.add('completed');
+        if (stepNum === step) el.classList.add('active');
+      });
+
+      // Controls visibility
+      prevBtn.style.display = step === 1 ? 'none' : 'flex';
+
+      // Next vs Submit button logic
+      if (totalSteps <= 1) {
+          nextBtn.classList.add('d-none');
+          submitBtn.classList.remove('d-none');
+          submitBtn.style.display = 'flex';
+      } else if (step === totalSteps) {
+        nextBtn.classList.add('d-none');
+        submitBtn.classList.remove('d-none');
+        submitBtn.style.display = 'flex';
+      } else {
+        nextBtn.classList.remove('d-none');
+        submitBtn.classList.add('d-none');
+        submitBtn.style.display = 'none';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Initialize logic if steps exist
+    if (totalSteps > 0) {
+        nextBtn.onclick = () => {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+          }
+        };
+
+        prevBtn.onclick = () => {
+          if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+          }
+        };
+
+        showStep(1);
+    } else {
+        // Fallback if no steps generated (e.g. no fields)
+        if(submitBtn) submitBtn.style.display = 'flex';
+        if(nextBtn) nextBtn.style.display = 'none';
+    }
+  })();
+</script>

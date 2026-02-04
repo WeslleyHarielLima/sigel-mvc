@@ -1,0 +1,2 @@
+module GStatusLeiloesVeiculosHelper
+end

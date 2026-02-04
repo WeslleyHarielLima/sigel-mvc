@@ -1,4 +1,5 @@
-<%= simple_form_for(@g_veiculo, html: { class: "needs-validation" }) do |f| %>
+<%= simple_form_for(@g_veiculo, html: { class: "needs-validation", id: "sigelFormWizard" }) do |f| %>
+  <!-- Error Messages -->
   <% if @g_veiculo.errors.any? %>
     <div class="alert alert-danger">
       <h6><%= pluralize(@g_veiculo.errors.count, "erro", "erros") %> encontrado(s):</h6>
@@ -16,19 +17,29 @@
         <div class="card-header bg-light-primary">
           <h6 class="mb-0">Identificação</h6>
         </div>
-        <div class="card-body">
-          <div class="mb-3">
-            <%= f.input :numero_interno, label: "Número Interno", placeholder: "Ex: V001", input_html: { class: "form-control" } %>
+        <div class="sigel-step-line"></div>
+        <div class="sigel-step" data-step="2">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:widget-2-bold-duotone" "></iconify-icon>
+            <div class="sigel-step-number">2</div>
           </div>
-          <div class="mb-3">
-            <%= f.input :placa, label: "Placa", placeholder: "Ex: ABC1234", input_html: { class: "form-control text-uppercase" } %>
+          <div class="sigel-step-label">Características</div>
+        </div>
+        <div class="sigel-step-line"></div>
+        <div class="sigel-step" data-step="3">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:layers-minimalistic-bold-duotone"></iconify-icon>
+            <div class="sigel-step-number">3</div>
           </div>
-          <div class="mb-3">
-            <%= f.input :chassi, label: "Chassi", placeholder: "17 caracteres", input_html: { class: "form-control text-uppercase" } %>
+          <div class="sigel-step-label">Classificação</div>
+        </div>
+        <div class="sigel-step-line"></div>
+        <div class="sigel-step" data-step="4">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:tag-price-bold-duotone"></iconify-icon>
+            <div class="sigel-step-number">4</div>
           </div>
-          <div class="mb-3">
-            <%= f.input :renavam, label: "Renavam", placeholder: "11 dígitos", input_html: { class: "form-control" } %>
-          </div>
+          <div class="sigel-step-label">Situação</div>
         </div>
       </div>
     </div>
@@ -53,8 +64,53 @@
               <%= f.input :cor, label: "Cor", placeholder: "Ex: Branco", input_html: { class: "form-control" } %>
             </div>
           </div>
-          <div class="mb-3">
-            <%= f.input :motor, label: "Motor", placeholder: "Ex: 1.0 Flex", input_html: { class: "form-control" } %>
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:document-bold" class="me-1"></iconify-icon>
+                Placa do Veículo
+              </label>
+              <%= f.input :placa, 
+                  label: false, 
+                  placeholder: "ABC-1234 ou ABC1D23", 
+                  input_html: { class: "form-control sigel-form-control text-uppercase", maxlength: 8 },
+                  wrapper: false %>
+              <small class="text-muted d-block mt-1">
+                Formato antigo (ABC-1234) ou Mercosul (ABC1D23)
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:clipboard-text-bold" class="me-1"></iconify-icon>
+                Chassi
+              </label>
+              <%= f.input :chassi, 
+                  label: false, 
+                  placeholder: "17 caracteres alfanuméricos", 
+                  input_html: { class: "form-control sigel-form-control text-uppercase", maxlength: 17 },
+                  wrapper: false %>
+              <small class="text-muted d-block mt-1">
+                Número do chassi com 17 caracteres
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:card-bold" class="me-1"></iconify-icon>
+                Renavam
+              </label>
+              <%= f.input :renavam, 
+                  label: false, 
+                  placeholder: "11 dígitos numéricos", 
+                  input_html: { class: "form-control sigel-form-control", maxlength: 11 },
+                  wrapper: false %>
+              <small class="text-muted d-block mt-1">
+                Registro Nacional de Veículos Automotores
+              </small>
+            </div>
           </div>
         </div>
       </div>
@@ -87,16 +143,257 @@
           <div class="mb-3">
             <%= f.input :status, label: "Status", collection: GVeiculo::STATUSES.map { |k, v| [v, k] }, include_blank: false, input_html: { class: "form-select" } %>
           </div>
-          <div class="mb-3">
-            <%= f.input :apto, as: :boolean, label: "Apto para Leilão", wrapper_html: { class: "form-check" }, input_html: { class: "form-check-input" }, label_html: { class: "form-check-label" } %>
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:tag-bold" class="me-1"></iconify-icon>
+                Modelo
+              </label>
+              <%= f.input :modelo, 
+                  label: false,
+                  placeholder: "Ex: Gol, Palio, Onix", 
+                  input_html: { class: "form-control sigel-form-control" },
+                  wrapper: false %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:calendar-bold" class="me-1"></iconify-icon>
+                Ano de Fabricação
+              </label>
+              <%= f.input :ano, 
+                  label: false,
+                  placeholder: Date.current.year.to_s, 
+                  input_html: { 
+                    class: "form-control sigel-form-control", 
+                    type: "number", 
+                    min: 1900, 
+                    max: Date.current.year + 1 
+                  },
+                  wrapper: false %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:palette-bold" class="me-1"></iconify-icon>
+                Cor
+              </label>
+              <%= f.input :cor, 
+                  label: false,
+                  placeholder: "Ex: Branco, Prata", 
+                  input_html: { class: "form-control sigel-form-control" },
+                  wrapper: false %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:settings-bold" class="me-1"></iconify-icon>
+                Motor/Motorização
+              </label>
+              <%= f.input :motor, 
+                  label: false,
+                  placeholder: "Ex: 1.0 Flex 8V", 
+                  input_html: { class: "form-control sigel-form-control" },
+                  wrapper: false %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="d-flex gap-2">
-    <%= f.submit "Salvar", class: "btn btn-primary" %>
-    <%= link_to "Cancelar", g_veiculos_path, class: "btn btn-secondary" %>
+  <!-- STEP 3: Classificação -->
+  <div class="sigel-form-step" data-step="3">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5>
+          <iconify-icon icon="solar:layers-minimalistic-bold-duotone"></iconify-icon>
+          Passo 3: Classificação
+        </h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:tag-bold" class="me-1"></iconify-icon>
+                Tipo de Veículo
+              </label>
+              <%= f.input :g_tipo_veiculo_id, 
+                  label: false,
+                  collection: GTipoVeiculo.order(:descricao), 
+                  label_method: :descricao, 
+                  value_method: :id, 
+                  include_blank: "Selecione o tipo...", 
+                  input_html: { class: "form-select sigel-form-select" },
+                  wrapper: false %>
+              <small class="text-muted d-block mt-1">
+                Categoria do veículo (carro, moto, caminhão, etc)
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:shield-check-bold" class="me-1"></iconify-icon>
+                Número de Tombamento
+              </label>
+              <%= f.input :tombamento, 
+                  label: false,
+                  placeholder: "Ex: TOMB-2024-0001", 
+                  input_html: { class: "form-control sigel-form-control" },
+                  wrapper: false %>
+              <small class="text-muted d-block mt-1">
+                Registro patrimonial do bem público
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- STEP 4: Situação -->
+  <div class="sigel-form-step" data-step="4">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5>
+          <iconify-icon icon="solar:tag-price-bold-duotone"></iconify-icon>
+          Passo 4: Situação Atual
+        </h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:flag-bold" class="me-1"></iconify-icon>
+                Status do Veículo
+              </label>
+              <%= f.input :status, 
+                  label: false,
+                  collection: GVeiculo::STATUSES.map { |k, v| [v, k] }, 
+                  include_blank: false, 
+                  input_html: { class: "form-select sigel-form-select" },
+                  wrapper: false %>
+              <div class="mt-3 p-3" style="background: var(--sigel-verde-claro); border-left: 4px solid var(--sigel-verde-escuro); border-radius: 8px;">
+                <small class="d-block mb-1"><strong>Status disponíveis:</strong></small>
+                <small class="d-block"><strong>• Disponível:</strong> Veículo pronto para leilão</small>
+                <small class="d-block"><strong>• Em Leilão:</strong> Veículo em processo de leilão</small>
+                <small class="d-block"><strong>• Vendido:</strong> Veículo arrematado</small>
+                <small class="d-block"><strong>• Em Manutenção:</strong> Veículo em reparo</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="mb-4">
+              <label class="sigel-form-label">
+                <iconify-icon icon="solar:shield-check-bold" class="me-1"></iconify-icon>
+                Apto para Leilão
+              </label>
+              <div class="p-4" style="background: var(--sigel-cinza-100); border-radius: 8px; border: 2px solid var(--sigel-cinza-300);">
+                <%= f.input :apto, 
+                    as: :boolean,
+                    label: "Este veículo está apto para participar de leilões públicos",
+                    wrapper_html: { class: "form-check mb-0" }, 
+                    input_html: { class: "form-check-input", style: "width: 1.5rem; height: 1.5rem; cursor: pointer;" }, 
+                    label_html: { class: "form-check-label ms-2", style: "font-weight: 600; color: var(--sigel-verde-escuro); cursor: pointer;" } %>
+                <small class="text-muted d-block mt-2">
+                  Marque esta opção se o veículo possui toda documentação necessária e está regularizado
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation Buttons -->
+  <div class="sigel-card">
+    <div class="sigel-card-body">
+      <div class="d-flex gap-3 justify-content-between align-items-center">
+        <div>
+          <%= link_to g_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+            <iconify-icon icon="solar:close-circle-bold-duotone" class="fs-5"></iconify-icon>
+            <span>Cancelar</span>
+          <% end %>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display: none;">
+            <iconify-icon icon="solar:arrow-left-bold" class="fs-5"></iconify-icon>
+            <span>Anterior</span>
+          </button>
+          <button type="button" class="btn btn-sigel-primary d-flex align-items-center gap-2" id="nextBtn">
+            <span>Próximo</span>
+            <iconify-icon icon="solar:arrow-right-bold" class="fs-5"></iconify-icon>
+          </button>
+          <%= f.submit @g_veiculo.new_record? ? "Cadastrar Veículo" : "Atualizar Veículo", 
+              class: "btn btn-sigel-primary d-flex align-items-center gap-2", 
+              id: "submitBtn",
+              style: "display: none;" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
+<script>
+  (function() {
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showStep(step) {
+      document.querySelectorAll('.sigel-form-step').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+
+      const currentStepEl = document.querySelector(`.sigel-form-step[data-step="${step}"]`);
+      if (currentStepEl) {
+        currentStepEl.style.display = 'block';
+        currentStepEl.classList.add('active');
+      }
+
+      document.querySelectorAll('.sigel-step').forEach(el => {
+        const stepNum = parseInt(el.dataset.step);
+        el.classList.remove('active', 'completed');
+
+        if (stepNum < step) el.classList.add('completed');
+        if (stepNum === step) el.classList.add('active');
+      });
+
+      prevBtn.style.display = step === 1 ? 'none' : 'flex';
+
+     if (step === totalSteps) {
+      nextBtn.classList.add('d-none');
+      submitBtn.classList.remove('d-none');
+      } else {
+      nextBtn.classList.remove('d-none');
+      submitBtn.classList.add('d-none');
+      }
+
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    nextBtn.onclick = () => {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    };
+
+    prevBtn.onclick = () => {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    };
+
+    showStep(1);
+  })();
+</script>

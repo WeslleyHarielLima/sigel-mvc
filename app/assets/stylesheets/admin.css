@@ -1,0 +1,1019 @@
+/* Header colado no topo da área de conteúdo */
+.app-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent; /* deixa o bg vir do navbar */
+}
+
+/* Navbar colado no topo */
+.app-header .navbar {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove espaçamento extra acima do conteúdo */
+.body-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Ajuste fino do container do conteúdo */
+.body-wrapper .container-fluid {
+  padding-top: 16px; /* respiro abaixo do navbar */
+}
+/* Melhor UX dos links do navbar */
+.app-header-navbar .nav-link {
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.app-header-navbar .nav-link:hover,
+.app-header-navbar .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+/* Garante que o dropdown apareça por cima */
+.app-header {
+  position: relative;
+  z-index: 1020;
+}
+
+.app-header .dropdown-menu {
+  z-index: 1050 !important;
+}
+
+/* Evita que o body-wrapper corte o dropdown */
+.body-wrapper {
+  overflow: visible !important;
+}
+/* Header colado no topo da área de conteúdo */
+.app-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent; /* deixa o bg vir do navbar */
+}
+
+/* Navbar colado no topo */
+.app-header .navbar {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove espaçamento extra acima do conteúdo */
+.body-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Ajuste fino do container do conteúdo */
+.body-wrapper .container-fluid {
+  padding-top: 16px; /* respiro abaixo do navbar */
+}
+/* Melhor UX dos links do navbar */
+.app-header-navbar .nav-link {
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.app-header-navbar .nav-link:hover,
+.app-header-navbar .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+/* Garante que o dropdown apareça por cima */
+.app-header {
+  position: relative;
+  z-index: 1020;
+}
+
+.app-header .dropdown-menu {
+  z-index: 1050 !important;
+}
+
+/* Evita que o body-wrapper corte o dropdown */
+.body-wrapper {
+  overflow: visible !important;
+}
+.app-header-navbar .dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: #ffffff !important;
+}
+/* ==========================================================================
+   SIGEL - Sistema Integrado de Gestão de Leilões
+   Identidade Visual Governamental
+   ========================================================================== */
+
+/* PALETA DE CORES GOVERNAMENTAIS */
+:root {
+  /* Verde Institucional */
+  --sigel-verde-escuro: #1a472a;
+  --sigel-verde-medio: #2d6a45;
+  --sigel-verde-claro: #e8f5e9;
+  --sigel-verde-hover: #0f2918;
+
+  /* Dourado Institucional */
+  --sigel-dourado: #c4a052;
+  --sigel-dourado-escuro: #9d7f3e;
+  --sigel-dourado-claro: #f5f0e1;
+
+  /* Neutros Governamentais */
+  --sigel-branco: #ffffff;
+  --sigel-cinza-100: #f8f9fa;
+  --sigel-cinza-200: #e9ecef;
+  --sigel-cinza-300: #dee2e6;
+  --sigel-cinza-400: #ced4da;
+  --sigel-cinza-500: #adb5bd;
+  --sigel-cinza-600: #6c757d;
+  --sigel-cinza-700: #495057;
+  --sigel-cinza-800: #343a40;
+  --sigel-cinza-900: #212529;
+
+  /* Estados */
+  --sigel-sucesso: #28a745;
+  --sigel-alerta: #ffc107;
+  --sigel-erro: #dc3545;
+  --sigel-info: #17a2b8;
+
+  /* Sombras */
+  --sigel-sombra-sm: 0 2px 4px rgba(26, 71, 42, 0.08);
+  --sigel-sombra-md: 0 4px 8px rgba(26, 71, 42, 0.12);
+  --sigel-sombra-lg: 0 8px 16px rgba(26, 71, 42, 0.16);
+  --sigel-sombra-xl: 0 12px 24px rgba(26, 71, 42, 0.2);
+}
+
+/* TIPOGRAFIA GOVERNAMENTAL */
+body {
+  color: var(--sigel-cinza-800);
+  background-color: var(--sigel-cinza-100);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--sigel-verde-escuro);
+  letter-spacing: -0.02em;
+}
+
+/* SIDEBAR GOVERNAMENTAL */
+.left-sidebar {
+  background: linear-gradient(
+    180deg,
+    var(--sigel-verde-escuro) 0%,
+    #0f2918 100%
+  );
+  box-shadow: var(--sigel-sombra-lg);
+  border-right: 3px solid var(--sigel-dourado);
+}
+
+.brand-logo {
+  padding: 1.5rem 1.25rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid var(--sigel-dourado);
+}
+
+.brand-logo img {
+  max-height: 50px;
+  filter: brightness(0) invert(1);
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.nav-small-cap {
+  color: var(--sigel-dourado) !important;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 1.5rem 1.25rem 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.nav-small-cap-icon {
+  color: var(--sigel-dourado) !important;
+}
+
+.sidebar-item {
+  margin: 2px 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  font-weight: 500;
+}
+
+.sidebar-link:hover {
+  background: rgba(196, 160, 82, 0.15);
+  border-left-color: var(--sigel-dourado);
+  color: var(--sigel-branco) !important;
+}
+
+.sidebar-link.active {
+  background: rgba(196, 160, 82, 0.2);
+  border-left-color: var(--sigel-dourado);
+  color: var(--sigel-branco) !important;
+  font-weight: 600;
+}
+
+.sidebar-link iconify-icon,
+.sidebar-link i {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+  color: var(--sigel-dourado);
+}
+
+/* HEADER GOVERNAMENTAL */
+.app-header {
+  background: var(--sigel-branco);
+  border-bottom: 3px solid var(--sigel-verde-escuro);
+  box-shadow: var(--sigel-sombra-md);
+  padding: 0;
+}
+
+.app-header .navbar {
+  padding: 1rem 1.5rem;
+}
+
+.sigel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sigel-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--sigel-verde-claro);
+  border: 2px solid var(--sigel-verde-escuro);
+  border-radius: 50px;
+  font-weight: 600;
+  color: var(--sigel-verde-escuro);
+}
+
+.sigel-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--sigel-verde-escuro);
+  color: var(--sigel-dourado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* BOTÕES GOVERNAMENTAIS */
+.btn-sigel-primary {
+  background: var(--sigel-verde-escuro);
+  border: 2px solid var(--sigel-verde-escuro);
+  color: var(--sigel-branco);
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: var(--sigel-sombra-sm);
+}
+
+.btn-sigel-primary:hover {
+  background: var(--sigel-verde-hover);
+  border-color: var(--sigel-verde-hover);
+  color: var(--sigel-branco);
+  transform: translateY(-2px);
+  box-shadow: var(--sigel-sombra-md);
+}
+
+.btn-sigel-secondary {
+  background: var(--sigel-dourado);
+  border: 2px solid var(--sigel-dourado);
+  color: var(--sigel-verde-escuro);
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: var(--sigel-sombra-sm);
+}
+
+.btn-sigel-secondary:hover {
+  background: var(--sigel-dourado-escuro);
+  border-color: var(--sigel-dourado-escuro);
+  color: var(--sigel-branco);
+  transform: translateY(-2px);
+  box-shadow: var(--sigel-sombra-md);
+}
+
+.btn-sigel-outline {
+  background: transparent;
+  border: 2px solid var(--sigel-verde-escuro);
+  color: var(--sigel-verde-escuro);
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-sigel-outline:hover {
+  background: var(--sigel-verde-escuro);
+  color: var(--sigel-branco);
+}
+
+/* CARDS GOVERNAMENTAIS */
+.sigel-card {
+  background: var(--sigel-branco);
+  border: 1px solid var(--sigel-cinza-300);
+  border-radius: 12px;
+  box-shadow: var(--sigel-sombra-sm);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sigel-card:hover {
+  box-shadow: var(--sigel-sombra-md);
+  transform: translateY(-2px);
+}
+
+.sigel-card-header {
+  background: linear-gradient(
+    135deg,
+    var(--sigel-verde-escuro) 0%,
+    var(--sigel-verde-medio) 100%
+  );
+  color: var(--sigel-branco);
+  padding: 1.25rem 1.5rem;
+  border-bottom: 3px solid var(--sigel-dourado);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sigel-card-header h5 {
+  color: var(--sigel-branco);
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sigel-card-body {
+  padding: 1.5rem;
+}
+
+.sigel-card-footer {
+  background: var(--sigel-cinza-100);
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--sigel-cinza-300);
+}
+
+/* STATS CARDS */
+.sigel-stats-card {
+  background: var(--sigel-branco);
+  border: 1px solid var(--sigel-cinza-300);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--sigel-sombra-sm);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sigel-stats-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--sigel-verde-escuro);
+}
+
+.sigel-stats-card:hover {
+  box-shadow: var(--sigel-sombra-md);
+  transform: translateY(-4px);
+}
+
+.sigel-stats-card.dourado::before {
+  background: var(--sigel-dourado);
+}
+
+.sigel-stats-card.sucesso::before {
+  background: var(--sigel-sucesso);
+}
+
+.sigel-stats-card.alerta::before {
+  background: var(--sigel-alerta);
+}
+
+.sigel-stats-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: var(--sigel-verde-claro);
+  color: var(--sigel-verde-escuro);
+  margin-bottom: 1rem;
+}
+
+.sigel-stats-card.dourado .sigel-stats-icon {
+  background: var(--sigel-dourado-claro);
+  color: var(--sigel-dourado-escuro);
+}
+
+.sigel-stats-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--sigel-verde-escuro);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.sigel-stats-label {
+  font-size: 0.9rem;
+  color: var(--sigel-cinza-600);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* TABELAS GOVERNAMENTAIS */
+.sigel-table {
+  background: var(--sigel-branco);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--sigel-sombra-sm);
+}
+
+.sigel-table table {
+  margin: 0;
+}
+
+.sigel-table thead {
+  background: linear-gradient(
+    135deg,
+    var(--sigel-verde-escuro) 0%,
+    var(--sigel-verde-medio) 100%
+  );
+}
+
+.sigel-table thead th {
+  color: var(--sigel-branco) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  padding: 1rem 1.25rem;
+  border: none;
+}
+
+.sigel-table tbody tr {
+  border-bottom: 1px solid var(--sigel-cinza-200);
+  transition: all 0.2s ease;
+}
+
+.sigel-table tbody tr:hover {
+  background: var(--sigel-verde-claro);
+}
+
+.sigel-table tbody td {
+  padding: 1rem 1.25rem;
+  color: var(--sigel-cinza-700);
+  font-weight: 500;
+}
+
+/* BADGES GOVERNAMENTAIS */
+.sigel-badge {
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sigel-badge-disponivel {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.sigel-badge-leilao {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.sigel-badge-vendido {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.sigel-badge-manutencao {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.sigel-badge-sucesso {
+  background: #28a745;
+  color: white;
+}
+
+.sigel-badge-erro {
+  background: #dc3545;
+  color: white;
+}
+
+/* FORMULÁRIOS GOVERNAMENTAIS */
+.sigel-form-label {
+  font-weight: 700;
+  color: var(--sigel-verde-escuro);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.sigel-form-control {
+  border: 2px solid var(--sigel-cinza-300);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.sigel-form-control:focus {
+  border-color: var(--sigel-verde-escuro);
+  box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+  outline: none;
+}
+
+.sigel-form-select {
+  border: 2px solid var(--sigel-cinza-300);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231a472a' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.sigel-form-select:focus {
+  border-color: var(--sigel-verde-escuro);
+  box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+  outline: none;
+}
+
+/* FILTROS */
+.sigel-filtros {
+  background: var(--sigel-branco);
+  border: 1px solid var(--sigel-cinza-300);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--sigel-sombra-sm);
+}
+
+.sigel-filtros-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--sigel-dourado);
+}
+
+.sigel-filtros-header h5 {
+  margin: 0;
+  color: var(--sigel-verde-escuro);
+  font-weight: 700;
+}
+
+.sigel-filtros-header iconify-icon,
+.sigel-filtros-header i {
+  font-size: 1.5rem;
+  color: var(--sigel-dourado);
+}
+
+/* ALERTS GOVERNAMENTAIS */
+.sigel-alert {
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid;
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+}
+
+.sigel-alert-info {
+  background: #d1ecf1;
+  border-color: #17a2b8;
+  color: #0c5460;
+}
+
+.sigel-alert-sucesso {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.sigel-alert-alerta {
+  background: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.sigel-alert-erro {
+  background: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+/* PAGINAÇÃO GOVERNAMENTAL */
+.pagination {
+  gap: 0.25rem;
+}
+
+.page-item .page-link {
+  border: 2px solid var(--sigel-cinza-300);
+  color: var(--sigel-verde-escuro);
+  font-weight: 600;
+  border-radius: 8px;
+  margin: 0 0.125rem;
+}
+
+.page-item.active .page-link {
+  background: var(--sigel-verde-escuro);
+  border-color: var(--sigel-verde-escuro);
+  color: var(--sigel-branco);
+}
+
+.page-item .page-link:hover {
+  background: var(--sigel-verde-claro);
+  border-color: var(--sigel-verde-escuro);
+  color: var(--sigel-verde-escuro);
+}
+
+/* PÁGINA DE AÇÕES */
+.sigel-actions-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sigel-actions-btn-visualizar {
+  border-color: #17a2b8;
+  color: #17a2b8;
+  background: transparent;
+}
+
+.sigel-actions-btn-visualizar:hover {
+  background: #17a2b8;
+  color: white;
+}
+
+.sigel-actions-btn-editar {
+  border-color: #ffc107;
+  color: #ffc107;
+  background: transparent;
+}
+
+.sigel-actions-btn-editar:hover {
+  background: #ffc107;
+  color: #856404;
+}
+
+.sigel-actions-btn-excluir {
+  border-color: #dc3545;
+  color: #dc3545;
+  background: transparent;
+}
+
+.sigel-actions-btn-excluir:hover {
+  background: #dc3545;
+  color: white;
+}
+
+/* PAGE HEADER */
+.sigel-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--sigel-dourado);
+}
+
+.sigel-page-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+.sigel-page-title iconify-icon,
+.sigel-page-title i {
+  font-size: 2.5rem;
+  color: var(--sigel-dourado);
+}
+
+.sigel-page-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* BRASÃO GOVERNAMENTAL */
+.sigel-brasao {
+  width: 50px;
+  height: 50px;
+  background: var(--sigel-verde-escuro);
+  border: 3px solid var(--sigel-dourado);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sigel-dourado);
+  font-size: 1.5rem;
+  box-shadow: var(--sigel-sombra-md);
+}
+
+/* LOADING GOVERNAMENTAL */
+.sigel-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: var(--sigel-verde-escuro);
+}
+
+.sigel-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--sigel-verde-claro);
+  border-top-color: var(--sigel-verde-escuro);
+  border-radius: 50%;
+  animation: sigel-spin 0.8s linear infinite;
+}
+
+@keyframes sigel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .sigel-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .sigel-stats-card {
+    margin-bottom: 1rem;
+  }
+
+  .sigel-table {
+    overflow-x: auto;
+  }
+}
+
+/* MODO ESCURO (OPCIONAL) */
+@media (prefers-color-scheme: dark) {
+  /* Deixar em branco por enquanto - implementar se necessário */
+}
+/* Wizard Stepper */
+.sigel-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.sigel-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.sigel-step.active,
+.sigel-step.completed {
+  opacity: 1;
+}
+
+.sigel-step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--sigel-cinza-200);
+  border: 3px solid var(--sigel-cinza-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--sigel-cinza-600);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sigel-step.active .sigel-step-icon {
+  background: var(--sigel-verde-escuro);
+  border-color: var(--sigel-verde-escuro);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
+}
+
+.sigel-step.completed .sigel-step-icon {
+  background: var(--sigel-dourado);
+  border-color: var(--sigel-dourado);
+  color: var(--sigel-verde-escuro);
+}
+
+.sigel-step-number {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.sigel-step-label {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--sigel-cinza-600);
+  text-align: center;
+}
+
+.sigel-step.active .sigel-step-label {
+  color: var(--sigel-verde-escuro);
+  font-weight: 700;
+}
+
+.sigel-step-line {
+  flex: 1;
+  height: 3px;
+  background: var(--sigel-cinza-300);
+  margin: 0 1rem;
+  margin-bottom: 30px;
+  max-width: 100px;
+}
+
+.sigel-step.completed ~ .sigel-step-line {
+  background: var(--sigel-dourado);
+}
+
+.sigel-form-step {
+  display: none;
+  animation: fadeInUp 0.4s ease;
+}
+
+.sigel-form-step.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Enhancement */
+.form-check-input:checked {
+  background-color: var(--sigel-verde-escuro);
+  border-color: var(--sigel-verde-escuro);
+}
+
+.form-check-input:focus {
+  border-color: var(--sigel-verde-escuro);
+  box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sigel-stepper {
+    flex-wrap: wrap;
+  }
+
+  .sigel-step-line {
+    display: none;
+  }
+
+  .sigel-step {
+    margin: 0.5rem;
+  }
+}
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(26, 71, 42, 0.05);
+}
+/* Define a fonte do Sidebar */
+.sidebar-nav {
+  /* Altere para 'Poppins' se escolher a opção B */
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Estilo dos Links */
+.sidebar-nav .sidebar-link {
+  font-weight: 500; /* Deixa a fonte um pouco mais grossa para leitura em fundo escuro */
+  font-size: 0.95rem; /* Tamanho ideal para menus */
+  letter-spacing: 0.3px; /* Leve espaçamento para elegância */
+  color: rgba(255, 255, 255, 0.85); /* Branco suave, cansa menos a vista */
+  transition: all 0.3s ease;
+}
+
+/* Títulos das seções (ex: Cadastros, Auth) */
+.nav-small-cap {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ) !important; /* Cor mais apagada para separar grupos */
+  margin-top: 10px;
+}
+
+/* Efeito Hover (Quando passa o mouse) */
+.sidebar-nav .sidebar-link:hover,
+.sidebar-nav .sidebar-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1); /* Fundo sutil ao passar o mouse */
+  border-radius: 8px; /* Bordas arredondadas no item selecionado */
+  transform: translateX(5px); /* Leve movimento para a direita */
+}
+
+/* Ajuste no ícone para alinhar com a nova fonte */
+.sidebar-link iconify-icon {
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}

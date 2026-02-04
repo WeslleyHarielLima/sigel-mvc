@@ -1,0 +1,117 @@
+<div>
+  <div class="brand-logo d-flex align-items-center justify-content-between">
+    <%= link_to root_path, class: "text-nowrap logo-img" do %>
+      <img src="/layout/assets/img/Sigel_Banner3.png" alt="SIGEL" class="img-fluid" />
+    <% end %>
+    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+      <i class="ti ti-x fs-8"></i>
+    </div>
+  </div>
+  <!-- Sidebar navigation -->
+  <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+    <ul id="sidebarnav">
+      <!-- Dashboard -->
+      <li class="sidebar-item">
+        <%= link_to home_index_path, class: "sidebar-link" do %>
+          <span>
+            <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
+          </span>
+          <span class="hide-menu">Dashboard</span>
+        <% end %>
+      </li>
+      <!-- Cadastros -->
+      <li class="nav-small-cap">
+        <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+        <span class="hide-menu">Cadastros</span>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to g_veiculos_path, class: "sidebar-link" do %>
+          <span>
+            <iconify-icon icon="mdi:car" class="fs-6"></iconify-icon>
+          </span>
+          <span class="hide-menu">Veículos</span>
+        <% end %>
+      </li>
+      <!-- Referenciais -->
+      <li class="nav-small-cap">
+        <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6"></iconify-icon>
+        <span class="hide-menu">Referenciais</span>
+      </li>
+      <!-- Referenciais -> Localidades -->
+      <li class="sidebar-item">
+        <a class="sidebar-link d-flex justify-content-between align-items-center"
+           data-bs-toggle="collapse"
+           href="#submenu-localidades"
+           role="button"
+           aria-expanded="false"
+           aria-controls="submenu-localidades">
+          <span>
+            <iconify-icon icon="solar:map-point-bold-duotone" class="fs-6"></iconify-icon>
+            <span class="hide-menu ms-2">Localidades</span>
+          </span>
+          <i class="ti ti-chevron-down"></i>
+        </a>
+        <ul class="collapse first-level" id="submenu-localidades">
+          <li class="sidebar-item">
+            <%= link_to g_paises_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Países</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_estados_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Estados</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_municipios_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Municípios</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_distritos_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Distritos</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_localidades_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Localidades</span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <!-- Referenciais -> Veículos -->
+      <!-- Referenciais -> Veículos -->
+      <li class="sidebar-item">
+        <a class="sidebar-link d-flex justify-content-between align-items-center"
+     data-bs-toggle="collapse"
+     href="#submenu-ref-veiculos"
+     role="button"
+     aria-expanded="false"
+     aria-controls="submenu-ref-veiculos">
+          <span>
+            <iconify-icon icon="mdi:car" class="fs-6"></iconify-icon>
+            <span class="hide-menu ms-2">Veículos</span>
+          </span>
+          <i class="ti ti-chevron-down"></i>
+        </a>
+        <ul class="collapse first-level" id="submenu-ref-veiculos">
+          <li class="sidebar-item">
+            <%= link_to g_status_veiculos_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Status</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_status_leiloes_veiculos_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Status de Leilão</span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <!-- Inventário -->
+      <li class="nav-small-cap">
+        <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6"></iconify-icon>
+        <span class="hide-menu">Inventário</span>
+      </li>
+    </ul>
+  </nav>
+</div>

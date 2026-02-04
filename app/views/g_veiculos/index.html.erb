@@ -10,43 +10,7 @@
   <div class="card-header bg-light-primary">
     <h6 class="mb-0"><i class="ti ti-filter me-1"></i> Filtros</h6>
   </div>
-  <div class="card-body">
-    <%= search_form_for @q, url: g_veiculos_path, method: :get, html: { class: "row g-3" } do |f| %>
-      <div class="col-md-3">
-        <%= f.label :placa_cont, "Placa", class: "form-label" %>
-        <%= f.search_field :placa_cont, class: "form-control", placeholder: "Buscar por placa" %>
-      </div>
-      <div class="col-md-3">
-        <%= f.label :marca_cont, "Marca", class: "form-label" %>
-        <%= f.search_field :marca_cont, class: "form-control", placeholder: "Buscar por marca" %>
-      </div>
-      <div class="col-md-3">
-        <%= f.label :modelo_cont, "Modelo", class: "form-label" %>
-        <%= f.search_field :modelo_cont, class: "form-control", placeholder: "Buscar por modelo" %>
-      </div>
-      <div class="col-md-3">
-        <%= f.label :status_eq, "Status", class: "form-label" %>
-        <%= f.select :status_eq, options_for_select(GVeiculo::STATUSES.map { |k, v| [v, k] }, params.dig(:q, :status_eq)), { include_blank: "Todos" }, class: "form-select" %>
-      </div>
-      <div class="col-md-3">
-        <%= f.label :g_tipo_veiculo_id_eq, "Tipo", class: "form-label" %>
-        <%= f.select :g_tipo_veiculo_id_eq, options_for_select(GTipoVeiculo.order(:descricao).pluck(:descricao, :id), params.dig(:q, :g_tipo_veiculo_id_eq)), { include_blank: "Todos" }, class: "form-select" %>
-      </div>
-      <div class="col-md-3">
-        <%= f.label :apto_eq, "Apto", class: "form-label" %>
-        <%= f.select :apto_eq, options_for_select([["Sim", true], ["Não", false]], params.dig(:q, :apto_eq)), { include_blank: "Todos" }, class: "form-select" %>
-      </div>
-      <div class="col-md-6 d-flex align-items-end gap-2">
-        <%= f.submit "Filtrar", class: "btn btn-primary" %>
-        <%= link_to "Limpar", g_veiculos_path, class: "btn btn-outline-secondary" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<!-- Lista de Veículos -->
-<div class="card">
-  <div class="card-body">
+  <div class="sigel-card-body p-0">
     <% if @g_veiculos.any? %>
       <div class="table-responsive">
         <table class="table text-nowrap mb-0 align-middle">
@@ -98,6 +62,23 @@
                     <% end %>
                     <%= button_to g_veiculo_path(veiculo), method: :delete, class: "btn btn-sm btn-light-danger rounded-circle", data: { turbo_confirm: "Tem certeza que deseja excluir este veículo?" } do %>
                       <i class="ti ti-trash"></i>
+                    <% end %>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex gap-2 justify-content-center">
+                    <%= link_to g_veiculo_path(veiculo), class: "sigel-actions-btn sigel-actions-btn-visualizar" do %>
+                      <iconify-icon icon="solar:eye-bold"></iconify-icon>
+                    <% end %>
+                    <%= link_to edit_g_veiculo_path(veiculo), class: "sigel-actions-btn sigel-actions-btn-editar" do %>
+                      <iconify-icon icon="solar:pen-bold"></iconify-icon>
+                    <% end %>
+                    <%= button_to g_veiculo_path(veiculo),
+                        method: :delete,
+                        class: "sigel-actions-btn sigel-actions-btn-excluir",
+                        data: { turbo_confirm: "Tem certeza que deseja excluir o veículo #{veiculo.placa}?" },
+                        style: "border: none;" do %>
+                      <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
                     <% end %>
                   </div>
                 </td>

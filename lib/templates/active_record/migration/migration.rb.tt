@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+  def up
+    # Adicione aqui o código para "migrar" (criar ou alterar tabelas/colunas)
+  end
+
+  def down
+    # Adicione aqui o código para "reverter" (desfazer alterações feitas no método `up`)
+  end
+end

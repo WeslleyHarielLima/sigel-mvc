@@ -1,60 +1,104 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <div class="container">
-    <%= link_to "SIGEL", root_path, class: "navbar-brand" %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-4">
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler border-0 p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <iconify-icon icon="solar:hamburger-menu-bold-duotone" class="fs-7" style="color: var(--sigel-verde-escuro);"></iconify-icon>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <!-- Breadcrumb / Título da Página -->
+    <div class="d-flex align-items-center flex-grow-1">
+      <div class="sigel-page-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <%= link_to root_path, class: "text-decoration-none" do %>
+                <iconify-icon icon="solar:home-2-bold-duotone" class="fs-5" style="color: var(--sigel-verde-escuro);"></iconify-icon>
+              <% end %>
+            </li>
+            <% if controller_name == 'g_veiculos' %>
+              <li class="breadcrumb-item active fw-bold" style="color: var(--sigel-verde-escuro);">Veículos</li>
+            <% elsif controller_name == 'g_tipos_veiculos' %>
+              <li class="breadcrumb-item active fw-bold" style="color: var(--sigel-verde-escuro);">Tipos de Veículos</li>
+            <% else %>
+              <li class="breadcrumb-item active fw-bold" style="color: var(--sigel-verde-escuro);">Dashboard</li>
+            <% end %>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Header Actions -->
+    <div class="sigel-header-actions ms-auto">
+      <!-- Notificações -->
       <% if user_signed_in? %>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <%= link_to g_veiculos_path, class: "nav-link" do %>
-              <i class="bi bi-car-front"></i> Veículos
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to g_tipos_veiculos_path, class: "nav-link" do %>
-              <i class="bi bi-tags"></i> Tipos de Veículos
-            <% end %>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle"></i> <%= current_user.nome %>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-                  <i class="bi bi-gear"></i> Minha Conta
-                <% end %>
-              </li>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <%= button_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-                  <i class="bi bi-box-arrow-right"></i> Sair
-                <% end %>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <!-- User Dropdown -->
+        <div class="dropdown">
+          <button class="sigel-user-badge dropdown-toggle border-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="sigel-user-avatar">
+              <%= current_user.nome.first.upcase %>
+            </div>
+            <div class="d-none d-lg-flex flex-column align-items-start">
+              <span style="font-size: 0.85rem; line-height: 1.2;"><%= current_user.nome %></span>
+              <span style="font-size: 0.7rem; color: var(--sigel-cinza-600); font-weight: 500;">
+                <%= current_user.email %>
+              </span>
+            </div>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="min-width: 280px; border: 2px solid var(--sigel-verde-escuro); border-radius: 12px;">
+            <li class="px-3 py-3" style="background: var(--sigel-verde-claro); border-radius: 10px 10px 0 0;">
+              <div class="d-flex align-items-center gap-3">
+                <div class="sigel-user-avatar" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                  <%= current_user.nome.first.upcase %>
+                </div>
+                <div>
+                  <div class="fw-bold" style="color: var(--sigel-verde-escuro);"><%= current_user.nome %></div>
+                  <div class="text-muted" style="font-size: 0.85rem;"><%= current_user.email %></div>
+                </div>
+              </div>
+            </li>
+            <li><hr class="dropdown-divider my-0"></li>
+            <li>
+              <%= link_to edit_user_registration_path, class: "dropdown-item py-3 d-flex align-items-center gap-2" do %>
+                <iconify-icon icon="solar:user-bold-duotone" class="fs-5" style="color: var(--sigel-verde-escuro);"></iconify-icon>
+                <span class="fw-semibold">Minha Conta</span>
+              <% end %>
+            </li>
+            <li><hr class="dropdown-divider my-0"></li>
+            <li class="px-3 py-2">
+              <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-sigel-primary w-100 d-flex align-items-center justify-content-center gap-2" do %>
+                <iconify-icon icon="solar:logout-2-bold-duotone" class="fs-5"></iconify-icon>
+                <span>Sair do Sistema</span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       <% else %>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <%= link_to new_user_session_path, class: "nav-link" do %>
-              <i class="bi bi-box-arrow-in-right"></i> Entrar
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_user_registration_path, class: "nav-link" do %>
-              <i class="bi bi-person-plus"></i> Registrar
-            <% end %>
-          </li>
-        </ul>
+        <!-- Botões de Login/Registro -->
+        <div class="d-flex gap-2">
+          <%= link_to new_user_session_path, class: "btn btn-sigel-outline" do %>
+            <iconify-icon icon="solar:login-2-bold-duotone" class="me-1"></iconify-icon>
+            Entrar
+          <% end %>
+          <%= link_to new_user_registration_path, class: "btn btn-sigel-primary" do %>
+            <iconify-icon icon="solar:user-plus-bold-duotone" class="me-1"></iconify-icon>
+            Registrar
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
 </nav>
+<style>
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    color: var(--sigel-cinza-500);
+    font-weight: bold;
+  }
+
+  .breadcrumb-item a {
+    color: var(--sigel-cinza-600);
+    transition: color 0.2s;
+  }
+
+  .breadcrumb-item a:hover {
+    color: var(--sigel-verde-escuro);
+  }
+</style>
