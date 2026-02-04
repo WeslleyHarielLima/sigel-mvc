@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GPais < ApplicationRecord
+class GLocalidade < ApplicationRecord
   # Adicione aqui quaisquer métodos ou validações padrão para seus modelos
-  has_many :g_estados
+  belongs_to :g_distrito
 end
