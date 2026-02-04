@@ -1,4 +1,4 @@
-class CreateGVeiculos < ActiveRecord::Migration[8.1]
+class CreateGVeiculos < ActiveRecord::Migration[7.2]
   def change
     create_table :g_veiculos do |t|
       t.string :numero_interno

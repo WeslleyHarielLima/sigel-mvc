@@ -1,4 +1,4 @@
-class CreateGTiposVeiculos < ActiveRecord::Migration[8.1]
+class CreateGTiposVeiculos < ActiveRecord::Migration[7.2]
   def change
     create_table :g_tipos_veiculos do |t|
       t.string :descricao, null: false

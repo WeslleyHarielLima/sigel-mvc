@@ -10,35 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_03_223535) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_03_223535) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
+  enable_extension "plpgsql"
 
   create_table "g_tipos_veiculos", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.string "descricao", null: false
     t.datetime "discarded_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["descricao"], name: "index_g_tipos_veiculos_on_descricao"
     t.index ["discarded_at"], name: "index_g_tipos_veiculos_on_discarded_at"
   end
 
   create_table "g_veiculos", force: :cascade do |t|
-    t.integer "ano"
-    t.boolean "apto", default: false
-    t.string "chassi"
-    t.string "cor"
-    t.datetime "created_at", null: false
-    t.datetime "discarded_at"
-    t.bigint "g_tipo_veiculo_id", null: false
-    t.string "marca"
-    t.string "modelo"
-    t.string "motor"
     t.string "numero_interno"
     t.string "placa"
+    t.string "chassi"
     t.string "renavam"
-    t.string "status", default: "pendente"
+    t.string "marca"
+    t.string "modelo"
+    t.integer "ano"
+    t.string "cor"
+    t.string "motor"
     t.string "tombamento"
+    t.boolean "apto", default: false
+    t.string "status", default: "pendente"
+    t.bigint "g_tipo_veiculo_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_g_veiculos_on_discarded_at"
     t.index ["g_tipo_veiculo_id"], name: "index_g_veiculos_on_g_tipo_veiculo_id"
@@ -47,20 +47,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_03_223535) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "cpf", null: false
-    t.datetime "created_at", null: false
-    t.datetime "current_sign_in_at"
-    t.string "current_sign_in_ip"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "nome", null: false
-    t.datetime "remember_created_at"
-    t.datetime "reset_password_sent_at"
-    t.string "reset_password_token"
+    t.string "cpf", null: false
     t.string "role", default: "user"
-    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
