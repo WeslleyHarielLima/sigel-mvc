@@ -27,17 +27,9 @@
       <li class="sidebar-item">
         <%= link_to g_veiculos_path, class: "sidebar-link" do %>
           <span>
-            <iconify-icon icon="solar:car-bold-duotone" class="fs-6"></iconify-icon>
+            <iconify-icon icon="mdi:car" class="fs-6"></iconify-icon>
           </span>
           <span class="hide-menu">Veículos</span>
-        <% end %>
-      </li>
-      <li class="sidebar-item">
-        <%= link_to "#", class: "sidebar-link" do %>
-          <span>
-            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
-          </span>
-          <span class="hide-menu">Tipos de Veículo</span>
         <% end %>
       </li>
       <!-- Referenciais -->
@@ -45,7 +37,7 @@
         <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6"></iconify-icon>
         <span class="hide-menu">Referenciais</span>
       </li>
-      <!-- Localidades (submenu com Bootstrap) -->
+      <!-- Referenciais -> Localidades -->
       <li class="sidebar-item">
         <a class="sidebar-link d-flex justify-content-between align-items-center"
            data-bs-toggle="collapse"
@@ -83,6 +75,34 @@
           <li class="sidebar-item">
             <%= link_to g_localidades_path, class: "sidebar-link" do %>
               <span class="hide-menu">Localidades</span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <!-- Referenciais -> Veículos -->
+      <!-- Referenciais -> Veículos -->
+      <li class="sidebar-item">
+        <a class="sidebar-link d-flex justify-content-between align-items-center"
+     data-bs-toggle="collapse"
+     href="#submenu-ref-veiculos"
+     role="button"
+     aria-expanded="false"
+     aria-controls="submenu-ref-veiculos">
+          <span>
+            <iconify-icon icon="mdi:car" class="fs-6"></iconify-icon>
+            <span class="hide-menu ms-2">Veículos</span>
+          </span>
+          <i class="ti ti-chevron-down"></i>
+        </a>
+        <ul class="collapse first-level" id="submenu-ref-veiculos">
+          <li class="sidebar-item">
+            <%= link_to g_status_veiculos_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Status</span>
+            <% end %>
+          </li>
+          <li class="sidebar-item">
+            <%= link_to g_status_leiloes_veiculos_path, class: "sidebar-link" do %>
+              <span class="hide-menu">Status de Leilão</span>
             <% end %>
           </li>
         </ul>
