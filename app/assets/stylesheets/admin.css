@@ -970,3 +970,50 @@ h6 {
 .table tbody tr:hover {
   background-color: rgba(26, 71, 42, 0.05);
 }
+/* Define a fonte do Sidebar */
+.sidebar-nav {
+  /* Altere para 'Poppins' se escolher a opção B */
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Estilo dos Links */
+.sidebar-nav .sidebar-link {
+  font-weight: 500; /* Deixa a fonte um pouco mais grossa para leitura em fundo escuro */
+  font-size: 0.95rem; /* Tamanho ideal para menus */
+  letter-spacing: 0.3px; /* Leve espaçamento para elegância */
+  color: rgba(255, 255, 255, 0.85); /* Branco suave, cansa menos a vista */
+  transition: all 0.3s ease;
+}
+
+/* Títulos das seções (ex: Cadastros, Auth) */
+.nav-small-cap {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ) !important; /* Cor mais apagada para separar grupos */
+  margin-top: 10px;
+}
+
+/* Efeito Hover (Quando passa o mouse) */
+.sidebar-nav .sidebar-link:hover,
+.sidebar-nav .sidebar-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1); /* Fundo sutil ao passar o mouse */
+  border-radius: 8px; /* Bordas arredondadas no item selecionado */
+  transform: translateX(5px); /* Leve movimento para a direita */
+}
+
+/* Ajuste no ícone para alinhar com a nova fonte */
+.sidebar-link iconify-icon {
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @g_veiculos = GVeiculo.all
+    @g_veiculos = defined?(GVeiculo) ? GVeiculo.all : []
   end
 end
