@@ -10,18 +10,10 @@
       <h6 class="sigel-form-section-title">Dados pessoais</h6>
       <div class="sigel-form-grid">
         <div class="sigel-form-group">
-          <%= f.input :nome,
-            label: "Nome completo *",
-            required: true,
-            input_html: { class: "sigel-input" } %>
+          <%= f.input :nome, label: "Nome completo *", required: true, input_html: { class: "sigel-input" }, placeholder: "Nome completo" %>
         </div>
         <div class="sigel-form-group">
-          <%= f.input :cpf,
-            label: "CPF *",
-            required: true,
-            placeholder: "Somente números",
-            hint: "Sem pontos ou traços",
-            input_html: { class: "sigel-input", maxlength: 11 } %>
+          <%= f.input :cpf, label: "CPF *", required: true, placeholder: "Somente números", hint: "Sem pontos ou traços", input_html: { class: "sigel-input", maxlength: 11 } %>
         </div>
       </div>
       <div class="sigel-form-group">
@@ -42,30 +34,17 @@
             input_html: { class: "sigel-input" } %>
         </div>
         <div class="sigel-form-group">
-          <%= f.input :a_tipo_usuario_id,
-            label: "Tipo de usuário",
-            collection: ATipoUsuario.all.map { |t| [t.descricao, t.id] },
-            prompt: "Selecione o tipo",
-            input_html: { class: "sigel-input" } %>
+          <%= f.input :a_tipo_usuario_id, label: "Tipo de usuário", collection: ATipoUsuario.all.map { |t| [t.descricao, t.id] }, prompt: "Selecione o tipo", input_html: { class: "sigel-input" } %>
         </div>
       </div>
       <div class="sigel-form-group">
-        <%= f.input :a_status_id,
-          label: "Status",
-          collection: AStatus.all.map { |s| [s.nome, s.id] },
-          prompt: "Selecione o status",
-          input_html: { class: "sigel-input" } %>
+        <%= f.input :a_status_id, label: "Status", collection: AStatus.all.map { |s| [s.descricao, s.id] }, prompt: "Selecione o status", input_html: { class: "sigel-input" } %>
       </div>
       <!-- Segurança -->
       <h6 class="sigel-form-section-title">Segurança</h6>
       <div class="sigel-form-grid">
         <div class="sigel-form-group">
-          <%= f.input :password,
-            label: "Senha *",
-            required: true,
-            placeholder: "Mínimo 6 caracteres",
-            hint: ("Mínimo #{@minimum_password_length} caracteres" if @minimum_password_length),
-            input_html: { class: "sigel-input", autocomplete: "new-password" } %>
+          <%= f.input :password, label: "Senha *", required: true, placeholder: "Mínimo 6 caracteres", hint: ("Mínimo #{@minimum_password_length} caracteres" if @minimum_password_length), input_html: { class: "sigel-input", autocomplete: "new-password" } %>
         </div>
         <div class="sigel-form-group">
           <%= f.input :password_confirmation,

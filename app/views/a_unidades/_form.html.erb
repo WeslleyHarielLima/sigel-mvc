@@ -47,23 +47,19 @@
         <div class="row">
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Nome fantasia</strong></label>
-            <%= f.input :nome_fantasia, label: false, input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :nome_fantasia, label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Nome fantasia" %>
           </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Órgão</strong></label>
-            <%= f.input :a_orgao_id,
-              collection: AOrgao.all.map { |o| [o.nome, o.id] },
-              prompt: "Selecione o órgão",
-              label: false,
-              input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :a_orgao_id, collection: AOrgao.all.map { |o| [o.descricao, o.id] }, prompt: "Selecione o órgão", label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Órgão" %>
           </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>CNPJ</strong></label>
-            <%= f.input :cnpj, label: false, input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :cnpj, label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "CNPJ" %>
           </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Endereço</strong></label>
-            <%= f.input :endereco, label: false, input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :endereco, label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Endereço" %>
           </div>
         </div>
       </div>
@@ -82,27 +78,19 @@
         <div class="row">
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Telefone</strong></label>
-            <%= f.input :telefone, label: false, input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :telefone, label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Telefone" %>
           </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Status</strong></label>
-            <%= f.input :a_status_id,
-              collection: AStatus.all.map { |s| [s.nome, s.id] },
-              prompt: "Selecione o status",
-              label: false,
-              input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :a_status_id, collection: AStatus.all.map { |s| [s.descricao, s.id] }, prompt: "Selecione o status", label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Status" %>
           </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Código interno</strong></label>
-            <%= f.input :codigo_interno, label: false, input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :codigo_interno, label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Código interno" %>
           </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Município</strong></label>
-            <%= f.input :g_municipio_id,
-              collection: GMunicipio.all.map { |m| [m.nome, m.id] },
-              prompt: "Selecione o município",
-              label: false,
-              input_html: { class: "form-control sigel-form-control" } %>
+            <%= f.input :g_municipio_id, collection: GMunicipio.all.map { |m| [m.descricao, m.id] }, prompt: "Selecione o município", label: false, input_html: { class: "form-control sigel-form-control" }, placeholder: "Município" %>
           </div>
         </div>
       </div>
