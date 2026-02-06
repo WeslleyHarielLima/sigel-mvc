@@ -1,0 +1,27 @@
+<h1>Central de Vistorias e Avaliação</h1>
+<h3>Aguardando Vistoria</h3>
+<% @aguardando_vistoria.each do |veiculo| %>
+  <div class="card">
+    <strong><%= veiculo.placa %></strong> - <%= veiculo.modelo %>
+    <%= link_to "Iniciar Vistoria", new_g_vistoria_veiculo_path(g_veiculo_id: veiculo.id), class: "btn btn-primary" %>
+  </div>
+<% end %>
+<h3>Em Checklist / Avaliação</h3>
+<% @em_checklist.each do |veiculo| %>
+  <div class="card">
+    <strong><%= veiculo.placa %></strong> - <%= veiculo.modelo %>
+    <% if veiculo.vistoria_iniciada? && !veiculo.checklist_completo? %>
+      <%= link_to "Preencher Checklist", new_g_checklist_veiculo_path(g_vistoria_veiculo_id: veiculo.g_vistorias_veiculos.last.id), class: "btn btn-warning" %>
+    <% elsif veiculo.checklist_completo? && !veiculo.avaliado? %>
+      <%= link_to "Avaliar Veículo", new_g_avaliacao_veiculo_path(g_veiculo_id: veiculo.id), class: "btn btn-success" %>
+    <% end %>
+  </div>
+<% end %>
+<h3>Avaliados</h3>
+<% @avaliados.each do |veiculo| %>
+  <div class="card">
+    <strong><%= veiculo.placa %></strong> - <%= veiculo.modelo %>
+    <span class="badge bg-success">Avaliado</span>
+    <%= link_to "Enviar para Leilão", "#", class: "btn btn-dark" %>
+  </div>
+<% end %>

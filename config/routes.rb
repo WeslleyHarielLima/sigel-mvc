@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
   get  "home/index"
+  get "fluxo-avaliacao", to: "fluxo_avaliacao#index", as: :fluxo_avaliacao
 
   # Recursos principais
   resources :a_unidades
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   resources :g_estados_conservacao_veiculos
   resources :g_tipos_itens_checklists
   resources :g_vistorias_veiculos
+  resources :g_avaliacoes_veiculos
   resources :g_tipos_combustiveis
   resources :i_status_inserviveis
   resources :i_status_serviveis
