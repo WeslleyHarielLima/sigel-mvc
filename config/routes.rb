@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "home#index"
   get  "home/index"
   get "fluxo-avaliacao", to: "fluxo_avaliacao#index", as: :fluxo_avaliacao
+  get  "fluxo-avaliacao/:id/avaliar", to: "fluxo_avaliacao#avaliar", as: :fluxo_avaliar
+  post "fluxo-avaliacao/:id/avaliar", to: "fluxo_avaliacao#salvar_avaliacao"
 
   # Recursos principais
   resources :a_unidades

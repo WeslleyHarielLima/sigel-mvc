@@ -1,0 +1,226 @@
+<div class="sigel-evaluation-container animate-fade-in" style="padding: 2rem; max-width: 1200px; margin: 0 auto; background: #fcfcfc;">
+  <!-- [LIVRO IV - COREOGRAFIA DE FLUXO] -->
+  <header class="">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <div class="stepper-human ">
+          <span class="step completed">Vistoria</span>
+          <span class="step-divider"></span>
+          <span class="step completed">Checklist</span>
+          <span class="step-divider"></span>
+          <span class="step active">Avaliação</span>
+        </div>
+      </div>
+      <%= link_to fluxo_avaliacao_path, class: "btn-back-human" do %>
+        <iconify-icon icon="solar:arrow-left-linear"></iconify-icon> Voltar para Central
+      <% end %>
+    </div>
+  </header>
+  <!-- [LIVRO I - RESUMO DO VEÍCULO (INFO-BAR)] -->
+  <section class="info-bar-human mb-4">
+    <div class="info-item">
+      <span class="label">PLACA</span>
+      <span class="value plate"><%= @veiculo.placa %></span>
+    </div>
+    <div class="info-item">
+      <span class="label">MODELO</span>
+      <span class="value"><%= @veiculo.modelo %></span>
+    </div>
+    <div class="info-item">
+      <span class="label">ANO</span>
+      <span class="value"><%= @veiculo.ano %></span>
+    </div>
+    <div class="info-item">
+      <span class="label">COMBUSTÍVEL</span>
+      <span class="value"><%= @veiculo.g_tipo_combustivel.descricao %></span>
+    </div>
+  </section>
+  <div class="row g-4">
+    <!-- [LIVRO II - CHECKLIST (CONTEXTO)] -->
+    <div class="col-lg-12">
+      <div class="sigel-panel-human">
+        <div class="panel-header-human">
+          <iconify-icon icon="solar:clipboard-check-bold-duotone"></iconify-icon>
+          RESUMO DA VISTORIA
+        </div>
+        <div class="table-responsive">
+          <table class="table table-human-clean mb-0">
+            <thead>
+              <tr>
+                <th>Item do Checklist</th>
+                <th>Estado de Conservação</th>
+                <th class="text-center">Resultado</th>
+                <th>Observações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @vistoria.g_checklists_veiculos.each do |item| %>
+                <tr>
+                  <td class="fw-bold"><%= item.g_tipo_item_checklist.descricao %></td>
+                  <td>
+                    <span class="badge-status-human <%= item.g_estado_conservacao_veiculo.descricao.parameterize %>">
+                      <%= item.g_estado_conservacao_veiculo.descricao %>
+                    </span>
+                  </td>
+                  <td class="text-center fw-bold text-primary"><%= item.resultado %></td>
+                  <td class="text-muted"><%= item.observacao.presence || "—" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- [LIVRO III & VI - FORMULÁRIO DE AVALIAÇÃO] -->
+    <div class="col-lg-12">
+      <%= form_with model: @avaliacao, url: fluxo_avaliar_path(@veiculo), method: :post, local: true, class: "evaluation-form-human" do |f| %>
+        <div class="sigel-panel-human highlight">
+          <div class="panel-header-human text-white" style="background: var(--sigel-verde-escuro);">
+            <iconify-icon icon="solar:calculator-bold-duotone"></iconify-icon>
+            MÉTRICAS FINANCEIRAS E DEPRECIAÇÃO
+          </div>
+          <div class="panel-body-human p-4">
+            <div class="row g-4">
+              <!-- Inputs de Entrada (Mão do Humano) -->
+              <div class="col-md-4">
+                <div class="input-group-human">
+                  <%= f.label :valor_mercado, "Valor de Mercado (R$)" %>
+                  <%= f.number_field :valor_mercado, step: 0.01, class: "form-human-control", placeholder: "0,00", required: true %>
+                  <small>Valor base estimado para venda</small>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group-human">
+                  <%= f.label :valor_referencia_fipe, "Valor FIPE (R$)" %>
+                  <%= f.number_field :valor_referencia_fipe, step: 0.01, class: "form-human-control", placeholder: "0,00", required: true %>
+                  <small>Referência oficial de mercado</small>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group-human">
+                  <%= f.label :percentual_depreciacao, "Depreciação (%)" %>
+                  <div class="input-with-icon">
+                    <%= f.number_field :percentual_depreciacao, step: 0.01, class: "form-human-control", placeholder: "0", required: true %>
+                    <span class="suffix">%</span>
+                  </div>
+                  <small>Índice de perda de valor</small>
+                </div>
+              </div>
+              <!-- Outputs de Resultado (Inteligência do Sistema) -->
+              <div class="col-md-4">
+                <div class="input-group-human calculated">
+                  <%= f.label :valor_depreciado, "Valor Depreciado (R$)" %>
+                  <%= f.number_field :valor_depreciado, step: 0.01, class: "form-human-control readonly", readonly: true %>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group-human result">
+                  <%= f.label :valor_inicial_lance, "Valor Inicial de Lance (R$)" %>
+                  <%= f.number_field :valor_inicial_lance, step: 0.01, class: "form-human-control readonly highlight", readonly: true %>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group-human">
+                  <%= f.label :pontuacao_checklist, "Score do Checklist" %>
+                  <%= f.number_field :pontuacao_checklist, step: 0.01, class: "form-human-control readonly", value: @pontuacao_checklist, readonly: true %>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions-human mt-5">
+              <%= link_to "Cancelar Operação", fluxo_avaliacao_path, class: "btn-cancel-human" %>
+              <%= f.submit "Finalizar e Publicar Avaliação", class: "btn-submit-human" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<style>
+  :root {
+    --sigel-verde-escuro: #004d40;
+    --sigel-verde-light: #e0f2f1;
+    --sigel-accent: #26a69a;
+  }
+
+  /* Stepper Visual */
+  .stepper-human { display: flex; align-items: center; gap: 12px; }
+  .step { font-size: 0.85rem; font-weight: 700; color: #ccc; text-transform: uppercase; letter-spacing: 0.5px; }
+  .step.completed { color: var(--sigel-verde-escuro); }
+  .step.active { color: #1a1a1a; border-bottom: 2px solid var(--sigel-accent); }
+  .step-divider { width: 20px; height: 1px; background: #eee; }
+
+  /* Info Bar Apple-style */
+  .info-bar-human {
+    background: #1a1a1a; color: white; border-radius: 16px; padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .info-item .label { display: block; font-size: 0.65rem; color: #888; font-weight: 800; margin-bottom: 2px; }
+  .info-item .value { font-size: 1.1rem; font-weight: 700; }
+  .info-item .value.plate { background: #fff; color: #000; padding: 2px 8px; border-radius: 4px; font-family: monospace; }
+
+  /* Panels */
+  .sigel-panel-human { background: white; border-radius: 20px; border: 1px solid #eee; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+  .panel-header-human { padding: 1.2rem 1.5rem; font-weight: 850; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; color: #444; background: #fafafa; border-bottom: 1px solid #eee; }
+
+  /* Table */
+  .table-human-clean th { font-size: 0.75rem; text-transform: uppercase; color: #999; padding: 1.2rem; background: #fcfcfc; }
+  .table-human-clean td { padding: 1.2rem; vertical-align: middle; border-bottom: 1px solid #f5f5f5; }
+
+  /* Badges de Estado */
+  .badge-status-human { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; }
+  .badge-status-human.bom { background: #e8f5e9; color: #2e7d32; }
+  .badge-status-human.regular { background: #fff3e0; color: #ef6c00; }
+  .badge-status-human.ruim { background: #ffebee; color: #c62828; }
+
+  /* Inputs Humanos */
+  .input-group-human label { display: block; font-weight: 700; font-size: 0.9rem; color: #333; margin-bottom: 8px; }
+  .input-group-human small { color: #aaa; font-size: 0.75rem; margin-top: 4px; display: block; }
+  .form-human-control {
+    width: 100%; border: 2px solid #eee; border-radius: 12px; padding: 12px 16px;
+    font-weight: 700; font-size: 1.1rem; transition: all 0.2s;
+  }
+  .form-human-control:focus { border-color: var(--sigel-accent); outline: none; box-shadow: 0 0 0 4px var(--sigel-verde-light); }
+  .form-human-control.readonly { background: #f9f9f9; border-color: #eee; color: #777; cursor: not-allowed; }
+  .form-human-control.highlight { color: var(--sigel-verde-escuro); font-size: 1.4rem; background: #f0fdf4; border-color: #bbf7d0; }
+
+  /* Botões */
+  .btn-submit-human {
+    background: var(--sigel-verde-escuro); color: white; border: none; padding: 14px 32px;
+    border-radius: 14px; font-weight: 800; font-size: 1rem; transition: all 0.2s;
+  }
+  .btn-submit-human:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,77,64,0.3); }
+  .btn-back-human { text-decoration: none; color: #666; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+  .footer-actions-human { display: flex; justify-content: flex-end; align-items: center; gap: 20px; border-top: 1px solid #eee; padding-top: 2rem; }
+  .btn-cancel-human { color: #999; text-decoration: none; font-weight: 700; }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Seletores atualizados para bater com a estrutura do Rails Model se necessário,
+    // ou mantendo o padrão do form_with
+    const valorMercado = document.querySelector('input[name*="valor_mercado"]');
+    const percentual = document.querySelector('input[name*="percentual_depreciacao"]');
+    const valorDepreciado = document.querySelector('input[name*="valor_depreciado"]');
+    const valorLance = document.querySelector('input[name*="valor_inicial_lance"]');
+
+    function recalcular() {
+      const mercado = parseFloat(valorMercado.value || 0);
+      const dep = parseFloat(percentual.value || 0);
+
+      // Lógica de cálculo puramente sensorial e imediata
+      const depreciacaoCalculada = mercado * (dep / 100);
+      const resultadoFinal = mercado - depreciacaoCalculada;
+
+      valorDepreciado.value = resultadoFinal.toFixed(2);
+      valorLance.value = resultadoFinal.toFixed(2);
+
+      // Feedback Visual de Movimento ao calcular
+      valorLance.style.transform = "scale(1.02)";
+      setTimeout(() => valorLance.style.transform = "scale(1)", 100);
+    }
+
+    [valorMercado, percentual].forEach(el => {
+      el.addEventListener("input", recalcular);
+    });
+  });
+</script>

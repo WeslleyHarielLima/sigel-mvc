@@ -61,6 +61,7 @@
       </div>
     </div>
     <!-- Em Checklist -->
+    <!-- Em Checklist -->
     <div class="col-lg-4">
       <div class="card sigel-status-card">
         <div class="card-header sigel-header-info">
@@ -78,13 +79,13 @@
                   <% if veiculo.vistoria_iniciada? && !veiculo.checklist_completo? %>
                     <span class="badge bg-secondary mb-2">Checklist em andamento</span>
                     <%= link_to "Preencher Checklist",
-                      new_g_checklist_veiculo_path(g_vistoria_veiculo_id: veiculo.g_vistorias_veiculos.last.id),
-                      class: "btn btn-outline-primary btn-sm w-100" %>
+                  new_g_checklist_veiculo_path(g_vistoria_veiculo_id: veiculo.g_vistorias_veiculos.last.id),
+                  class: "btn btn-outline-primary btn-sm w-100" %>
                   <% elsif veiculo.checklist_completo? && !veiculo.avaliado? %>
                     <span class="badge bg-success mb-2">Pronto para Avaliação</span>
                     <%= link_to "Avaliar Veículo",
-                      new_g_avaliacao_veiculo_path(g_veiculo_id: veiculo.id),
-                      class: "btn btn-success btn-sm w-100" %>
+                  fluxo_avaliar_path(veiculo),
+                  class: "btn btn-success btn-sm w-100" %>
                   <% end %>
                 </div>
               </div>
@@ -97,95 +98,67 @@
         </div>
       </div>
     </div>
-    <!-- Avaliados -->
-    <div class="col-lg-4">
-      <div class="card sigel-status-card">
-        <div class="card-header sigel-header-success">
-          🟢 Veículos Avaliados
-        </div>
-        <div class="card-body">
-          <% if @avaliados.any? %>
-            <% @avaliados.each do |veiculo| %>
-              <div class="sigel-item-card">
-                <div>
-                  <div class="fw-semibold"><%= veiculo.placa %></div>
-                  <small class="text-muted"><%= veiculo.modelo %></small>
-                </div>
-                <div class="mt-2">
-                  <span class="badge bg-success">Avaliação Concluída</span>
-                </div>
-              </div>
-            <% end %>
-          <% else %>
-            <div class="sigel-empty">
-              Ainda não há veículos avaliados.
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
-</div>
-<style>
-  .sigel-status-card {
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  }
+  <style>
+    .sigel-status-card {
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    }
 
-  .sigel-header-warning {
-  background: #f59f00;
-  color: #1f2937;
-  font-weight: 600;
-  }
+    .sigel-header-warning {
+    background: #f59f00;
+    color: #1f2937;
+    font-weight: 600;
+    }
 
-  .sigel-header-info {
-  background: #3b82f6;
-  color: #ffffff;
-  font-weight: 600;
-  }
+    .sigel-header-info {
+    background: #3b82f6;
+    color: #ffffff;
+    font-weight: 600;
+    }
 
-  .sigel-header-success {
-  background: #10b981;
-  color: #ffffff;
-  font-weight: 600;
-  }
+    .sigel-header-success {
+    background: #10b981;
+    color: #ffffff;
+    font-weight: 600;
+    }
 
-  .sigel-item-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 12px;
-  background: #ffffff;
-  }
+    .sigel-item-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #ffffff;
+    }
 
-  .sigel-item-card:hover {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  }
+    .sigel-item-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
 
-  .sigel-empty {
-  text-align: center;
-  color: #6b7280;
-  padding: 24px 12px;
-  font-style: italic;
-  }
+    .sigel-empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 24px 12px;
+    font-style: italic;
+    }
 
-  .sigel-kpi-card {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  }
+    .sigel-kpi-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
 
-  .sigel-kpi-card .kpi-label {
-  font-size: 0.85rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: .03em;
-  }
+    .sigel-kpi-card .kpi-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    }
 
-  .sigel-kpi-card .kpi-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
-  }
-</style>
+    .sigel-kpi-card .kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    }
+  </style>

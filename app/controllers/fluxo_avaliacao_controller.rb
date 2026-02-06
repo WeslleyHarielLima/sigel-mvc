@@ -16,4 +16,11 @@ class FluxoAvaliacaoController < ApplicationController
       .joins(:g_avaliacoes_veiculos)
       .distinct
   end
+
+  def avaliar
+    @veiculo  = GVeiculo.find(params[:id])
+    @vistoria = @veiculo.g_vistorias_veiculos.last
+    @avaliacao = GAvaliacaoVeiculo.new(g_veiculo: @veiculo, user_id_avaliador: current_user.id)
+    @pontuacao_checklist = @vistoria.g_checklists_veiculos.sum(:resultado) rescue 0
+  end
 end

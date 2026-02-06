@@ -1,10 +1,10 @@
 class GVeiculo < ApplicationRecord
-  belongs_to :g_status_veiculo
+  belongs_to :g_status_veiculo, optional: true
   belongs_to :g_marca_veiculo, optional: true
   belongs_to :g_tipo_combustivel
 
   has_many :g_vistorias_veiculos
-  has_many :g_avaliacoes_veiculos, class_name: "GAvaliacaoVeiculo"
+  has_many :g_avaliacoes_veiculos, dependent: :destroy
 
   validates :placa,   presence: true
   validates :chassi,  presence: true
@@ -26,5 +26,14 @@ class GVeiculo < ApplicationRecord
 
   def avaliado?
     g_avaliacoes_veiculos.exists?
+  end
+
+  # 🔽 Helpers de status (pra view não quebrar)
+  def status_label
+    g_status_veiculo&.descricao || "Não definido"
+  end
+
+  def status_key
+    status_label.parameterize.underscore
   end
 end
