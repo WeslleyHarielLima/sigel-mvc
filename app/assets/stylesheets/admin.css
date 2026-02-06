@@ -1285,4 +1285,42 @@ a {
 
 .sigel-empty-title {
   color: var(--sigel-cinza-600);
+} /* Sidebar ocupa 100% da altura da viewport */
+.sigel-sidebar-wrapper {
+  height: 100vh;
+  overflow: hidden; /* impede scroll duplo */
+}
+
+/* Área de navegação da sidebar */
+.sigel-sidebar-nav {
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  overflow-x: hidden; /* 🔥 mata o scroll horizontal */
+}
+
+/* Simplebar não pode criar scroll lateral */
+.scroll-sidebar {
+  overflow-y: auto !important;
+  overflow-x: hidden !important; /* 🔥 mata a barra inferior */
+}
+
+/* Garante que nenhum filho estoure a largura */
+.sigel-sidebarnav,
+.sigel-sidebar-nav * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Scrollbar bonitinho */
+.sigel-sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sigel-sidebar-nav::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sigel-sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
 }
