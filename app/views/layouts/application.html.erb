@@ -31,7 +31,7 @@
   <body>
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="static">
       <aside class="left-sidebar">
-        <%= render "shared/sidebar/sidebar" %>
+        <%= render_sidebar(current_user) %>
       </aside>
       <div class="body-wrapper">
         <header class="app-header">

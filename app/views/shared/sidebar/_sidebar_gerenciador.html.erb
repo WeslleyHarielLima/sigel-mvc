@@ -1,0 +1,32 @@
+<div class="sigel-sidebar-wrapper">
+  <div class="brand-logo d-flex align-items-center justify-content-between sigel-sidebar-brand">
+    <%= link_to root_path, class: "text-nowrap logo-img" do %>
+      <img src="/layout/assets/img/Sigel_Banner3.png" alt="SIGEL" class="img-fluid sigel-sidebar-logo" />
+    <% end %>
+    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+      <i class="ti ti-x fs-8"></i>
+    </div>
+  </div>
+  <nav class="sidebar-nav scroll-sidebar sigel-sidebar-nav" data-simplebar>
+    <ul id="sidebarnav" class="sigel-sidebarnav">
+      <!-- Dashboard -->
+      <li class="sidebar-item">
+        <%= link_to home_index_path, class: "sidebar-link" do %>
+          <span><iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon></span>
+          <span class="hide-menu">Dashboard</span>
+        <% end %>
+      </li>
+      <!-- Cadastros Operacionais -->
+      <li class="nav-small-cap sigel-nav-section">
+        <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+        <span class="hide-menu">Cadastros</span>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to root_path, class: "sidebar-link" do %>
+          <span><iconify-icon icon="mdi:car" class="fs-6"></iconify-icon></span>
+          <span class="hide-menu">nada</span>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</div>

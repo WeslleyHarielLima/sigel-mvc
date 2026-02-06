@@ -22,6 +22,10 @@ class User < ApplicationRecord
     a_tipo_usuario&.descricao&.downcase == "gerenciador"
   end
 
+  def vistoriador?
+    a_tipo_usuario&.descricao&.downcase == "vistoriador"
+  end
+
   private
 
   def normalize_cpf
