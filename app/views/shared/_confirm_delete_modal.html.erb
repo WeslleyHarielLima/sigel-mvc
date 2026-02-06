@@ -1,0 +1,69 @@
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content sigel-modal">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <iconify-icon icon="solar:danger-triangle-bold-duotone" class="me-2"></iconify-icon>
+          Confirmar exclusão
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-0" id="confirmDeleteMessage">
+          Tem certeza que deseja excluir este registro? Esta ação não poderá ser desfeita.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sigel-outline" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-sigel-danger" id="confirmDeleteBtn">
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    let deleteUrl = null;
+
+    document.addEventListener("click", function (e) {
+      const btn = e.target.closest(".js-open-delete-modal");
+      if (!btn) return;
+
+      deleteUrl = btn.dataset.deleteUrl;
+
+      const modalEl = document.getElementById("confirmDeleteModal");
+      const modal = new bootstrap.Modal(modalEl);
+      modal.show();
+    });
+
+    const confirmBtn = document.getElementById("confirmDeleteBtn");
+    if (confirmBtn) {
+      confirmBtn.addEventListener("click", function () {
+        if (!deleteUrl) return;
+
+        const form = document.createElement("form");
+        form.method = "POST";
+        form.action = deleteUrl;
+
+        const methodInput = document.createElement("input");
+        methodInput.type = "hidden";
+        methodInput.name = "_method";
+        methodInput.value = "delete";
+
+        const csrfToken = document.querySelector("meta[name='csrf-token']").content;
+        const csrfInput = document.createElement("input");
+        csrfInput.type = "hidden";
+        csrfInput.name = "authenticity_token";
+        csrfInput.value = csrfToken;
+
+        form.appendChild(methodInput);
+        form.appendChild(csrfInput);
+        document.body.appendChild(form);
+        form.submit();
+      });
+    }
+  })();
+</script>

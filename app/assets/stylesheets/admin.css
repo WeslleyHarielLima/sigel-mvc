@@ -485,7 +485,11 @@ h6 {
   padding: 1rem 1.25rem;
   border: none;
 }
-
+.sigel-table tbody td {
+  padding: 1rem 1.25rem;
+  color: #121212 !important;
+  font-weight: 500;
+}
 .sigel-table tbody tr {
   border-bottom: 1px solid var(--sigel-cinza-200);
   transition: all 0.2s ease;

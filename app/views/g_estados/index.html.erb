@@ -103,13 +103,11 @@
                     <%= link_to edit_g_estado_path(g_estado), class: "sigel-action-btn", title: "Editar" do %>
                       <iconify-icon icon="solar:pen-bold"></iconify-icon>
                     <% end %>
-                    <%= button_to g_estado_path(g_estado),
-          method: :delete,
-          class: "sigel-action-btn sigel-action-btn-danger",
-          data: { turbo_confirm: "Excluir este estado?" },
-          form: { data: { turbo: false } } do %>
+                    <button type="button"
+        class="sigel-action-btn sigel-action-btn-danger js-open-delete-modal"
+        data-delete-url="<%= g_estado_path(g_estado) %>">
                       <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
-                    <% end %>
+                    </button>
                   </div>
                 </td>
               </tr>
