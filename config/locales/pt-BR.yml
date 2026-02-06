@@ -61,30 +61,13 @@ pt-BR:
       g_distrito:
         one: "Distrito"
         other: "Distritos"
-      g_localidade:
-        one: "Localidade"
-        other: "Localidades"
-      g_tipo_movimento:
-        one: "Tipo de Movimento"
-        other: "Tipos de Movimentos"
-      g_centro_custo_movimento:
-        one: "Movimento do Centro de Custo"
-        other: "Movimentos dos Centros de Custos"
-      g_veiculo:
-        one: "Veículo"
-        other: "Veículos"
-      g_condutor:
-        one: "Condutor"
-        other: "Condutores"
-      g_condutor_veiculo:
-        one: "Condutor Veículo"
-        other: "Condutores Veículos"
-      g_categoria_carteira_condutor:
-        one: "Categoria da Carteira do Condutor"
-        other: "Categorias das Carteiras dos Condutores"
-      g_carteira_orgao_emissor:
-        one: "Órgão Emissor da Carteira"
-        other: "Órgãos Emissores das Carteiras"
+      g_status_veiculo:
+        one: "Status do Veículo"
+        other: "Status dos Veículos"
+      g_status_leilao_veiculo:
+        one: "Status do Leilão do Veículo"
+        other: "Status dos Leilões dos Veículos"
+
       user:
         one: "Usuário"
         other: "Usuários"
@@ -136,6 +119,10 @@ pt-BR:
         descricao: "Descrição"
         cep: "Cep"
         g_distrito_id: "Distrito"
+      g_status_veiculo:
+        descricao: "Descrição"
+      g_status_leilao_veiculo:
+        descricao: "Descrição"
       user:
         nome: "Nome"
         email: "Email"
