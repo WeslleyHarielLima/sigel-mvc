@@ -1017,3 +1017,75 @@ h6 {
   position: relative;
   top: -1px;
 }
+.sigel-table th {
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.sigel-table td {
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+}
+
+.sigel-table-row:hover {
+  background: linear-gradient(90deg, rgba(30, 110, 70, 0.06), transparent);
+}
+
+.sigel-badge-uf {
+  background: var(--sigel-verde-claro);
+  color: var(--sigel-verde-escuro);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.sigel-actions-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f7f5;
+}
+
+a:hover {
+  color: #f5f8fe;
+}
+a {
+  color: #f5f8fe;
+}
+
+.sigel-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2f3e34; /* verde escuro / neutro */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.12s ease;
+}
+
+.sigel-action-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sigel-action-btn-danger {
+  color: #8a2c2c;
+  border-color: rgba(138, 44, 44, 0.2);
+}
+
+.sigel-action-btn-danger:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #b3261e;
+  border-color: rgba(179, 38, 30, 0.35);
+}
+.sigel-action-btn:hover {
+  color: #000000 !important; /* verde escuro / neutro */
+}

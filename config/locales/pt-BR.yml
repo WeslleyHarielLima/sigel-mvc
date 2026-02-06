@@ -43,27 +43,6 @@ pt-BR:
       a_usuario_papel:
         one: "Usuário Papel"
         other: "Usuários Papéis"
-      f_empresa_fornecedora:
-        one: "Empresa Fornecedora"
-        other: "Empresas Fornecedoras"
-      f_empresa_servico:
-        one: "Empresa de Serviço"
-        other: "Empresas de Serviços"
-      f_financeiro:
-        one: "Financeiro"
-        other: "Financeiros"
-      f_financeiro_movimento:
-        one: "Movimento Financeiro"
-        other: "Movimentos Financeiros"
-      g_status:
-        one: "Status de Gestão"
-        other: "Status de Gestão"
-      g_tipo_veiculo:
-        one: "Tipo de Veículo"
-        other: "Tipos de Veículos"
-      g_tipo_centro_custo:
-        one: "Tipo de Centro de Custo"
-        other: "Tipos de Centros de Custos"
       g_centro_custo:
         one: "Centro de Custo"
         other: "Centros de Custos"
@@ -106,81 +85,9 @@ pt-BR:
       g_carteira_orgao_emissor:
         one: "Órgão Emissor da Carteira"
         other: "Órgãos Emissores das Carteiras"
-      o_status:
-        one: "Status do Orçamento"
-        other: "Status dos Orçamentos"
-      o_tipo_solicitacao:
-        one: "Tipo de Solicitação"
-        other: "Tipos de Solicitações"
-      o_categoria_servico:
-        one: "Categoria de Serviço"
-        other: "Categorias de Serviços"
-      o_urgencia:
-        one: "Urgência"
-        other: "Urgências"
-      o_visibilidade:
-        one: "Visibilidade"
-        other: "Visibilidades"
-      o_solicitacao:
-        one: "Solicitação"
-        other: "Solicitações"
-      o_cotacao:
-        one: "Cotação"
-        other: "Cotações"
-      o_cotacao_item:
-        one: "Item da Cotação"
-        other: "Itens da Cotação"
-      o_proposta:
-        one: "Proposta"
-        other: "Propostas"
-      o_proposta_item:
-        one: "Item da Proposta"
-        other: "Itens da Proposta"
-      o_status_nf:
-        one: "Status da Nota Fiscal"
-        other: "Status das Notas Fiscais"
-      o_nota_fiscal:
-        one: "Nota Fiscal"
-        other: "Notas Fiscais"
-      t_taxa:
-        one: "Taxa"
-        other: "Taxas"
-      t_taxa_empresa_fornecedora:
-        one: "Taxa da Empresa Fornecedora"
-        other: "Taxas das Empresas Fornecedoras"
-      t_taxa_adiantamento:
-        one: "Taxa de Adiantamento"
-        other: "Taxas de Adiantamentos"
-      o_ordem_servico:
-        one: "Ordem de Serviço"
-        other: "Ordens de Serviços"
       user:
         one: "Usuário"
         other: "Usuários"
-      c_posto:
-        one: Posto de Gasolina
-        other: Postos de Gasolina
-      c_tipo_combustivel:
-        one: "Tipo de Combustível"
-        other: "Tipos de Combustíveis"
-      c_combustivel:
-        one: "Tipo de Combustivel"
-        other: "Tipos de Combustiveis"
-      c_posto_combustivel:
-        one: "Associação Posto/Combustível "
-        other: "Associação Posto/Combustível "
-      c_cartao_combustivel:
-        one: "Cartão do Combustível"
-        other: "Cartões do Combustível"
-      c_limite_mensal:
-        one: "Limite Mensao"
-        other: "Limites Mensais"
-      c_requisicao_combustivel:
-        one: "Requisição do Combustível"
-        other: "Requisições do Combustível"
-      c_status_voucher:
-        one: "Status do Voucher"
-        other: "Status dos Vouchers"
     attributes:
       a_status:
         descricao: "Descrição"
@@ -201,20 +108,6 @@ pt-BR:
         a_status_id: "Status"
         t_taxa_id: "Taxa"
       f_empresa_servico:
-        f_empresa_fornecedora_id: "Empresa Fornecedora"
-        o_categoria_servico_id: "Categoria de Serviço"
-      financeiro:
-        f_empresa_fornecedora_id: "Empresa Fornecedora"
-        o_categoria_servico_id: "Categoria de Serviço"
-        saldo_total: "Saldo Total"
-        saldo_disponivel: "Saldo Disponível"
-        saldo_reservado: "Saldo Reservado"
-      f_financeiro_movimento:
-        descricao: "Descrição"
-        f_financeiro_id: "Financeiro"
-        g_tipo_movimento_id: "Tipo de Movimento"
-        valor: "Valor"
-        observacao: "Observação"
       g_status:
         descricao: "Descrição"
       g_tipo_veiculo:
@@ -253,7 +146,6 @@ pt-BR:
         a_unidade_id: "Unidade"
         a_cargo_id: "Cargo"
         f_empresa_fornecedora_id: "Empresa Fornecedora"
-
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"

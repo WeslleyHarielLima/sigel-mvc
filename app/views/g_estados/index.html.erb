@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
               <label class="sigel-form-label">
-                <strong>G pais</strong>
+                <strong>País</strong>
               </label>
               <%= f.search_field :g_pais_descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
             </div>
@@ -68,49 +68,49 @@
   <div class="sigel-card-body p-0">
     <% if @g_estados.any? %>
       <div class="table-responsive">
-        <table class="table sigel-table mb-0">
+        <table class="table sigel-table mb-0 align-middle">
           <thead>
             <tr>
-              <th class="text-center" style="width: 80px;">Ações</th>
-              <th>
-                <%= sort_link(@q, :descricao, "Descricao") %>
+              <th style="min-width: 220px;">
+                <%= sort_link(@q, :descricao, "Descrição") %>
               </th>
-              <th>
-                <%= sort_link(@q, :uf, "Uf") %>
+              <th class="text-center" style="width: 80px;">
+                <%= sort_link(@q, :uf, "UF") %>
               </th>
-              <th>
-                <%= sort_link(@q, :g_pais, "G pais") %>
+              <th style="min-width: 180px;">
+                <%= sort_link(@q, :g_pais, "País") %>
               </th>
+              <th class="text-end" style="width: 140px;">Ações</th>
             </tr>
           </thead>
           <tbody>
             <% @g_estados.each do |g_estado| %>
-              <tr>
-                <td class="text-center" style="white-space: nowrap;">
-                  <div class="d-flex gap-2 justify-content-center">
-                    <%= link_to g_estado_path(g_estado), class: "sigel-actions-btn sigel-actions-btn-visualizar" do %>
+              <tr class="sigel-table-row">
+                <td class="fw-semibold">
+                  <%= g_estado.descricao %>
+                </td>
+                <td class="text-center">
+                  <span class="sigel-badge-uf"><%= g_estado.uf %></span>
+                </td>
+                <td class="text-muted">
+                  <%= g_estado.g_pais&.descricao %>
+                </td>
+                <td class="text-end">
+                  <div class="d-inline-flex gap-2 sigel-actions">
+                    <%= link_to g_estado_path(g_estado), class: "sigel-action-btn", title: "Visualizar" do %>
                       <iconify-icon icon="solar:eye-bold"></iconify-icon>
                     <% end %>
-                    <%= link_to edit_g_estado_path(g_estado), class: "sigel-actions-btn sigel-actions-btn-editar" do %>
+                    <%= link_to edit_g_estado_path(g_estado), class: "sigel-action-btn", title: "Editar" do %>
                       <iconify-icon icon="solar:pen-bold"></iconify-icon>
                     <% end %>
                     <%= button_to g_estado_path(g_estado),
-                method: :delete,
-                class: "sigel-actions-btn sigel-actions-btn-excluir",
-                data: { turbo_confirm: "Tem certeza?" },
-                style: "border: none;" do %>
+          method: :delete,
+          class: "sigel-action-btn sigel-action-btn-danger",
+          data: { turbo_confirm: "Excluir este estado?" },
+          form: { data: { turbo: false } } do %>
                       <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
                     <% end %>
                   </div>
-                </td>
-                <td>
-                  <%= truncate(g_estado.descricao.to_s, length: 50) %>
-                </td>
-                <td>
-                  <%= truncate(g_estado.uf.to_s, length: 50) %>
-                </td>
-                <td>
-                  <%= truncate(g_estado.g_pais.to_s, length: 50) %>
                 </td>
               </tr>
             <% end %>
