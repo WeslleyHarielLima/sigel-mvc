@@ -73,6 +73,12 @@ pt-BR:
       g_veiculo:
         one: "Veículo"
         other: "Veículos"
+      i_status_servivel:
+        one: "Status Servível"
+        other: "Status Servíveis"
+      i_status_inservivel:
+        one: "Status Inservível"
+        other: "Status Inservíveis"
       user:
         one: "Usuário"
         other: "Usuários"
@@ -132,6 +138,22 @@ pt-BR:
         a_tipo_unidade_id: "Tipo de Unidade"
       a_cargo:
         descricao: "Descrição"
+      i_status_servivel:
+        descricao: "Descrição"
+        i_classificacao: "Classificação"
+        created_by: "Criador"
+        updated_by: "Último Editor"
+        deleted_at: "Data de Exclusão"
+        created_at: "Data de Criação"
+        updated_at: "Última Atualização"
+      i_status_inservivel:
+        descricao: "Descrição"
+        i_classificacao: "Classificação"
+        created_by: "Criador"
+        updated_by: "Último Editor"
+        deleted_at: "Data de Exclusão"
+        created_at: "Data de Criação"
+        updated_at: "Última Atualização"
 
       user:
         nome: "Nome"
