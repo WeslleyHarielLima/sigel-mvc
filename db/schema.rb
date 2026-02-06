@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_06_073200) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_06_082548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -168,6 +168,24 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_073200) do
     t.index ["g_status_veiculo_id"], name: "index_g_veiculos_on_g_status_veiculo_id"
     t.index ["placa"], name: "index_g_veiculos_on_placa"
     t.index ["renavam"], name: "index_g_veiculos_on_renavam"
+  end
+
+  create_table "i_status_inserviveis", force: :cascade do |t|
+    t.string "descricao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "i_status_serviveis", force: :cascade do |t|
+    t.string "descricao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
