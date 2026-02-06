@@ -17,31 +17,21 @@
   </div>
   <div class="sigel-card-body">
     <div class="row g-4">
-        <div class="col-md-4">
-          <div class="sigel-detail-item">
-            <span class="sigel-detail-label">Descricao</span>
-            <div class="sigel-detail-value">
-              <%= @g_status_veiculo.descricao.to_s.presence || "-" %>
-            </div>
+      <div class="col-md-4">
+        <div class="sigel-detail-item">
+          <span class="sigel-detail-label">Descricao</span>
+          <div class="sigel-detail-value">
+            <%= @g_status_veiculo.descricao.to_s.presence || "-" %>
           </div>
         </div>
+      </div>
     </div>
   </div>
-  <div class="sigel-card-footer d-flex justify-content-between">
+  <div class="sigel-card-footer d-flex justify-content-end">
     <div>
       <%= link_to g_status_veiculos_path, class: "btn btn-sigel-outline" do %>
-      Voltar para lista
+        Voltar para lista
       <% end %>
-    </div>
-    <div class="d-flex gap-2">
-      <%= link_to edit_g_status_veiculo_path(@g_status_veiculo), class: "btn btn-sigel-primary" do %>
-      Editar
-      <% end %>
-      <button type="button"
-              class="btn btn-sigel-danger js-open-delete-modal"
-              data-delete-url="<%= g_status_veiculo_path(@g_status_veiculo) %>">
-        Excluir
-      </button>
     </div>
   </div>
 </div>

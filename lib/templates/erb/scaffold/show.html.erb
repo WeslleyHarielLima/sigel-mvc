@@ -29,21 +29,12 @@
       <%- end -%>
     </div>
   </div>
-  <div class="sigel-card-footer d-flex justify-content-between">
+  <div class="sigel-card-footer d-flex justify-content-end">
     <div>
       <%%= link_to <%= plural_table_name %>_path, class: "btn btn-sigel-outline" do %>
       Voltar para lista
       <%% end %>
     </div>
-    <div class="d-flex gap-2">
-      <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-sigel-primary" do %>
-      Editar
-      <%% end %>
-      <button type="button"
-              class="btn btn-sigel-danger js-open-delete-modal"
-              data-delete-url="<%%= <%= singular_table_name %>_path(@<%= singular_table_name %>) %>">
-        Excluir
-      </button>
-    </div>
   </div>
+</div>
 </div>
