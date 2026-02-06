@@ -10,9 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_06_062141) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_06_064229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "a_orgaos", force: :cascade do |t|
+    t.string "descricao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "a_status", force: :cascade do |t|
+    t.string "descricao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "a_tipos_usuarios", force: :cascade do |t|
+    t.string "descricao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "a_unidades", force: :cascade do |t|
+    t.string "nome_fantasia"
+    t.bigint "a_orgao_id", null: false
+    t.string "cnpj"
+    t.string "endereco"
+    t.string "telefone"
+    t.bigint "a_status_id", null: false
+    t.string "codigo_interno"
+    t.bigint "g_municipio_id", null: false
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["a_orgao_id"], name: "index_a_unidades_on_a_orgao_id"
+    t.index ["a_status_id"], name: "index_a_unidades_on_a_status_id"
+    t.index ["g_municipio_id"], name: "index_a_unidades_on_g_municipio_id"
+  end
 
   create_table "g_distritos", force: :cascade do |t|
     t.string "descricao"
@@ -107,11 +153,28 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_062141) do
     t.string "role", default: "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "telefone"
+    t.bigint "a_cargo_id"
+    t.bigint "a_unidade_id"
+    t.bigint "a_tipo_usuario_id"
+    t.bigint "a_status_id"
+    t.string "created_by"
+    t.string "banco"
+    t.string "agencia"
+    t.string "conta"
+    t.string "chave_pix"
+    t.index ["a_cargo_id"], name: "index_users_on_a_cargo_id"
+    t.index ["a_status_id"], name: "index_users_on_a_status_id"
+    t.index ["a_tipo_usuario_id"], name: "index_users_on_a_tipo_usuario_id"
+    t.index ["a_unidade_id"], name: "index_users_on_a_unidade_id"
     t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "a_unidades", "a_orgaos"
+  add_foreign_key "a_unidades", "a_status"
+  add_foreign_key "a_unidades", "g_municipios"
   add_foreign_key "g_distritos", "g_municipios"
   add_foreign_key "g_estados", "g_paises"
   add_foreign_key "g_municipios", "g_estados"

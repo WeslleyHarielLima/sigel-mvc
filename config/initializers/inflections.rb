@@ -1,8 +1,9 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "a_status",                          "a_status"
   inflect.irregular "a_tipo_usuario",                    "a_tipos_usuarios"
-  inflect.irregular "a_cargo",                           "a_cargos"
+  inflect.irregular "a_orgao",                           "a_orgaos"
   inflect.irregular "a_unidade",                         "a_unidades"
+  inflect.irregular "a_cargo",                           "a_cargos"
   inflect.irregular "g_pais",                            "g_paises"
   inflect.irregular "g_estado",                          "g_estados"
   inflect.irregular "g_bairro",                          "g_bairros"

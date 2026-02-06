@@ -1,0 +1,94 @@
+<!-- Page Header -->
+<div class="sigel-page-header mb-4">
+  <div class="sigel-page-title">
+    <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.2rem;"></iconify-icon>
+    <h1>
+      Detalhes de
+      <%= t("activerecord.models.a_unidade.one", default: "A unidade") %>
+    </h1>
+  </div>
+</div>
+<div class="sigel-card">
+  <div class="sigel-card-header">
+    <h5>
+      <iconify-icon icon="solar:clipboard-text-bold-duotone" class="me-2"></iconify-icon>
+      Informações do Registro
+    </h5>
+  </div>
+  <div class="sigel-card-body">
+    <div class="row g-4">
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Nome fantasia</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.nome_fantasia.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">A orgao</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.a_orgao.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Cnpj</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.cnpj.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Endereco</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.endereco.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Telefone</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.telefone.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">A status</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.a_status.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Codigo interno</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.codigo_interno.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">G municipio</span>
+            <div class="sigel-detail-value">
+              <%= @a_unidade.g_municipio.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="sigel-card-footer d-flex justify-content-end">
+    <div>
+      <%= link_to a_unidades_path, class: "btn btn-sigel-outline" do %>
+      Voltar para lista
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
