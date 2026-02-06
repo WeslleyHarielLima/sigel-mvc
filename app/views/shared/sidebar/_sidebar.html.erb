@@ -13,16 +13,38 @@
       <li class="sidebar-item">
         <%= link_to home_index_path, class: "sidebar-link" do %>
           <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
-          <span class="hide-menu">Dashboard</span>
+          <span class="hide-menu">Início</span>
         <% end %>
       </li>
       <!-- OPERAÇÃO -->
       <li class="nav-small-cap sigel-nav-section">
         <span class="hide-menu">Operação</span>
       </li>
-      <li class="sidebar-item"><%= link_to g_veiculos_path, class: "sidebar-link" do %><iconify-icon icon="mdi:car" class="fs-6"></iconify-icon><span class="hide-menu">Veículos</span><% end %></li>
-      <li class="sidebar-item"><%= link_to g_vistorias_veiculos_path, class: "sidebar-link" do %><iconify-icon icon="solar:clipboard-check-bold-duotone" class="fs-6"></iconify-icon><span class="hide-menu">Vistorias</span><% end %></li>
-      <li class="sidebar-item"><%= link_to g_checklists_veiculos_path, class: "sidebar-link" do %><iconify-icon icon="solar:list-check-bold-duotone" class="fs-6"></iconify-icon><span class="hide-menu">Checklists</span><% end %></li>
+      <li class="sidebar-item">
+        <%= link_to g_veiculos_path, class: "sidebar-link" do %>
+          <iconify-icon icon="mdi:car" class="fs-6"></iconify-icon>
+          <span class="hide-menu">Veículos</span>
+        <% end %>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to g_vistorias_veiculos_path, class: "sidebar-link" do %>
+          <iconify-icon icon="solar:clipboard-check-bold-duotone" class="fs-6"></iconify-icon>
+          <span class="hide-menu">Vistorias</span>
+        <% end %>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to g_checklists_veiculos_path, class: "sidebar-link" do %>
+          <iconify-icon icon="solar:list-check-bold-duotone" class="fs-6"></iconify-icon>
+          <span class="hide-menu">Checklists</span>
+        <% end %>
+      </li>
+      <!-- 🔥 NOVO: FLUXO GUIADO -->
+      <li class="sidebar-item">
+        <%= link_to fluxo_avaliacao_path, class: "sidebar-link sigel-highlight-link" do %>
+          <iconify-icon icon="solar:diagram-up-bold-duotone" class="fs-6"></iconify-icon>
+          <span class="hide-menu">Avaliação</span>
+        <% end %>
+      </li>
       <!-- ADMINISTRATIVO -->
       <li class="nav-small-cap sigel-nav-section">
         <span class="hide-menu">Administrativo</span>

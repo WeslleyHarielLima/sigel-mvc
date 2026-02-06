@@ -108,9 +108,9 @@
 /* PALETA DE CORES GOVERNAMENTAIS */
 :root {
   /* Verde Institucional */
-  --sigel-verde-escuro: #1a472a;
-  --sigel-verde-medio: #2d6a45;
-  --sigel-verde-claro: #e8f5e9;
+  --sigel-verde-escuro: #004d40;
+  --sigel-verde-light: #e0f2f1;
+  --sigel-accent: #26a69a;
   --sigel-verde-hover: #0f2918;
 
   /* Dourado Institucional */
@@ -355,7 +355,7 @@ h6 {
     var(--sigel-verde-escuro) 0%,
     var(--sigel-verde-medio) 100%
   );
-  color: var(--sigel-branco);
+  color: #121212;
   padding: 1.25rem 1.5rem;
   border-bottom: 3px solid var(--sigel-dourado);
   display: flex;
@@ -364,7 +364,7 @@ h6 {
 }
 
 .sigel-card-header h5 {
-  color: var(--sigel-branco);
+  color: #121212;
   margin: 0;
   font-weight: 700;
   font-size: 1.1rem;
@@ -1058,10 +1058,10 @@ h6 {
 }
 
 a:hover {
-  color: #f5f8fe;
+  color: #121212;
 }
 a {
-  color: #f5f8fe;
+  color: #121212;
 }
 
 .sigel-action-btn {
