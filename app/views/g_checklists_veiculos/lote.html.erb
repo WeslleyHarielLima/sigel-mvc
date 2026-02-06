@@ -1,0 +1,86 @@
+<div class="sigel-container animate-fade-in">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-semibold mb-1">Checklist da Vistoria</h2>
+      <p class="text-muted mb-0">
+        Veículo: <strong><%= @vistoria.g_veiculo.placa %></strong> —
+        <%= @vistoria.g_veiculo.modelo %>
+      </p>
+    </div>
+    <%= link_to fluxo_avaliacao_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+      <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+      Voltar para Central
+    <% end %>
+  </div>
+  <%= form_with url: checklist_lote_path(@vistoria), method: :post, local: true do %>
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5 class="mb-0">
+          <iconify-icon icon="solar:list-check-bold-duotone"></iconify-icon>
+          Itens do Checklist
+        </h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="table-responsive">
+          <table class="table table-human-clean align-middle">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th style="width: 220px;">Estado de Conservação</th>
+                <th style="width: 160px;">Resultado</th>
+                <th>Observações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @itens.each do |item| %>
+                <tr>
+                  <td class="fw-semibold">
+                    <%= item.descricao %>
+                  </td>
+                  <td>
+                    <select
+                      name="itens[<%= item.id %>][g_estado_conservacao_veiculo_id]"
+                      class="form-control sigel-form-control"
+                      required>
+                      <option value="">Selecione...</option>
+                      <% @estados.each do |estado| %>
+                        <option value="<%= estado.id %>"><%= estado.descricao %></option>
+                      <% end %>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="itens[<%= item.id %>][resultado]"
+                      class="form-control sigel-form-control"
+                      placeholder="Ex: OK / Ruim / Bom"
+                      required>
+                    </td>
+                    <td>
+                      <textarea
+                      name="itens[<%= item.id %>][observacao]"
+                      class="form-control sigel-form-control"
+                      rows="2"
+                      placeholder="Observações opcionais..."></textarea>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Ações -->
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <%= link_to fluxo_avaliacao_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+          <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
+          Cancelar
+        <% end %>
+        <button type="submit" class="btn btn-sigel-primary d-flex align-items-center gap-2">
+          <iconify-icon icon="solar:check-circle-bold-duotone"></iconify-icon>
+          Salvar Checklist
+        </button>
+      </div>
+    <% end %>
+  </div>

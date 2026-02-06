@@ -18,11 +18,9 @@ class GVeiculo < ApplicationRecord
     vistoria = g_vistorias_veiculos.order(created_at: :desc).first
     return false unless vistoria
 
-    total_itens = GTipoItemChecklist.count
-    respondidos = vistoria.g_checklists_veiculos.count
-
-    total_itens.positive? && respondidos == total_itens
+    vistoria.g_checklists_veiculos.exists?
   end
+
 
   def avaliado?
     g_avaliacoes_veiculos.exists?

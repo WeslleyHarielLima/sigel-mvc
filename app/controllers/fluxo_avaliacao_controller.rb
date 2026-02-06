@@ -1,6 +1,6 @@
 # app/controllers/fluxo_avaliacao_controller.rb
 class FluxoAvaliacaoController < ApplicationController
-  before_action :set_veiculo, only: [ :avaliar, :salvar_avaliacao ]
+  before_action :set_veiculo, only: %i[avaliar salvar_avaliacao]
 
   def index
     @aguardando_vistoria = GVeiculo
@@ -22,8 +22,23 @@ class FluxoAvaliacaoController < ApplicationController
   def avaliar
     @vistoria = @veiculo.g_vistorias_veiculos.order(created_at: :desc).first
 
-    unless @vistoria&.g_checklists_veiculos&.any?
-      redirect_to fluxo_avaliacao_path, alert: "Este veículo ainda não possui checklist preenchido."
+    unless @vistoria
+      redirect_to fluxo_avaliacao_path, alert: "Este veículo ainda não possui vistoria."
+      return
+    end
+
+    unless @vistoria.g_checklists_veiculos.exists?
+      redirect_to fluxo_avaliacao_path, alert: "Checklist ainda não foi preenchido."
+      return
+    end
+
+    unless @veiculo.checklist_completo?
+      redirect_to fluxo_avaliacao_path, alert: "Checklist ainda não foi concluído."
+      return
+    end
+
+    if @veiculo.avaliado?
+      redirect_to fluxo_avaliacao_path, alert: "Este veículo já foi avaliado."
       return
     end
 
@@ -32,24 +47,26 @@ class FluxoAvaliacaoController < ApplicationController
       user_id_avaliador: current_user.id
     )
 
-    @pontuacao_checklist = @vistoria.g_checklists_veiculos.sum("CAST(resultado AS numeric)").to_f
+@pontuacao_checklist = @vistoria.score_checklist
   end
+
 
   def salvar_avaliacao
-    @avaliacao = GAvaliacaoVeiculo.new(avaliacao_params.merge(
-      g_veiculo: @veiculo,
-      user_id_avaliador: current_user.id,
-      avaliado_em: Time.current
-    ))
+  @avaliacao = GAvaliacaoVeiculo.new(avaliacao_params.merge(
+    g_veiculo: @veiculo,
+    user_id_avaliador: current_user.id,
+    avaliado_em: Time.current
+  ))
 
-    if @avaliacao.save
-      redirect_to fluxo_avaliacao_path, notice: "Avaliação registrada com sucesso."
-    else
-      @vistoria = @veiculo.g_vistorias_veiculos.order(created_at: :desc).first
-      @pontuacao_checklist = @vistoria&.g_checklists_veiculos&.sum("CAST(resultado AS numeric)").to_f
-      render :avaliar, status: :unprocessable_entity
-    end
+  if @avaliacao.save
+    redirect_to fluxo_avaliacao_path, notice: "Avaliação registrada com sucesso."
+  else
+    @vistoria = @veiculo.g_vistorias_veiculos.order(created_at: :desc).first
+    @pontuacao_checklist = @vistoria.score_checklist
+    render :avaliar, status: :unprocessable_entity
   end
+  end
+
 
   private
 

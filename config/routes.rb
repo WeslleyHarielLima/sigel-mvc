@@ -4,9 +4,16 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
   get  "home/index"
-  get "fluxo-avaliacao", to: "fluxo_avaliacao#index", as: :fluxo_avaliacao
-  get  "fluxo-avaliacao/:id/avaliar", to: "fluxo_avaliacao#avaliar", as: :fluxo_avaliar
-  post "fluxo-avaliacao/:id/avaliar", to: "fluxo_avaliacao#salvar_avaliacao"
+  get "fluxo-avaliacao",                                    to: "fluxo_avaliacao#index",            as: :fluxo_avaliacao
+  get  "fluxo-avaliacao/:id/avaliar",                       to: "fluxo_avaliacao#avaliar",          as: :fluxo_avaliar
+  get  "vistorias/:g_vistoria_veiculo_id/checklist-lote",   to: "g_checklists_veiculos#lote",       as: :checklist_lote
+  post "vistorias/:g_vistoria_veiculo_id/checklist-lote",   to: "g_checklists_veiculos#salvar_lote"
+  post "fluxo_avaliacao/:id/avaliar",                       to: "fluxo_avaliacao#salvar_avaliacao", as: :fluxo_avaliar_salvar
+
+  resources :g_vistorias_veiculos do
+    get  "checklist", to: "checklists#preencher"
+    post "checklist", to: "checklists#salvar"
+  end
 
   # Recursos principais
   resources :a_unidades
@@ -25,7 +32,6 @@ Rails.application.routes.draw do
   resources :g_checklists_veiculos
   resources :g_estados_conservacao_veiculos
   resources :g_tipos_itens_checklists
-  resources :g_vistorias_veiculos
   resources :g_avaliacoes_veiculos
   resources :g_tipos_combustiveis
   resources :i_status_inserviveis

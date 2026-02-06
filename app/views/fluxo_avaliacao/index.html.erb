@@ -70,22 +70,25 @@
         <div class="card-body">
           <% if @em_checklist.any? %>
             <% @em_checklist.each do |veiculo| %>
+              <% vistoria = veiculo.g_vistorias_veiculos.order(created_at: :desc).first %>
               <div class="sigel-item-card">
                 <div>
                   <div class="fw-semibold"><%= veiculo.placa %></div>
                   <small class="text-muted"><%= veiculo.modelo %></small>
                 </div>
                 <div class="mt-2">
-                  <% if veiculo.vistoria_iniciada? && !veiculo.checklist_completo? %>
+                  <% if veiculo.vistoria_iniciada? && !veiculo.checklist_completo? && vistoria.present? %>
                     <span class="badge bg-secondary mb-2">Checklist em andamento</span>
                     <%= link_to "Preencher Checklist",
-                  new_g_checklist_veiculo_path(g_vistoria_veiculo_id: veiculo.g_vistorias_veiculos.last.id),
-                  class: "btn btn-outline-primary btn-sm w-100" %>
+                            g_vistoria_veiculo_checklist_path(vistoria),
+                            class: "btn btn-primary btn-sm w-100" %>
                   <% elsif veiculo.checklist_completo? && !veiculo.avaliado? %>
                     <span class="badge bg-success mb-2">Pronto para Avaliação</span>
                     <%= link_to "Avaliar Veículo",
-                  fluxo_avaliar_path(veiculo),
-                  class: "btn btn-success btn-sm w-100" %>
+                            fluxo_avaliar_path(veiculo),
+                            class: "btn btn-success btn-sm w-100" %>
+                  <% else %>
+                    <span class="badge bg-light text-muted">Aguardando próxima etapa</span>
                   <% end %>
                 </div>
               </div>

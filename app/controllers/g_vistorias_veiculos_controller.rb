@@ -21,7 +21,7 @@ class GVistoriasVeiculosController < ApplicationController
     @g_vistoria_veiculo.user_responsavel = current_user
 
     if @g_vistoria_veiculo.save
-      redirect_to g_vistorias_veiculos_path, notice: t("messages.created_successfully")
+      redirect_to fluxo_avaliacao_path, notice: t("messages.created_successfully")
     else
       render :new, status: :unprocessable_entity
     end

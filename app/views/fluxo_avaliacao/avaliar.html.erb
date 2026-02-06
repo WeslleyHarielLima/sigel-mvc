@@ -73,7 +73,11 @@
     </div>
     <!-- [LIVRO III & VI - FORMULÁRIO DE AVALIAÇÃO] -->
     <div class="col-lg-12">
-      <%= form_with model: @avaliacao, url: fluxo_avaliar_path(@veiculo), method: :post, local: true, class: "evaluation-form-human" do |f| %>
+      <%= form_with model: @avaliacao,
+                    url: fluxo_avaliar_salvar_path(@veiculo),
+                    method: :post,
+                    local: true,
+                    class: "evaluation-form-human" do |f| %>
         <div class="sigel-panel-human highlight">
           <div class="panel-header-human text-white" style="background: var(--sigel-verde-escuro);">
             <iconify-icon icon="solar:calculator-bold-duotone"></iconify-icon>
