@@ -1,0 +1,164 @@
+<%= simple_form_for(@g_distrito, html: { class: "needs-validation", id: "sigelFormWizard" }) do |f| %>
+  <% if @g_distrito.errors.any? %>
+    <div class="sigel-alert sigel-alert-erro mb-4">
+      <iconify-icon icon="solar:danger-triangle-bold-duotone" class="fs-4"></iconify-icon>
+      <div>
+        <strong><%= pluralize(@g_distrito.errors.count, "erro", "erros") %> encontrado(s):</strong>
+        <ul class="mb-0 mt-2">
+          <% @g_distrito.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <div class="sigel-card mb-4">
+    <div class="sigel-card-body">
+      <div class="sigel-stepper">
+        <div class="sigel-step active" data-step="1">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+            <div class="sigel-step-number">1</div>
+          </div>
+          <div class="sigel-step-label">Etapa 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sigel-form-step active" data-step="1">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5>
+          <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+          Etapa 1: Dados do Registro
+        </h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label">
+              <strong>Descrição</strong>
+            </label>
+            <%= f.input :descricao,
+              label: false,
+              placeholder: "Descrição",
+              input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label">
+              <strong>Código IBGE</strong>
+            </label>
+            <%= f.input :codigo_ibge,
+              label: false,
+              placeholder: "Código IBGE",
+              input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label">
+              <strong>Município</strong>
+            </label>
+            <%= f.input :g_municipio_id,
+              label: false,
+              collection: GMunicipio.all,
+              value_method: :id,
+              label_method: :descricao,
+              prompt: "Selecione o município",
+              input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sigel-card">
+    <div class="sigel-card-body">
+      <div class="d-flex gap-3 justify-content-between align-items-center">
+        <div>
+          <%= link_to g_distritos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+            <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
+            <span>Cancelar</span>
+          <% end %>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display: none;">
+            <iconify-icon icon="solar:arrow-left-bold"></iconify-icon>
+            <span>Anterior</span>
+          </button>
+          <button type="button" class="btn btn-sigel-primary d-flex align-items-center gap-2" id="nextBtn">
+            <span>Próximo</span>
+            <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+          </button>
+          <%= f.submit @g_distrito.new_record? ? "Criar" : "Atualizar",
+            class: "btn btn-sigel-primary d-flex align-items-center gap-2",
+            id: "submitBtn",
+            style: "display: none;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script>
+  (function() {
+    let currentStep = 1;
+    const totalSteps = document.querySelectorAll('.sigel-form-step').length;
+
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showStep(step) {
+      document.querySelectorAll('.sigel-form-step').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+
+      const currentStepEl = document.querySelector(`.sigel-form-step[data-step="${step}"]`);
+      if (currentStepEl) {
+        currentStepEl.style.display = 'block';
+        currentStepEl.classList.add('active');
+      }
+
+      document.querySelectorAll('.sigel-step').forEach(el => {
+        const stepNum = parseInt(el.dataset.step);
+        el.classList.remove('active', 'completed');
+
+        if (stepNum < step) el.classList.add('completed');
+        if (stepNum === step) el.classList.add('active');
+      });
+
+      prevBtn.style.display = step === 1 ? 'none' : 'flex';
+
+      if (totalSteps <= 1 || step === totalSteps) {
+        nextBtn.classList.add('d-none');
+        submitBtn.classList.remove('d-none');
+        submitBtn.style.display = 'flex';
+      } else {
+        nextBtn.classList.remove('d-none');
+        submitBtn.classList.add('d-none');
+        submitBtn.style.display = 'none';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (totalSteps > 0) {
+      nextBtn.onclick = () => {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      };
+
+      prevBtn.onclick = () => {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      };
+
+      showStep(1);
+    } else {
+      if (submitBtn) submitBtn.style.display = 'flex';
+      if (nextBtn) nextBtn.style.display = 'none';
+    }
+  })();
+</script>

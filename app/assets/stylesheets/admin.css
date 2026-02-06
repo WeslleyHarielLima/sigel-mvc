@@ -1081,7 +1081,7 @@ a {
 }
 
 .sigel-action-btn-danger {
-  color: #8a2c2c;
+  color: #b3261e;
   border-color: rgba(138, 44, 44, 0.2);
 }
 
@@ -1092,4 +1092,102 @@ a {
 }
 .sigel-action-btn:hover {
   color: #000000 !important; /* verde escuro / neutro */
+}
+
+.btn-danger {
+  background-color: rgb(189, 22, 22);
+}
+.btn-danger:hover {
+  background-color: rgb(130, 9, 9);
+}
+/* Header */
+.sigel-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sigel-page-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sigel-page-icon {
+  font-size: 2.5rem;
+}
+
+.sigel-page-title-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Filtros */
+.sigel-filter-toggle {
+  border: none;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--sigel-verde-claro) 0%,
+    #f0f8f4 100%
+  );
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--sigel-verde-escuro);
+}
+
+.sigel-filter-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.sigel-filter-body {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0.5rem;
+}
+
+/* Tabela */
+.sigel-th {
+  min-width: 180px;
+}
+
+.sigel-th-actions {
+  width: 140px;
+  text-align: right;
+}
+
+.sigel-td-actions {
+  text-align: right;
+}
+
+/* Badge de contagem */
+.sigel-badge-count {
+  background: var(--sigel-dourado);
+  color: var(--sigel-verde-escuro);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+}
+
+/* Empty state */
+.sigel-empty-state {
+  padding: 3rem;
+  text-align: center;
+}
+
+.sigel-empty-icon {
+  font-size: 5rem;
+  color: var(--sigel-cinza-400);
+}
+
+.sigel-empty-title {
+  color: var(--sigel-cinza-600);
 }

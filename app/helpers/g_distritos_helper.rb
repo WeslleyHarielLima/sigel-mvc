@@ -1,0 +1,2 @@
+module GDistritosHelper
+end

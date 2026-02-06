@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :g_distritos
   resources :g_municipios
   devise_for :users
 
