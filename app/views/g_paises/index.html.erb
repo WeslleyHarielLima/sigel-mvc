@@ -2,16 +2,22 @@
 <div class="sigel-page-header mb-4">
   <div class="sigel-page-title">
     <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.5rem;"></iconify-icon>
-    <h1 style="font-size: 2.5rem; font-weight: 700; margin: 0;"><%= t("activerecord.models.g_pais.other", default: "G paises") %></h1>
+    <h1 style="font-size: 2.5rem; font-weight: 700; margin: 0;">
+      <%= t("activerecord.models.g_pais.other", default: "G países") %>
+    </h1>
   </div>
   <%= link_to new_g_pais_path, class: "btn btn-sigel-primary d-flex align-items-center gap-2" do %>
-  <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
-  <span>Novo Registro</span>
+    <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
+    <span>Novo Registro</span>
   <% end %>
 </div>
 <!-- Filtros - Colapsável -->
 <div class="mb-4">
-  <button class="btn w-100 sigel-card" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosForm" style="border: none; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--sigel-verde-claro) 0%, #f0f8f4 100%); text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--sigel-verde-escuro);">
+  <button class="btn w-100 sigel-card" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosForm"
+          style="border: none; padding: 1rem 1.5rem;
+                 background: linear-gradient(135deg, var(--sigel-verde-claro) 0%, #f0f8f4 100%);
+                 text-align: left; display: flex; align-items: center; justify-content: space-between;
+                 font-weight: 600; color: var(--sigel-verde-escuro);">
     <span style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem;">
       <iconify-icon icon="solar:filter-bold-duotone"></iconify-icon>
       Filtros de Pesquisa
@@ -22,34 +28,23 @@
     <div class="sigel-card" style="border-top: none; border-top-left-radius: 0; border-top-right-radius: 0;">
       <div class="sigel-card-body">
         <%= search_form_for @q, url: g_paises_path, method: :get do |f| %>
-        <div class="row g-3">
-          
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  
-                  <strong>Descricao</strong>
-                </label>
-                <%= f.search_field :descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  
-                  <strong>Sigla</strong>
-                </label>
-                <%= f.search_field :sigla_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-          <div class="col-12 d-flex gap-2">
-            <%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
-            <%= link_to g_paises_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
-            <iconify-icon icon="solar:restart-bold-duotone"></iconify-icon>
-            Limpar
-            <% end %>
+          <div class="row g-3">
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Descrição</strong></label>
+              <%= f.search_field :descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Sigla</strong></label>
+              <%= f.search_field :sigla_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
+            </div>
+            <div class="col-12 d-flex gap-2">
+              <%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
+              <%= link_to g_paises_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+                <iconify-icon icon="solar:restart-bold-duotone"></iconify-icon>
+                Limpar
+              <% end %>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>
@@ -68,84 +63,70 @@
   </div>
   <div class="sigel-card-body p-0">
     <% if @g_paises.any? %>
-    <div class="table-responsive">
-      <table class="table sigel-table mb-0">
-        <thead>
-          <tr>
-            <th class="text-center" style="width: 80px;">Ações</th>
-            
-              
-                <th>
-                  <%= sort_link(@q, :descricao, "Descricao") %>
-                </th>
-              
-              
-                <th>
-                  <%= sort_link(@q, :sigla, "Sigla") %>
-                </th>
-              
-          </tr>
-        </thead>
-        <tbody>
-          <% @g_paises.each do |g_pais| %>
-          <tr>
-            <td class="text-center" style="white-space: nowrap;">
-              <div class="d-flex gap-2 justify-content-center">
-                <%= link_to g_pais_path(g_pais), class: "sigel-actions-btn sigel-actions-btn-visualizar" do %>
-                <iconify-icon icon="solar:eye-bold"></iconify-icon>
-                <% end %>
-                <%= link_to edit_g_pais_path(g_pais), class: "sigel-actions-btn sigel-actions-btn-editar" do %>
-                <iconify-icon icon="solar:pen-bold"></iconify-icon>
-                <% end %>
-                <%= button_to g_pais_path(g_pais),
-                method: :delete,
-                class: "sigel-actions-btn sigel-actions-btn-excluir",
-                data: { turbo_confirm: "Tem certeza?" },
-                style: "border: none;" do %>
-                <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
-                <% end %>
-              </div>
-            </td>
-            
-              
-                <td>
-                  <%= truncate(g_pais.descricao.to_s, length: 50) %>
+      <div class="table-responsive">
+        <table class="table sigel-table mb-0 align-middle">
+          <thead>
+            <tr>
+              <th style="min-width: 240px;">
+                <%= sort_link(@q, :descricao, "Descrição") %>
+              </th>
+              <th class="text-center" style="width: 120px;">
+                <%= sort_link(@q, :sigla, "Sigla") %>
+              </th>
+              <th class="text-end" style="width: 140px;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @g_paises.each do |g_pais| %>
+              <tr class="sigel-table-row">
+                <td class="fw-semibold"><%= g_pais.descricao %></td>
+                <td class="text-center">
+                  <span class="sigel-badge-uf"><%= g_pais.sigla %></span>
                 </td>
-              
-              
-                <td>
-                  <%= truncate(g_pais.sigla.to_s, length: 50) %>
+                <td class="text-end">
+                  <div class="d-inline-flex gap-2 sigel-actions">
+                    <%= link_to g_pais_path(g_pais), class: "sigel-action-btn", title: "Visualizar" do %>
+                      <iconify-icon icon="solar:eye-bold"></iconify-icon>
+                    <% end %>
+                    <%= link_to edit_g_pais_path(g_pais), class: "sigel-action-btn", title: "Editar" do %>
+                      <iconify-icon icon="solar:pen-bold"></iconify-icon>
+                    <% end %>
+                    <button type="button"
+                            class="sigel-action-btn sigel-action-btn-danger js-open-delete-modal"
+                            data-delete-url="<%= g_pais_path(g_pais) %>">
+                      <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                    </button>
+                  </div>
                 </td>
-              
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <!-- Paginação -->
-    <div class="sigel-card-footer">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="text-muted">
-          Exibindo <strong><%= @g_paises.size %></strong> de
-          <strong><%= @g_paises.total_count rescue @g_paises.count %></strong> registros
-        </div>
-        <div>
-          <% if defined?(@pagy) && @pagy.pages > 1 %>
-          <%== pagy_bootstrap_nav(@pagy) %>
-          <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!-- Paginação -->
+      <div class="sigel-card-footer">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-muted">
+            Exibindo <strong><%= @g_paises.size %></strong> de
+            <strong><%= @g_paises.total_count rescue @g_paises.count %></strong> registros
+          </div>
+          <div>
+            <% if defined?(@pagy) && @pagy.pages > 1 %>
+              <%== pagy_bootstrap_nav(@pagy) %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
     <% else %>
-    <div class="p-5 text-center">
-      <iconify-icon icon="solar:folder-open-bold-duotone" style="font-size: 5rem; color: var(--sigel-cinza-400);"></iconify-icon>
-      <h5 class="mt-3" style="color: var(--sigel-cinza-600);">Nenhum registro encontrado</h5>
-      <p class="text-muted">Cadastre um novo registro para começar</p>
-      <%= link_to new_g_pais_path, class: "btn btn-sigel-primary mt-3" do %>
-      <iconify-icon icon="solar:add-circle-bold-duotone" class="me-2"></iconify-icon>
-      Novo Registro
-      <% end %>
-    </div>
+      <div class="p-5 text-center">
+        <iconify-icon icon="solar:folder-open-bold-duotone" style="font-size: 5rem; color: var(--sigel-cinza-400);"></iconify-icon>
+        <h5 class="mt-3" style="color: var(--sigel-cinza-600);">Nenhum registro encontrado</h5>
+        <p class="text-muted">Cadastre um novo registro para começar</p>
+        <%= link_to new_g_pais_path, class: "btn btn-sigel-primary mt-3" do %>
+          <iconify-icon icon="solar:add-circle-bold-duotone" class="me-2"></iconify-icon>
+          Novo Registro
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

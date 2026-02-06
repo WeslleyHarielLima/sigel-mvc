@@ -53,7 +53,7 @@
   </div>
   <div class="sigel-card">
     <div class="sigel-card-body">
-      <div class="d-flex gap-3 justify-content-between align-items-center">
+      <div class="d-flex gap-3 justify-content-end align-items-center">
         <div>
           <%= link_to g_paises_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
             <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
@@ -61,18 +61,7 @@
           <% end %>
         </div>
         <div class="d-flex gap-2">
-          <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display: none;">
-            <iconify-icon icon="solar:arrow-left-bold"></iconify-icon>
-            <span>Anterior</span>
-          </button>
-          <button type="button" class="btn btn-sigel-primary d-flex align-items-center gap-2" id="nextBtn">
-            <span>Próximo</span>
-            <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
-          </button>
-          <%= f.submit @g_pais.new_record? ? "Criar" : "Atualizar",
-              class: "btn btn-sigel-primary d-flex align-items-center gap-2",
-              id: "submitBtn",
-              style: "display: none;" %>
+          <%= f.submit @g_pais.new_record? ? "Criar" : "Atualizar",  class: "btn btn-sigel-primary d-flex align-items-center gap-2",  id: "submitBtn",  style: "display: none;" %>
         </div>
       </div>
     </div>

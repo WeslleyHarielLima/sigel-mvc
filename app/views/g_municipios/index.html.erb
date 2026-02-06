@@ -2,7 +2,9 @@
 <div class="sigel-page-header mb-4">
   <div class="sigel-page-title">
     <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.5rem;"></iconify-icon>
-    <h1 style="font-size: 2.5rem; font-weight: 700; margin: 0;"><%= t("activerecord.models.g_municipio.other", default: "G municipios") %></h1>
+    <h1 style="font-size: 2.5rem; font-weight: 700; margin: 0;">
+      <%= t("activerecord.models.g_municipio.other", default: "G municipios") %>
+    </h1>
   </div>
   <%= link_to new_g_municipio_path, class: "btn btn-sigel-primary d-flex align-items-center gap-2" do %>
     <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
@@ -11,7 +13,8 @@
 </div>
 <!-- Filtros - Colapsável -->
 <div class="mb-4">
-  <button class="btn w-100 sigel-card" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosForm" style="border: none; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--sigel-verde-claro) 0%, #f0f8f4 100%); text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--sigel-verde-escuro);">
+  <button class="btn w-100 sigel-card" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosForm"
+          style="border: none; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--sigel-verde-claro) 0%, #f0f8f4 100%); text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--sigel-verde-escuro);">
     <span style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem;">
       <iconify-icon icon="solar:filter-bold-duotone"></iconify-icon>
       Filtros de Pesquisa
@@ -25,21 +28,21 @@
           <div class="row g-3">
             <div class="col-lg-3 col-md-6">
               <label class="sigel-form-label">
-                <strong>Município</strong>
+                <strong>Descricao</strong>
               </label>
               <%= f.search_field :descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <label class="sigel-form-label">
-                <strong>Estado</strong>
-              </label>
-              <%= f.search_field :g_estado_descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
             </div>
             <div class="col-lg-3 col-md-6">
               <label class="sigel-form-label">
                 <strong>Codigo ibge</strong>
               </label>
               <%= f.search_field :codigo_ibge_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label">
+                <strong>Estado</strong>
+              </label>
+              <%= f.search_field :g_estado_descricao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
             </div>
             <div class="col-12 d-flex gap-2">
               <%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
@@ -54,7 +57,6 @@
     </div>
   </div>
 </div>
-<!-- Tabela de Registros -->
 <div class="sigel-card">
   <div class="sigel-card-header">
     <h5>
@@ -68,49 +70,47 @@
   <div class="sigel-card-body p-0">
     <% if @g_municipios.any? %>
       <div class="table-responsive">
-        <table class="table sigel-table mb-0">
+        <table class="table sigel-table mb-0 align-middle">
           <thead>
             <tr>
-              <th class="text-center" style="width: 80px;">Ações</th>
-              <th>
+              <th style="min-width: 180px;">
                 <%= sort_link(@q, :descricao, "Descricao") %>
               </th>
-              <th>
+              <th style="min-width: 180px;">
                 <%= sort_link(@q, :codigo_ibge, "Codigo ibge") %>
               </th>
-              <th>
-                <%= sort_link(@q, :g_estado, "G estado") %>
+              <th style="min-width: 180px;">
+                <%= sort_link(@q, :g_estado, "Estado") %>
               </th>
+              <th class="text-end" style="width: 140px;">Ações</th>
             </tr>
           </thead>
           <tbody>
             <% @g_municipios.each do |g_municipio| %>
-              <tr>
-                <td class="text-center" style="white-space: nowrap;">
-                  <div class="d-flex gap-2 justify-content-center">
-                    <%= link_to g_municipio_path(g_municipio), class: "sigel-actions-btn sigel-actions-btn-visualizar" do %>
+              <tr class="sigel-table-row">
+                <td>
+                  <%= truncate(g_municipio.descricao.to_s) %>
+                </td>
+                <td>
+                  <%= truncate(g_municipio.codigo_ibge.to_s) %>
+                </td>
+                <td>
+                  <%= truncate(g_municipio.g_estado&.descricao) %>
+                </td>
+                <td class="text-end">
+                  <div class="d-inline-flex gap-2 sigel-actions">
+                    <%= link_to g_municipio_path(g_municipio), class: "sigel-action-btn", title: "Visualizar" do %>
                       <iconify-icon icon="solar:eye-bold"></iconify-icon>
                     <% end %>
-                    <%= link_to edit_g_municipio_path(g_municipio), class: "sigel-actions-btn sigel-actions-btn-editar" do %>
+                    <%= link_to edit_g_municipio_path(g_municipio), class: "sigel-action-btn", title: "Editar" do %>
                       <iconify-icon icon="solar:pen-bold"></iconify-icon>
                     <% end %>
-                    <%= button_to g_municipio_path(g_municipio),
-                method: :delete,
-                class: "sigel-actions-btn sigel-actions-btn-excluir",
-                data: { turbo_confirm: "Tem certeza?" },
-                style: "border: none;" do %>
+                    <button type="button"
+                            class="sigel-action-btn sigel-action-btn-danger js-open-delete-modal"
+                            data-delete-url="<%= g_municipio_path(g_municipio) %>">
                       <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
-                    <% end %>
+                    </button>
                   </div>
-                </td>
-                <td>
-                  <%= truncate(g_municipio.descricao.to_s, length: 50) %>
-                </td>
-                <td>
-                  <%= truncate(g_municipio.codigo_ibge.to_s, length: 50) %>
-                </td>
-                <td>
-                  <%= truncate(g_municipio.g_estado.to_s, length: 50) %>
                 </td>
               </tr>
             <% end %>

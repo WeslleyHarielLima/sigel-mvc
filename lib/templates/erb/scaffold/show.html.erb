@@ -1,27 +1,49 @@
-<div class="container">
-  <%%= render "shared/notice" %>
-  <div class="card border-0 shadow shadow-sm">
-    <div class="card-header border-0 d-flex justify-content-between">
-      <span class="fs-4">Visualizar <%= singular_table_name.titleize %></span>
+<!-- Page Header -->
+<div class="sigel-page-header mb-4">
+  <div class="sigel-page-title">
+    <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.2rem;"></iconify-icon>
+    <h1>
+      Detalhes de
+      <%%= t("activerecord.models.<%= singular_table_name %>.one", default: "<%= singular_table_name.humanize %>") %>
+    </h1>
+  </div>
+</div>
+<div class="sigel-card">
+  <div class="sigel-card-header">
+    <h5>
+      <iconify-icon icon="solar:clipboard-text-bold-duotone" class="me-2"></iconify-icon>
+      Informações do Registro
+    </h5>
+  </div>
+  <div class="sigel-card-body">
+    <div class="row g-4">
+      <%- attributes.each do |attribute| -%>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label"><%= attribute.human_name %></span>
+            <div class="sigel-detail-value">
+              <%%= @<%= singular_table_name %>.<%= attribute.name %>.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+      <%- end -%>
     </div>
-    <div class="card-body">
-      <div id="<%%= dom_id @<%= singular_table_name %> %>">
-        <%- attributes.each do |attribute| -%>
-          <p>
-            <strong><%= attribute.name.titleize %>:</strong>
-            <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-          </p>
-        <%- end -%>
-      </div>
+  </div>
+  <div class="sigel-card-footer d-flex justify-content-between">
+    <div>
+      <%%= link_to <%= plural_table_name %>_path, class: "btn btn-sigel-outline" do %>
+      Voltar para lista
+      <%% end %>
     </div>
-    <div class="card-footer border-0 d-flex justify-content-between">
-      <div>
-        <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-primary" do %>
-        <i class="bi bi-pencil-square"></i> Editar
-        <%% end %>
-        <%%= link_to "Voltar", <%= plural_table_name %>_path, class: "btn btn-secondary" %>
-      </div>
-      <%%= button_to "Deletar", @<%= singular_table_name %>, method: :delete, class: "btn btn-outline-danger border-0" %>
+    <div class="d-flex gap-2">
+      <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-sigel-primary" do %>
+      Editar
+      <%% end %>
+      <button type="button"
+              class="btn btn-sigel-danger js-open-delete-modal"
+              data-delete-url="<%%= <%= singular_table_name %>_path(@<%= singular_table_name %>) %>">
+        Excluir
+      </button>
     </div>
   </div>
 </div>
