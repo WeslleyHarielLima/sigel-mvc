@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :g_tipos_combustiveis
   resources :i_status_inserviveis
   resources :i_status_serviveis
   

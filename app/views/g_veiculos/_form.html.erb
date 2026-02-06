@@ -110,6 +110,10 @@
             <%= f.input :motor, label: false, placeholder: "Ex: 1.0 Flex", input_html: { class: "form-control sigel-form-control" } %>
           </div>
           <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Tipo de Combustível</strong></label>
+            <%= f.input :g_tipo_combustivel_id, collection: GTipoCombustivel.all, label_method: :descricao, value_method: :id, label: false, prompt: "Selecione o tipo de combustível", input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Tombamento</strong></label>
             <%= f.input :tombamento, label: false, placeholder: "Número de tombamento patrimonial", input_html: { class: "form-control sigel-form-control" } %>
           </div>

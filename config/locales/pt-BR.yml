@@ -73,6 +73,9 @@ pt-BR:
       g_veiculo:
         one: "Veículo"
         other: "Veículos"
+      g_tipo_combustivel:
+        one: "Tipo de Combustível"
+        other: "Tipos de Combustíveis"
       i_status_servivel:
         one: "Status Servível"
         other: "Status Servíveis"
@@ -86,6 +89,11 @@ pt-BR:
       a_status:
         descricao: "Descrição"
       a_tipo_unidade:
+        descricao: "Descrição"
+      a_unidade:
+        descricao: "Descrição"
+        a_tipo_unidade_id: "Tipo de Unidade"
+      a_cargo:
         descricao: "Descrição"
       a_tipo_usuario:
         descricao: "Descrição"
@@ -133,10 +141,7 @@ pt-BR:
         g_status_veiculo_id: "Status do Veículo"
         g_status_leilao_veiculo_id: "Status do Leilão do Veículo"
         g_centro_custo_id: "Centro de Custo"
-      a_unidade:
-        descricao: "Descrição"
-        a_tipo_unidade_id: "Tipo de Unidade"
-      a_cargo:
+      g_tipo_combustivel:
         descricao: "Descrição"
       i_status_servivel:
         descricao: "Descrição"
