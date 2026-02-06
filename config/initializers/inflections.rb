@@ -17,4 +17,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "g_status_leilao_veiculo",           "g_status_leiloes_veiculos"
   inflect.irregular "g_tipo_veiculo",                    "g_tipos_veiculos"
   inflect.irregular "g_veiculo",                         "g_veiculos"
+  inflect.irregular "g_marca_veiculo",                   "g_marcas_veiculos"
 end

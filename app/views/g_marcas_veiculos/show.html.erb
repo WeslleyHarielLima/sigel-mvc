@@ -1,0 +1,38 @@
+<!-- Page Header -->
+<div class="sigel-page-header mb-4">
+  <div class="sigel-page-title">
+    <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.2rem;"></iconify-icon>
+    <h1>
+      Detalhes de
+      <%= t("activerecord.models.g_marca_veiculo.one", default: "G marca veiculo") %>
+    </h1>
+  </div>
+</div>
+<div class="sigel-card">
+  <div class="sigel-card-header">
+    <h5>
+      <iconify-icon icon="solar:clipboard-text-bold-duotone" class="me-2"></iconify-icon>
+      Informações do Registro
+    </h5>
+  </div>
+  <div class="sigel-card-body">
+    <div class="row g-4">
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Descricao</span>
+            <div class="sigel-detail-value">
+              <%= @g_marca_veiculo.descricao.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="sigel-card-footer d-flex justify-content-end">
+    <div>
+      <%= link_to g_marcas_veiculos_path, class: "btn btn-sigel-outline" do %>
+      Voltar para lista
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

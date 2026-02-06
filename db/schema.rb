@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_06_071106) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_06_073200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,15 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_071106) do
     t.index ["uf"], name: "index_g_estados_on_uf", unique: true
   end
 
+  create_table "g_marcas_veiculos", force: :cascade do |t|
+    t.string "descricao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "g_municipios", force: :cascade do |t|
     t.string "descricao"
     t.integer "codigo_ibge"
@@ -142,7 +151,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_071106) do
     t.string "placa"
     t.string "chassi"
     t.string "renavam"
-    t.string "marca"
     t.string "modelo"
     t.integer "ano"
     t.string "cor"
@@ -154,7 +162,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_071106) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "g_marca_veiculo_id"
     t.index ["deleted_at"], name: "index_g_veiculos_on_deleted_at"
+    t.index ["g_marca_veiculo_id"], name: "index_g_veiculos_on_g_marca_veiculo_id"
     t.index ["g_status_veiculo_id"], name: "index_g_veiculos_on_g_status_veiculo_id"
     t.index ["placa"], name: "index_g_veiculos_on_placa"
     t.index ["renavam"], name: "index_g_veiculos_on_renavam"
@@ -201,5 +211,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_071106) do
   add_foreign_key "g_distritos", "g_municipios"
   add_foreign_key "g_estados", "g_paises"
   add_foreign_key "g_municipios", "g_estados"
+  add_foreign_key "g_veiculos", "g_marcas_veiculos"
   add_foreign_key "g_veiculos", "g_status_veiculos"
 end

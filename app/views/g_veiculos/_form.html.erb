@@ -80,8 +80,7 @@
         <div class="row">
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Marca</strong></label>
-            <%= f.input :marca, label: false, placeholder: "Ex: Fiat, Ford, Toyota", input_html: { class: "form-control sigel-form-control" } %>
-          </div>
+            <%= f.input :g_marca_veiculo_id, collection: GMarcaVeiculo.all, label_method: :descricao, value_method: :id, label: false, prompt: "Selecione a marca do veículo", input_html: { class: "form-control sigel-form-control" } %>          </div>
           <div class="col-md-6 mb-4">
             <label class="sigel-form-label"><strong>Modelo</strong></label>
             <%= f.input :modelo, label: false, placeholder: "Ex: Uno, Gol, Corolla", input_html: { class: "form-control sigel-form-control" } %>
