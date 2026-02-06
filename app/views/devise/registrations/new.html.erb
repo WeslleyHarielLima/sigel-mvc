@@ -1,61 +1,84 @@
-<div class="card mb-0">
-  <div class="card-body">
-    <a href="/" class="text-nowrap logo-img text-center d-block py-3 w-100">
-      <img src="/images/logos/logo-light.svg" width="180" alt="SIGEL">
-    </a>
-    <p class="text-center">Crie sua conta no SIGEL</p>
-
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="sigel-auth-container">
+  <div class="sigel-auth-card sigel-auth-card--register">
+    <div class="sigel-auth-header">
+      <img src="/layout/assets/img/Sigel_Banner3.png" class="sigel-auth-logo" alt="SIGEL">
+      <p class="sigel-auth-subtitle">Crie sua conta no SIGEL</p>
+    </div>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "sigel-auth-form" }) do |f| %>
       <%= f.error_notification message: "Não foi possível salvar. Verifique os erros abaixo:" %>
-
-      <div class="mb-3">
-        <%= f.input :nome,
-                    required: true,
-                    autofocus: true,
-                    label: "Nome Completo",
-                    placeholder: "Seu nome completo",
-                    input_html: { class: "form-control" } %>
+      <!-- Dados pessoais -->
+      <h6 class="sigel-form-section-title">Dados pessoais</h6>
+      <div class="sigel-form-grid">
+        <div class="sigel-form-group">
+          <%= f.input :nome,
+            label: "Nome completo *",
+            required: true,
+            input_html: { class: "sigel-input" } %>
+        </div>
+        <div class="sigel-form-group">
+          <%= f.input :cpf,
+            label: "CPF *",
+            required: true,
+            placeholder: "Somente números",
+            hint: "Sem pontos ou traços",
+            input_html: { class: "sigel-input", maxlength: 11 } %>
+        </div>
       </div>
-
-      <div class="mb-3">
-        <%= f.input :cpf,
-                    required: true,
-                    label: "CPF",
-                    placeholder: "Apenas números (11 dígitos)",
-                    hint: "Apenas números, sem pontos ou traços",
-                    input_html: { class: "form-control", maxlength: 11 } %>
-      </div>
-
-      <div class="mb-3">
+      <div class="sigel-form-group">
         <%= f.input :email,
-                    required: true,
-                    label: "E-mail",
-                    placeholder: "seu@email.com",
-                    input_html: { autocomplete: "email", class: "form-control" } %>
+          label: "E-mail *",
+          required: true,
+          placeholder: "seu@email.com",
+          input_html: { class: "sigel-input", autocomplete: "email" } %>
       </div>
-
-      <div class="mb-3">
-        <%= f.input :password,
-                    required: true,
-                    label: "Senha",
-                    placeholder: "Mínimo 6 caracteres",
-                    hint: ("Mínimo #{@minimum_password_length} caracteres" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password", class: "form-control" } %>
+      <!-- Vínculo institucional -->
+      <h6 class="sigel-form-section-title">Vínculo institucional</h6>
+      <div class="sigel-form-grid">
+        <div class="sigel-form-group">
+          <%= f.input :a_unidade_id,
+            label: "Unidade",
+            collection: AUnidade.all.map { |u| [u.nome_fantasia, u.id] },
+            prompt: "Selecione a unidade",
+            input_html: { class: "sigel-input" } %>
+        </div>
+        <div class="sigel-form-group">
+          <%= f.input :a_tipo_usuario_id,
+            label: "Tipo de usuário",
+            collection: ATipoUsuario.all.map { |t| [t.descricao, t.id] },
+            prompt: "Selecione o tipo",
+            input_html: { class: "sigel-input" } %>
+        </div>
       </div>
-
-      <div class="mb-4">
-        <%= f.input :password_confirmation,
-                    required: true,
-                    label: "Confirmar Senha",
-                    placeholder: "Repita a senha",
-                    input_html: { autocomplete: "new-password", class: "form-control" } %>
+      <div class="sigel-form-group">
+        <%= f.input :a_status_id,
+          label: "Status",
+          collection: AStatus.all.map { |s| [s.nome, s.id] },
+          prompt: "Selecione o status",
+          input_html: { class: "sigel-input" } %>
       </div>
-
-      <%= f.button :submit, "Criar Conta", class: "btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" %>
-
-      <div class="d-flex align-items-center justify-content-center">
-        <p class="fs-4 mb-0 fw-bold">Já tem uma conta?</p>
-        <%= link_to "Entrar", new_session_path(resource_name), class: "text-primary fw-bold ms-2" %>
+      <!-- Segurança -->
+      <h6 class="sigel-form-section-title">Segurança</h6>
+      <div class="sigel-form-grid">
+        <div class="sigel-form-group">
+          <%= f.input :password,
+            label: "Senha *",
+            required: true,
+            placeholder: "Mínimo 6 caracteres",
+            hint: ("Mínimo #{@minimum_password_length} caracteres" if @minimum_password_length),
+            input_html: { class: "sigel-input", autocomplete: "new-password" } %>
+        </div>
+        <div class="sigel-form-group">
+          <%= f.input :password_confirmation,
+            label: "Confirmar senha *",
+            required: true,
+            placeholder: "Repita a senha",
+            input_html: { class: "sigel-input", autocomplete: "new-password" } %>
+        </div>
+      </div>
+      <%= f.button :submit, "Criar conta", class: "sigel-btn-primary" %>
+      <div class="sigel-auth-footer">
+        <span>Já tem uma conta?</span>
+        <%= link_to "Entrar", new_session_path(resource_name), class: "sigel-link strong" %>
       </div>
     <% end %>
   </div>

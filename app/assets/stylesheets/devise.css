@@ -1,0 +1,242 @@
+.sigel-auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at top, rgba(21, 96, 68, 0.15), transparent 60%),
+    linear-gradient(135deg, #0f2f21 0%, #0a1f16 100%);
+}
+
+.sigel-auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2.5rem 2.5rem 2.8rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.sigel-auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sigel-auth-logo {
+  width: 90px;
+  margin-bottom: 1rem;
+}
+
+.sigel-auth-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #0f2f21;
+  margin-bottom: 0.2rem;
+}
+
+.sigel-auth-subtitle {
+  font-size: 0.95rem;
+  color: #5f6f68;
+}
+
+.sigel-form-group {
+  margin-bottom: 1.2rem;
+}
+
+.sigel-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #d7e3dd;
+  background: #f9fbfa;
+  transition: all 0.2s ease;
+}
+
+.sigel-input:focus {
+  border-color: #1f7a5c;
+  box-shadow: 0 0 0 3px rgba(31, 122, 92, 0.15);
+  background: #ffffff;
+}
+
+.sigel-auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0 1.5rem;
+}
+
+.sigel-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sigel-checkbox-input {
+  accent-color: #1f7a5c;
+}
+
+.sigel-checkbox-label {
+  font-size: 0.9rem;
+  color: #445b53;
+}
+
+.sigel-link {
+  color: #1f7a5c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sigel-link:hover {
+  text-decoration: underline;
+}
+
+.sigel-btn-primary {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #1f7a5c, #145c44);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.sigel-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(31, 122, 92, 0.35);
+}
+
+.sigel-auth-footer {
+  margin-top: 1.6rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #556e66;
+}
+
+.sigel-auth-footer .strong {
+  font-weight: 700;
+}
+.sigel-auth-logo {
+  width: 140px; /* antes estava ~90px */
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.sigel-auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at top, rgba(21, 96, 68, 0.15), transparent 60%),
+    linear-gradient(135deg, #0f2f21 0%, #0a1f16 100%);
+}
+
+.sigel-auth-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem 2rem 2.2rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.sigel-auth-logo {
+  width: clamp(120px, 20vw, 180px);
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.sigel-auth-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.sigel-auth-subtitle {
+  font-size: 0.95rem;
+  color: #5f6f68;
+}
+
+.sigel-form-section-title {
+  margin: 1.2rem 0 0.6rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1f7a5c;
+  font-weight: 700;
+}
+
+.sigel-form-group {
+  margin-bottom: 0.75rem;
+}
+
+.sigel-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+@media (max-width: 576px) {
+  .sigel-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sigel-input,
+.sigel-auth-card select {
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #d7e3dd;
+  background: #f9fbfa;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.sigel-input:focus,
+.sigel-auth-card select:focus {
+  border-color: #1f7a5c;
+  box-shadow: 0 0 0 3px rgba(31, 122, 92, 0.15);
+  background: #ffffff;
+}
+
+.sigel-btn-primary {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #1f7a5c, #145c44);
+  color: #ffffff;
+  font-weight: 700;
+  margin-top: 1rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.sigel-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(31, 122, 92, 0.35);
+}
+
+.sigel-auth-footer {
+  margin-top: 1.2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #556e66;
+}
+
+.sigel-link {
+  color: #1f7a5c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sigel-link:hover {
+  text-decoration: underline;
+}

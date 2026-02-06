@@ -4,11 +4,14 @@
     <title>NextFrotas360</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/layout/assets/img/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/layout/assets/img/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/layout/assets/img/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/layout/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/layout/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/layout/assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/layout/assets/img/favicon.ico">
     <link rel="manifest" href="/layout/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/layout/assets/img/judge.png" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#0d6efd">
+    <meta name="theme-color" content="#0d6efd">
     <!-- Metadados Rails -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -22,7 +25,7 @@
     <%= stylesheet_link_tag "/layout/assets/css/icons/tabler-icons/tabler-icons.css",     "data-turbo-track": "reload" %>
     <!-- CSS do Rails -->
     <%= stylesheet_link_tag "application",                                                "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "admin",                                                      "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "devise",                                                      "data-turbo-track": "reload" %>
     <!-- JS base -->
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                        "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/vendor/visualization/echarts/echarts.min.js", "data-turbo-track": "reload" %>
@@ -31,5 +34,6 @@
   </head>
   <body>
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>

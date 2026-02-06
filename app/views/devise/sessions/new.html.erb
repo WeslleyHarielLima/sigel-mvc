@@ -1,47 +1,28 @@
-<div class="card mb-0">
-  <div class="card-body">
-    <a href="/" class="text-nowrap logo-img text-center d-block py-3 w-100">
-      <img src="/images/logos/logo-light.svg" width="180" alt="SIGEL">
-    </a>
-    <p class="text-center">Sistema Integrado de Gestão de Leilões</p>
-
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="mb-3">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    label: "E-mail",
-                    placeholder: "seu@email.com",
-                    input_html: { autocomplete: "email", class: "form-control" } %>
+<div class="sigel-auth-container">
+  <div class="sigel-auth-card">
+    <div class="sigel-auth-header">
+      <img src="/layout/assets/img/Sigel_Banner3.png" class="sigel-auth-logo" alt="SIGEL">
+      <p class="sigel-auth-subtitle">Sistema Integrado de Gestão de Leilões</p>
+    </div>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "sigel-auth-form" }) do |f| %>
+      <div class="sigel-form-group">
+        <%= f.input :email, label: "E-mail", placeholder: "seu@email.com", required: false, input_html: { class: "sigel-input", autocomplete: "email" } %>
       </div>
-      <div class="mb-4">
-        <%= f.input :password,
-                    required: false,
-                    label: "Senha",
-                    placeholder: "Sua senha",
-                    input_html: { autocomplete: "current-password", class: "form-control" } %>
+      <div class="sigel-form-group">
+        <%= f.input :password, label: "Senha", placeholder: "Sua senha", required: false, input_html: { class: "sigel-input", autocomplete: "current-password" } %>
       </div>
-      <div class="d-flex align-items-center justify-content-between mb-4">
+      <div class="sigel-auth-row">
         <% if devise_mapping.rememberable? %>
-          <div class="form-check">
-            <%= f.input :remember_me,
-                        as: :boolean,
-                        label: "Lembrar-me",
-                        wrapper: false,
-                        input_html: { class: "form-check-input primary" },
-                        label_html: { class: "form-check-label text-dark" } %>
+          <div class="sigel-checkbox">
+            <%= f.check_box :remember_me, class: "sigel-checkbox-input" %>
+            <%= f.label :remember_me, "Lembrar-me", class: "sigel-checkbox-label" %>
           </div>
         <% end %>
-        <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
-          <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "text-primary fw-bold" %>
-        <% end %>
       </div>
-
-      <%= f.button :submit, "Entrar", class: "btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" %>
-
-      <div class="d-flex align-items-center justify-content-center">
-        <p class="fs-4 mb-0 fw-bold">Ainda não tem conta?</p>
-        <%= link_to "Criar conta", new_registration_path(resource_name), class: "text-primary fw-bold ms-2" %>
+      <%= f.button :submit, "Entrar", class: "sigel-btn-primary" %>
+      <div class="sigel-auth-footer">
+        <span>Ainda não tem conta?</span>
+        <%= link_to "Criar conta", new_registration_path(resource_name), class: "sigel-link strong" %>
       </div>
     <% end %>
   </div>
