@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  g_veiculo: one
+  valor_mercado: 9.99
+  valor_referencia_fipe: 9.99
+  percentual_depreciacao: 9.99
+  valor_depreciado: 9.99
+  valor_inicial_lance: 9.99
+  pontuacao_checklist: 9.99
+  user_id_avaliador: 
+  avaliado_em: 2026-02-06 05:01:43
+  created_by: MyString
+  updated_by: MyString
+  deleted_at: 2026-02-06 05:01:43
+
+two:
+  g_veiculo: two
+  valor_mercado: 9.99
+  valor_referencia_fipe: 9.99
+  percentual_depreciacao: 9.99
+  valor_depreciado: 9.99
+  valor_inicial_lance: 9.99
+  pontuacao_checklist: 9.99
+  user_id_avaliador: 
+  avaliado_em: 2026-02-06 05:01:43
+  created_by: MyString
+  updated_by: MyString
+  deleted_at: 2026-02-06 05:01:43
