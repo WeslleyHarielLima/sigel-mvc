@@ -1,19 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :g_checklists_veiculos
-  resources :g_estados_conservacao_veiculos
-  resources :g_tipos_itens_checklists
-  resources :g_vistorias_veiculos
-  resources :g_tipos_combustiveis
-  resources :i_status_inserviveis
-  resources :i_status_serviveis
-  
   devise_for :users
-  
   root "home#index"
   get  "home/index"
-  
+
   # Recursos principais
   resources :a_unidades
   resources :a_orgaos
@@ -28,6 +19,13 @@ Rails.application.routes.draw do
   resources :g_marcas_veiculos
   resources :g_veiculos
   resources :g_tipos_veiculos
-  
+  resources :g_checklists_veiculos
+  resources :g_estados_conservacao_veiculos
+  resources :g_tipos_itens_checklists
+  resources :g_vistorias_veiculos
+  resources :g_tipos_combustiveis
+  resources :i_status_inserviveis
+  resources :i_status_serviveis
+
   get "up" => "rails/health#show", as: :rails_health_check
 end

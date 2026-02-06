@@ -13,163 +13,178 @@ pt-BR:
 
   activerecord:
     models:
+      a_orgao:
+        one: "Órgão"
+        other: "Órgãos"
       a_status:
         one: "Status"
         other: "Status"
-      a_tipo_unidade:
-        one: "Tipo de Unidade"
-        other: "Tipos de Unidade"
       a_tipo_usuario:
         one: "Tipo de Usuário"
         other: "Tipos de Usuários"
-      a_usuario_historico_cargo_unidade:
-        one: "Histórico de Cargo da Unidade do Usuário"
-        other: "Históricos de Cargos das Unidades dos Usuários"
       a_unidade:
         one: "Unidade"
         other: "Unidades"
-      a_cargo:
-        one: "Cargo"
-        other: "Cargos"
-      a_papel:
-        one: "Papel"
-        other: "Papéis"
-      a_permissao:
-        one: "Permissão do Papel"
-        other: "Permissões dos Papéis"
-      a_papel_permissao:
-        one: "Papel Permissão"
-        other: "Papéis Permissões"
-      a_usuario_papel:
-        one: "Usuário Papel"
-        other: "Usuários Papéis"
-      g_centro_custo:
-        one: "Centro de Custo"
-        other: "Centros de Custos"
-      g_pais:
-        one: "País"
-        other: "Países"
-      g_estado:
-        one: "Estado"
-        other: "Estados"
-      g_municipio:
-        one: "Município"
-        other: "Municípios"
-      g_bairro:
-        one: "Bairro"
-        other: "Bairros"
+      g_avaliacao_veiculo:
+        one: "Avaliação de Veículo"
+        other: "Avaliações de Veículos"
+      g_checklist_veiculo:
+        one: "Checklist de Veículo"
+        other: "Checklists de Veículos"
       g_distrito:
         one: "Distrito"
         other: "Distritos"
-      g_status_veiculo:
-        one: "Status do Veículo"
-        other: "Status dos Veículos"
+      g_estado:
+        one: "Estado"
+        other: "Estados"
+      g_estado_conservacao_veiculo:
+        one: "Estado de Conservação do Veículo"
+        other: "Estados de Conservação dos Veículos"
+      g_marca_veiculo:
+        one: "Marca de Veículo"
+        other: "Marcas de Veículos"
+      g_municipio:
+        one: "Município"
+        other: "Municípios"
+      g_pais:
+        one: "País"
+        other: "Países"
       g_status_leilao_veiculo:
         one: "Status do Leilão do Veículo"
         other: "Status dos Leilões dos Veículos"
+      g_status_veiculo:
+        one: "Status do Veículo"
+        other: "Status dos Veículos"
+      g_tipo_combustivel:
+        one: "Tipo de Combustível"
+        other: "Tipos de Combustíveis"
+      g_tipo_item_checklist:
+        one: "Tipo de Item do Checklist"
+        other: "Tipos de Itens do Checklist"
       g_tipo_veiculo:
         one: "Tipo de Veículo"
         other: "Tipos de Veículos"
       g_veiculo:
         one: "Veículo"
         other: "Veículos"
-      g_tipo_combustivel:
-        one: "Tipo de Combustível"
-        other: "Tipos de Combustíveis"
-      i_status_servivel:
-        one: "Status Servível"
-        other: "Status Servíveis"
+      g_vistoria_veiculo:
+        one: "Vistoria de Veículo"
+        other: "Vistorias de Veículos"
+
       i_status_inservivel:
         one: "Status Inservível"
         other: "Status Inservíveis"
+      i_status_servivel:
+        one: "Status Servível"
+        other: "Status Servíveis"
       user:
         one: "Usuário"
         other: "Usuários"
     attributes:
+      a_orgao:
+        descricao: "Descrição"
       a_status:
-        descricao: "Descrição"
-      a_tipo_unidade:
-        descricao: "Descrição"
-      a_unidade:
-        descricao: "Descrição"
-        a_tipo_unidade_id: "Tipo de Unidade"
-      a_cargo:
         descricao: "Descrição"
       a_tipo_usuario:
         descricao: "Descrição"
-      g_status:
+      a_unidade:
+        nome_fantasia: "Nome Fantasia"
+        a_orgao_id: "Órgão"
+        cnpj: "CNPJ"
+        endereco: "Endereço"
+        telefone: "Telefone"
+        a_status_id: "Status"
+        codigo_interno: "Código Interno"
+        g_municipio_id: "Município"
+      g_avaliacao_veiculo:
+        g_veiculo_id: "Veículo"
+        valor_mercado: "Valor de Mercado"
+        valor_referencia_fipe: "Valor de Referência FIPE"
+        percentual_depreciacao: "Percentual de Depreciação"
+        valor_depreciado: "Valor Depreciado"
+        valor_inicial_lance: "Valor Inicial do Lance"
+        pontuacao_checklist: "Pontuação do Checklist"
+        user_id_avaliador: "Avaliador"
+        avaliado_em: "Avaliado em"
+
+      g_checklist_veiculo:
+        g_vistoria_veiculo_id: "Vistoria"
+        g_tipo_item_checklist_id: "Tipo de Item do Checklist"
+        g_estado_conservacao_veiculo_id: "Estado de Conservação"
+        resultado: "Resultado"
+        observacao: "Observação"
+      g_distrito:
         descricao: "Descrição"
-      g_tipo_veiculo:
+        codigo_ibge: "Código IBGE"
+        g_municipio_id: "Município"
+      g_estado:
         descricao: "Descrição"
-      g_tipo_centro_custo:
+        uf: "UF"
+        g_pais_id: "País"
+      g_estado_conservacao_veiculo:
         descricao: "Descrição"
+      g_marca_veiculo:
+        descricao: "Descrição"
+      g_municipio:
+        descricao: "Descrição"
+        codigo_ibge: "Código IBGE"
+        g_estado_id: "Estado"
       g_pais:
         descricao: "Descrição"
         sigla: "Sigla"
-      g_estado:
-        descricao: "Descrição"
-        uf: "Uf"
-        g_pais_id: "País"
-      g_municipio:
-        codigo_ibge: "Código Ibge"
-        descricao: "Descrição"
-        g_estado_id: "Estado"
-      g_bairro:
-        descricao: "Descrição"
-        g_municipio_id: "Município"
-      g_distrito:
-        descricao: "Descrição"
-        codigo_ibge: "Código Ibge"
-        g_municipio_id: "Município"
-      g_localidade:
-        descricao: "Descrição"
-        cep: "Cep"
-        g_distrito_id: "Distrito"
-      g_status_veiculo:
-        descricao: "Descrição"
       g_status_leilao_veiculo:
         descricao: "Descrição"
-      g_veiculo:
-        placa: "Placa"
-        renavam: "Renavam"
-        chassi: "Chassi"
-        ano_fabricacao: "Ano de Fabricação"
-        ano_modelo: "Ano do Modelo"
-        cor: "Cor"
-        kilometragem: "Quilometragem"
-        g_tipo_veiculo_id: "Tipo de Veículo"
-        g_status_veiculo_id: "Status do Veículo"
-        g_status_leilao_veiculo_id: "Status do Leilão do Veículo"
-        g_centro_custo_id: "Centro de Custo"
+      g_status_veiculo:
+        descricao: "Descrição"
       g_tipo_combustivel:
+        descricao: "Descrição"
+      g_tipo_item_checklist:
+        descricao: "Descrição"
+        criterio_objetivo: "Critério Objetivo"
+        peso: "Peso"
+      g_tipo_veiculo:
+        descricao: "Descrição"
+      g_veiculo:
+        numero_interno: "Número Interno"
+        placa: "Placa"
+        chassi: "Chassi"
+        renavam: "Renavam"
+        modelo: "Modelo"
+        ano: "Ano"
+        cor: "Cor"
+        motor: "Motor"
+        tombamento: "Tombamento"
+        g_status_veiculo_id: "Status do Veículo"
+        g_marca_veiculo_id: "Marca do Veículo"
+        g_tipo_combustivel_id: "Tipo de Combustível"
+        situacao_administrativa: "Situação Administrativa"
+        localizacao_fisica: "Localização Física"
+      g_vistoria_veiculo:
+        g_veiculo_id: "Veículo"
+        user_id_responsavel: "Responsável"
+        data_vistoria: "Data da Vistoria"
+        observacoes: "Observações"
+      i_status_inservivel:
         descricao: "Descrição"
       i_status_servivel:
         descricao: "Descrição"
-        i_classificacao: "Classificação"
-        created_by: "Criador"
-        updated_by: "Último Editor"
-        deleted_at: "Data de Exclusão"
-        created_at: "Data de Criação"
-        updated_at: "Última Atualização"
-      i_status_inservivel:
-        descricao: "Descrição"
-        i_classificacao: "Classificação"
-        created_by: "Criador"
-        updated_by: "Último Editor"
-        deleted_at: "Data de Exclusão"
-        created_at: "Data de Criação"
-        updated_at: "Última Atualização"
-
       user:
         nome: "Nome"
-        email: "Email"
+        email: "E-mail"
         password: "Senha"
         password_confirmation: "Confirmação de Senha"
+        cpf: "CPF"
+        telefone: "Telefone"
+        role: "Perfil"
+        banco: "Banco"
+        agencia: "Agência"
+        conta: "Conta"
+        chave_pix: "Chave Pix"
+        a_cargo_id: "Cargo"
+        a_unidade_id: "Unidade"
         a_tipo_usuario_id: "Tipo de Usuário"
         a_status_id: "Status"
-        a_unidade_id: "Unidade"
-        a_cargo_id: "Cargo"
-        f_empresa_fornecedora_id: "Empresa Fornecedora"
+
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"
