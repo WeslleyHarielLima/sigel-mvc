@@ -204,8 +204,8 @@
           Veículos Cadastrados Recentemente
         </h5>
         <!-- Verifica se rota existe antes de criar link -->
-        <% if defined?(g_veiculos_path) %>
-          <%= link_to g_veiculos_path, class: "btn btn-sm btn-sigel-secondary" do %>
+        <% if defined?(root_path) %>
+          <%= link_to root_path, class: "btn btn-sm btn-sigel-secondary" do %>
             Ver todos
             <iconify-icon icon="solar:arrow-right-bold" class="ms-1"></iconify-icon>
           <% end %>

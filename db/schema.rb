@@ -89,27 +89,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_04_084626) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "g_veiculos", force: :cascade do |t|
-    t.string "numero_interno"
-    t.string "placa"
-    t.string "chassi"
-    t.string "renavam"
-    t.string "marca"
-    t.string "modelo"
-    t.integer "ano"
-    t.string "cor"
-    t.string "motor"
-    t.string "tombamento"
-    t.boolean "apto", default: false
-    t.string "status", default: "pendente"
-    t.datetime "discarded_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_g_veiculos_on_discarded_at"
-    t.index ["placa"], name: "index_g_veiculos_on_placa"
-    t.index ["status"], name: "index_g_veiculos_on_status"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
