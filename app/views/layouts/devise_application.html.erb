@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <title>NextFrotas360</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/layout/assets/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/layout/assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/layout/assets/img/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/layout/assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="/layout/assets/img/site.webmanifest">
+    <!-- Metadados Rails -->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- CSS do template -->
+    <%= stylesheet_link_tag "/layout/assets/css/animate.min.css",                         "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/styles.css",                              "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/icons/tabler-icons/tabler-icons.css",     "data-turbo-track": "reload" %>
+    <!-- CSS do Rails -->
+    <%= stylesheet_link_tag "application",                                                "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admin",                                                      "data-turbo-track": "reload" %>
+    <!-- JS base -->
+    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                        "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/vendor/visualization/echarts/echarts.min.js", "data-turbo-track": "reload" %>
+    <!-- JS (Importmap / Rails 7) -->
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
