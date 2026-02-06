@@ -4,7 +4,7 @@ class CreateGChecklistsVeiculos < ActiveRecord::Migration[7.2]
   def up
     create_table :g_checklists_veiculos do |t|
       t.references :g_vistoria_veiculo,              null: false, foreign_key: true
-      t.references :g_tipo_item_checklist_veiculo,   null: false, foreign_key: true
+      t.references :g_tipo_item_checklist,   null: false, foreign_key: true
       t.references :g_estado_conservacao_veiculo,    null: false, foreign_key: true
       t.string :resultado
       t.text :observacao

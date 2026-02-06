@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_06_085727) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_06_090143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,43 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_085727) do
     t.index ["a_orgao_id"], name: "index_a_unidades_on_a_orgao_id"
     t.index ["a_status_id"], name: "index_a_unidades_on_a_status_id"
     t.index ["g_municipio_id"], name: "index_a_unidades_on_g_municipio_id"
+  end
+
+  create_table "g_avaliacoes_veiculos", force: :cascade do |t|
+    t.bigint "g_veiculo_id", null: false
+    t.decimal "valor_mercado", precision: 17, scale: 2
+    t.decimal "valor_referencia_fipe", precision: 17, scale: 2
+    t.decimal "percentual_depreciacao", precision: 5, scale: 2
+    t.decimal "valor_depreciado", precision: 17, scale: 2
+    t.decimal "valor_inicial_lance", precision: 17, scale: 2
+    t.decimal "pontuacao_checklist", precision: 5, scale: 2
+    t.bigint "user_id_avaliador", null: false
+    t.datetime "avaliado_em"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_g_avaliacoes_veiculos_on_deleted_at"
+    t.index ["g_veiculo_id"], name: "index_g_avaliacoes_veiculos_on_g_veiculo_id"
+    t.index ["user_id_avaliador"], name: "index_g_avaliacoes_veiculos_on_user_id_avaliador"
+  end
+
+  create_table "g_checklists_veiculos", force: :cascade do |t|
+    t.bigint "g_vistoria_veiculo_id", null: false
+    t.bigint "g_tipo_item_checklist_id", null: false
+    t.bigint "g_estado_conservacao_veiculo_id", null: false
+    t.string "resultado"
+    t.text "observacao"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_g_checklists_veiculos_on_deleted_at"
+    t.index ["g_estado_conservacao_veiculo_id"], name: "index_g_checklists_veiculos_on_g_estado_conservacao_veiculo_id"
+    t.index ["g_tipo_item_checklist_id"], name: "index_g_checklists_veiculos_on_g_tipo_item_checklist_id"
+    t.index ["g_vistoria_veiculo_id"], name: "index_g_checklists_veiculos_on_g_vistoria_veiculo_id"
   end
 
   create_table "g_distritos", force: :cascade do |t|
@@ -273,6 +310,11 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_085727) do
   add_foreign_key "a_unidades", "a_orgaos"
   add_foreign_key "a_unidades", "a_status"
   add_foreign_key "a_unidades", "g_municipios"
+  add_foreign_key "g_avaliacoes_veiculos", "g_veiculos"
+  add_foreign_key "g_avaliacoes_veiculos", "users", column: "user_id_avaliador"
+  add_foreign_key "g_checklists_veiculos", "g_estados_conservacao_veiculos"
+  add_foreign_key "g_checklists_veiculos", "g_tipos_itens_checklists"
+  add_foreign_key "g_checklists_veiculos", "g_vistorias_veiculos"
   add_foreign_key "g_distritos", "g_municipios"
   add_foreign_key "g_estados", "g_paises"
   add_foreign_key "g_municipios", "g_estados"
