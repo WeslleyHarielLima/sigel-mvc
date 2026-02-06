@@ -1,3 +1,4 @@
+# app/controllers/fluxo_avaliacao_controller.rb
 class FluxoAvaliacaoController < ApplicationController
   def index
     @aguardando_vistoria = GVeiculo

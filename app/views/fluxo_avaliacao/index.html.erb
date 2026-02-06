@@ -1,27 +1,191 @@
-<h1>Central de Vistorias e Avaliação</h1>
-<h3>Aguardando Vistoria</h3>
-<% @aguardando_vistoria.each do |veiculo| %>
-  <div class="card">
-    <strong><%= veiculo.placa %></strong> - <%= veiculo.modelo %>
-    <%= link_to "Iniciar Vistoria", new_g_vistoria_veiculo_path(g_veiculo_id: veiculo.id), class: "btn btn-primary" %>
+<div class="container-fluid fluxo-avaliacao">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1 fw-semibold">Central de Vistorias e Avaliação</h2>
+      <p class="text-muted mb-0">
+        Monitoramento do fluxo operacional: Vistoria → Checklist → <strong>Avaliação</strong>
+      </p>
+    </div>
   </div>
-<% end %>
-<h3>Em Checklist / Avaliação</h3>
-<% @em_checklist.each do |veiculo| %>
-  <div class="card">
-    <strong><%= veiculo.placa %></strong> - <%= veiculo.modelo %>
-    <% if veiculo.vistoria_iniciada? && !veiculo.checklist_completo? %>
-      <%= link_to "Preencher Checklist", new_g_checklist_veiculo_path(g_vistoria_veiculo_id: veiculo.g_vistorias_veiculos.last.id), class: "btn btn-warning" %>
-    <% elsif veiculo.checklist_completo? && !veiculo.avaliado? %>
-      <%= link_to "Avaliar Veículo", new_g_avaliacao_veiculo_path(g_veiculo_id: veiculo.id), class: "btn btn-success" %>
-    <% end %>
+  <!-- Resumo / KPIs -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="sigel-kpi-card border-start border-4 border-warning">
+        <div class="kpi-label">Aguardando Vistoria</div>
+        <div class="kpi-value"><%= @aguardando_vistoria.size %></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="sigel-kpi-card border-start border-4 border-info">
+        <div class="kpi-label">Em Checklist / Avaliação</div>
+        <div class="kpi-value"><%= @em_checklist.size %></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="sigel-kpi-card border-start border-4 border-success">
+        <div class="kpi-label">Avaliados</div>
+        <div class="kpi-value"><%= @avaliados.size %></div>
+      </div>
+    </div>
   </div>
-<% end %>
-<h3>Avaliados</h3>
-<% @avaliados.each do |veiculo| %>
-  <div class="card">
-    <strong><%= veiculo.placa %></strong> - <%= veiculo.modelo %>
-    <span class="badge bg-success">Avaliado</span>
-    <%= link_to "Enviar para Leilão", "#", class: "btn btn-dark" %>
+  <!-- Colunas -->
+  <div class="row g-4">
+    <!-- Aguardando Vistoria -->
+    <div class="col-lg-4">
+      <div class="card sigel-status-card">
+        <div class="card-header sigel-header-warning">
+          🟡 Aguardando Vistoria
+        </div>
+        <div class="card-body">
+          <% if @aguardando_vistoria.any? %>
+            <% @aguardando_vistoria.each do |veiculo| %>
+              <div class="sigel-item-card">
+                <div>
+                  <div class="fw-semibold"><%= veiculo.placa %></div>
+                  <small class="text-muted"><%= veiculo.modelo %></small>
+                </div>
+                <div class="mt-2">
+                  <%= link_to "Iniciar Vistoria",
+                    new_g_vistoria_veiculo_path(g_veiculo_id: veiculo.id),
+                    class: "btn btn-outline-warning btn-sm w-100" %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="sigel-empty">
+              Nenhum veículo aguardando vistoria no momento.
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- Em Checklist -->
+    <div class="col-lg-4">
+      <div class="card sigel-status-card">
+        <div class="card-header sigel-header-info">
+          🔵 Em Checklist / Avaliação
+        </div>
+        <div class="card-body">
+          <% if @em_checklist.any? %>
+            <% @em_checklist.each do |veiculo| %>
+              <div class="sigel-item-card">
+                <div>
+                  <div class="fw-semibold"><%= veiculo.placa %></div>
+                  <small class="text-muted"><%= veiculo.modelo %></small>
+                </div>
+                <div class="mt-2">
+                  <% if veiculo.vistoria_iniciada? && !veiculo.checklist_completo? %>
+                    <span class="badge bg-secondary mb-2">Checklist em andamento</span>
+                    <%= link_to "Preencher Checklist",
+                      new_g_checklist_veiculo_path(g_vistoria_veiculo_id: veiculo.g_vistorias_veiculos.last.id),
+                      class: "btn btn-outline-primary btn-sm w-100" %>
+                  <% elsif veiculo.checklist_completo? && !veiculo.avaliado? %>
+                    <span class="badge bg-success mb-2">Pronto para Avaliação</span>
+                    <%= link_to "Avaliar Veículo",
+                      new_g_avaliacao_veiculo_path(g_veiculo_id: veiculo.id),
+                      class: "btn btn-success btn-sm w-100" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="sigel-empty">
+              Nenhum veículo em checklist ou avaliação no momento.
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- Avaliados -->
+    <div class="col-lg-4">
+      <div class="card sigel-status-card">
+        <div class="card-header sigel-header-success">
+          🟢 Veículos Avaliados
+        </div>
+        <div class="card-body">
+          <% if @avaliados.any? %>
+            <% @avaliados.each do |veiculo| %>
+              <div class="sigel-item-card">
+                <div>
+                  <div class="fw-semibold"><%= veiculo.placa %></div>
+                  <small class="text-muted"><%= veiculo.modelo %></small>
+                </div>
+                <div class="mt-2">
+                  <span class="badge bg-success">Avaliação Concluída</span>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="sigel-empty">
+              Ainda não há veículos avaliados.
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
+<style>
+  .sigel-status-card {
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  }
+
+  .sigel-header-warning {
+  background: #f59f00;
+  color: #1f2937;
+  font-weight: 600;
+  }
+
+  .sigel-header-info {
+  background: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  }
+
+  .sigel-header-success {
+  background: #10b981;
+  color: #ffffff;
+  font-weight: 600;
+  }
+
+  .sigel-item-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  }
+
+  .sigel-item-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .sigel-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 24px 12px;
+  font-style: italic;
+  }
+
+  .sigel-kpi-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .sigel-kpi-card .kpi-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  }
+
+  .sigel-kpi-card .kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  }
+</style>
