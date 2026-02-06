@@ -19,6 +19,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "g_veiculo",                         "g_veiculos"
   inflect.irregular "g_tipo_combustivel",                "g_tipos_combustiveis"
   inflect.irregular "g_marca_veiculo",                   "g_marcas_veiculos"
+  inflect.irregular "g_vistoria_veiculo",                "g_vistorias_veiculos"
   inflect.irregular "i_status_servivel",                 "i_status_serviveis"
   inflect.irregular "i_status_inservivel",               "i_status_inserviveis"
 end

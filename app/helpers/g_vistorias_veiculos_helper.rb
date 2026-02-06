@@ -1,0 +1,2 @@
+module GVistoriasVeiculosHelper
+end

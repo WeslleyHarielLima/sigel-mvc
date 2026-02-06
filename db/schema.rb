@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_06_083126) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_06_084810) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -173,12 +173,27 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_083126) do
     t.datetime "updated_at", null: false
     t.bigint "g_marca_veiculo_id"
     t.bigint "g_tipo_combustivel_id", null: false
+    t.string "situacao_administrativa"
+    t.string "localizacao_fisica"
     t.index ["deleted_at"], name: "index_g_veiculos_on_deleted_at"
     t.index ["g_marca_veiculo_id"], name: "index_g_veiculos_on_g_marca_veiculo_id"
     t.index ["g_status_veiculo_id"], name: "index_g_veiculos_on_g_status_veiculo_id"
     t.index ["g_tipo_combustivel_id"], name: "index_g_veiculos_on_g_tipo_combustivel_id"
+    t.index ["localizacao_fisica"], name: "index_g_veiculos_on_localizacao_fisica"
     t.index ["placa"], name: "index_g_veiculos_on_placa"
     t.index ["renavam"], name: "index_g_veiculos_on_renavam"
+    t.index ["situacao_administrativa"], name: "index_g_veiculos_on_situacao_administrativa"
+  end
+
+  create_table "g_vistorias_veiculos", force: :cascade do |t|
+    t.bigint "g_veiculo_id", null: false
+    t.bigint "user_id_responsavel", null: false
+    t.datetime "data_vistoria"
+    t.text "observacoes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["g_veiculo_id"], name: "index_g_vistorias_veiculos_on_g_veiculo_id"
+    t.index ["user_id_responsavel"], name: "index_g_vistorias_veiculos_on_user_id_responsavel"
   end
 
   create_table "i_status_inserviveis", force: :cascade do |t|
@@ -243,4 +258,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_083126) do
   add_foreign_key "g_veiculos", "g_marcas_veiculos"
   add_foreign_key "g_veiculos", "g_status_veiculos"
   add_foreign_key "g_veiculos", "g_tipos_combustiveis"
+  add_foreign_key "g_vistorias_veiculos", "g_veiculos"
+  add_foreign_key "g_vistorias_veiculos", "users", column: "user_id_responsavel"
 end

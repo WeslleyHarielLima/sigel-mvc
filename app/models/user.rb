@@ -3,11 +3,11 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  belongs_to :a_cargo, optional: true
-  belongs_to :a_unidade, optional: true
+  belongs_to :a_cargo,            optional: true
+  belongs_to :a_unidade,          optional: true
   belongs_to :a_tipo_usuario
   belongs_to :a_status
-
+  has_many :g_vistorias_veiculos, class_name: "GVistoriaVeiculo", foreign_key: :user_id_responsavel
   before_validation :normalize_cpf
 
   validates :nome,  presence: true
