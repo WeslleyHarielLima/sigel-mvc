@@ -70,7 +70,9 @@ pt-BR:
       g_tipo_veiculo:
         one: "Tipo de Veículo"
         other: "Tipos de Veículos"
-
+      g_veiculo:
+        one: "Veículo"
+        other: "Veículos"
       user:
         one: "Usuário"
         other: "Usuários"
@@ -81,19 +83,6 @@ pt-BR:
         descricao: "Descrição"
       a_tipo_usuario:
         descricao: "Descrição"
-      f_empresa_fornecedora:
-        nome_fantasia: "Nome Fantasia"
-        razao_social: "Razão Social"
-        cnpj: "Cnpj"
-        telefone: "Telefone"
-        email: "Email"
-        endereco: "Endereço"
-        numero: "Número"
-        complemento: "Complemento"
-        g_municipio_id: "Município"
-        a_status_id: "Status"
-        t_taxa_id: "Taxa"
-      f_empresa_servico:
       g_status:
         descricao: "Descrição"
       g_tipo_veiculo:
@@ -126,6 +115,24 @@ pt-BR:
         descricao: "Descrição"
       g_status_leilao_veiculo:
         descricao: "Descrição"
+      g_veiculo:
+        placa: "Placa"
+        renavam: "Renavam"
+        chassi: "Chassi"
+        ano_fabricacao: "Ano de Fabricação"
+        ano_modelo: "Ano do Modelo"
+        cor: "Cor"
+        kilometragem: "Quilometragem"
+        g_tipo_veiculo_id: "Tipo de Veículo"
+        g_status_veiculo_id: "Status do Veículo"
+        g_status_leilao_veiculo_id: "Status do Leilão do Veículo"
+        g_centro_custo_id: "Centro de Custo"
+      a_unidade:
+        descricao: "Descrição"
+        a_tipo_unidade_id: "Tipo de Unidade"
+      a_cargo:
+        descricao: "Descrição"
+
       user:
         nome: "Nome"
         email: "Email"

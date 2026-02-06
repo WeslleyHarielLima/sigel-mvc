@@ -12,361 +12,137 @@
       </div>
     </div>
   <% end %>
-
-  
-  
-  
-  
+  <!-- STEPPER -->
   <div class="sigel-card mb-4">
     <div class="sigel-card-body">
       <div class="sigel-stepper">
-        
-        
-        
-        
-        
-          <div class="sigel-step active" data-step="1">
-            <div class="sigel-step-icon">
-              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-              <div class="sigel-step-number">1</div>
-            </div>
-            <div class="sigel-step-label">Etapa 1</div>
+        <div class="sigel-step active" data-step="1">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+            <div class="sigel-step-number">1</div>
           </div>
-          
-            <div class="sigel-step-line"></div>
-          
-        
-          <div class="sigel-step " data-step="2">
-            <div class="sigel-step-icon">
-              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-              <div class="sigel-step-number">2</div>
-            </div>
-            <div class="sigel-step-label">Etapa 2</div>
+          <div class="sigel-step-label">Etapa 1</div>
+        </div>
+        <div class="sigel-step-line"></div>
+        <div class="sigel-step" data-step="2">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+            <div class="sigel-step-number">2</div>
           </div>
-          
-            <div class="sigel-step-line"></div>
-          
-        
-          <div class="sigel-step " data-step="3">
-            <div class="sigel-step-icon">
-              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-              <div class="sigel-step-number">3</div>
-            </div>
-            <div class="sigel-step-label">Etapa 3</div>
+          <div class="sigel-step-label">Etapa 2</div>
+        </div>
+        <div class="sigel-step-line"></div>
+        <div class="sigel-step" data-step="3">
+          <div class="sigel-step-icon">
+            <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
+            <div class="sigel-step-number">3</div>
           </div>
-          
-        
+          <div class="sigel-step-label">Etapa 3</div>
+        </div>
       </div>
     </div>
   </div>
-
-  
-  
-
-  
-  
-    
-    
-      <div class="sigel-form-step active" data-step="1">
-        <div class="sigel-card">
-          <div class="sigel-card-header">
-            <h5>
-              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-              Etapa 1: Dados do Registro
-            </h5>
+  <!-- ETAPA 1 -->
+  <div class="sigel-form-step active" data-step="1">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5><iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon> Etapa 1</h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Número interno</strong></label>
+            <%= f.input :numero_interno, label: false, placeholder: "Ex: INT-0001", input_html: { class: "form-control sigel-form-control" } %>
           </div>
-          <div class="sigel-card-body">
-            <div class="row">
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Numero interno</strong>
-              </label>
-              
-                <%= f.input :numero_interno,
-                    label: false,
-                    placeholder: "Numero interno",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Placa</strong>
-              </label>
-              
-                <%= f.input :placa,
-                    label: false,
-                    placeholder: "Placa",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Chassi</strong>
-              </label>
-              
-                <%= f.input :chassi,
-                    label: false,
-                    placeholder: "Chassi",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Renavam</strong>
-              </label>
-              
-                <%= f.input :renavam,
-                    label: false,
-                    placeholder: "Renavam",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-            </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Placa</strong></label>
+            <%= f.input :placa, label: false, placeholder: "Ex: ABC1D23", input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Chassi</strong></label>
+            <%= f.input :chassi, label: false, placeholder: "Digite o chassi do veículo", input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Renavam</strong></label>
+            <%= f.input :renavam, label: false, placeholder: "Digite o RENAVAM", input_html: { class: "form-control sigel-form-control" } %>
           </div>
         </div>
       </div>
-      
-    
-  
-    
-    
-      <div class="sigel-form-step " data-step="2">
-        <div class="sigel-card">
-          <div class="sigel-card-header">
-            <h5>
-              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-              Etapa 2: Dados do Registro
-            </h5>
+    </div>
+  </div>
+  <!-- ETAPA 2 -->
+  <div class="sigel-form-step" data-step="2">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5><iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon> Etapa 2</h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Marca</strong></label>
+            <%= f.input :marca, label: false, placeholder: "Ex: Fiat, Ford, Toyota", input_html: { class: "form-control sigel-form-control" } %>
           </div>
-          <div class="sigel-card-body">
-            <div class="row">
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Marca</strong>
-              </label>
-              
-                <%= f.input :marca,
-                    label: false,
-                    placeholder: "Marca",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Modelo</strong>
-              </label>
-              
-                <%= f.input :modelo,
-                    label: false,
-                    placeholder: "Modelo",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Ano</strong>
-              </label>
-              
-                <%= f.input :ano,
-                    label: false,
-                    placeholder: "Ano",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Cor</strong>
-              </label>
-              
-                <%= f.input :cor,
-                    label: false,
-                    placeholder: "Cor",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-            </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Modelo</strong></label>
+            <%= f.input :modelo, label: false, placeholder: "Ex: Uno, Gol, Corolla", input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Ano</strong></label>
+            <%= f.input :ano, label: false, placeholder: "Ex: 2020", input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Cor</strong></label>
+            <%= f.input :cor, label: false, placeholder: "Ex: Branco, Preto", input_html: { class: "form-control sigel-form-control" } %>
           </div>
         </div>
       </div>
-      
-    
-  
-    
-    
-      <div class="sigel-form-step " data-step="3">
-        <div class="sigel-card">
-          <div class="sigel-card-header">
-            <h5>
-              <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-              Etapa 3: Dados do Registro
-            </h5>
+    </div>
+  </div>
+  <!-- ETAPA 3 -->
+  <div class="sigel-form-step" data-step="3">
+    <div class="sigel-card">
+      <div class="sigel-card-header">
+        <h5><iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon> Etapa 3</h5>
+      </div>
+      <div class="sigel-card-body">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Motor</strong></label>
+            <%= f.input :motor, label: false, placeholder: "Ex: 1.0 Flex", input_html: { class: "form-control sigel-form-control" } %>
           </div>
-          <div class="sigel-card-body">
-            <div class="row">
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Motor</strong>
-              </label>
-              
-                <%= f.input :motor,
-                    label: false,
-                    placeholder: "Motor",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>Tombamento</strong>
-              </label>
-              
-                <%= f.input :tombamento,
-                    label: false,
-                    placeholder: "Tombamento",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-  
-    
-    
-
-            <div class="col-md-6 mb-4">
-              <label class="sigel-form-label">
-                <strong>G status veiculo</strong>
-              </label>
-              
-                <%= f.input :g_status_veiculo,
-                    label: false,
-                    placeholder: "G status veiculo",
-                    input_html: { class: "form-control sigel-form-control" } %>
-              
-            </div>
-
-    
-
-    
-    
-            </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Tombamento</strong></label>
+            <%= f.input :tombamento, label: false, placeholder: "Número de tombamento patrimonial", input_html: { class: "form-control sigel-form-control" } %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label class="sigel-form-label"><strong>Status do Veículo</strong></label>
+            <%= f.input :g_status_veiculo_id, collection: GStatusVeiculo.all, label_method: :descricao, value_method: :id, label: false, prompt: "Selecione o status do veículo", input_html: { class: "form-control sigel-form-control" } %>
           </div>
         </div>
       </div>
-      
-    
-  
-
+    </div>
+  </div>
+  <!-- BOTÕES -->
   <div class="sigel-card">
     <div class="sigel-card-body">
       <div class="d-flex gap-3 justify-content-between align-items-center">
-        <div>
-          <%= link_to g_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
-            <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
-            <span>Cancelar</span>
-          <% end %>
-        </div>
+        <%= link_to g_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+          <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
+          Cancelar
+        <% end %>
         <div class="d-flex gap-2">
-          <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display: none;">
-            <iconify-icon icon="solar:arrow-left-bold"></iconify-icon>
-            <span>Anterior</span>
+          <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display:none;">
+            <iconify-icon icon="solar:arrow-left-bold"></iconify-icon> Anterior
           </button>
-          
           <button type="button" class="btn btn-sigel-primary d-flex align-items-center gap-2" id="nextBtn">
-            <span>Próximo</span>
-            <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+            Próximo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
           </button>
-
-          <%= f.submit @g_veiculo.new_record? ? "Criar" : "Atualizar",
-              class: "btn btn-sigel-primary d-flex align-items-center gap-2",
-              id: "submitBtn",
-              style: "display: none;" %>
+          <%= f.submit @g_veiculo.new_record? ? "Criar" : "Atualizar", class: "btn btn-sigel-primary d-flex align-items-center gap-2", id: "submitBtn", style: "display:none;" %>
         </div>
       </div>
     </div>
   </div>
 <% end %>
-
 <script>
   (function() {
     let currentStep = 1;

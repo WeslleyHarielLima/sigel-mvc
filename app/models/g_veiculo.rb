@@ -1,5 +1,8 @@
-# frozen_string_literal: true
-
+# app/models/g_veiculo.rb
 class GVeiculo < ApplicationRecord
-  # Adicione aqui quaisquer métodos ou validações padrão para seus modelos
+  belongs_to :g_status_veiculo
+
+  validates :placa, presence: true
+  validates :chassi, presence: true
+  validates :renavam, presence: true
 end
