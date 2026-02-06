@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_interno: MyString
+  placa: MyString
+  chassi: MyString
+  renavam: MyString
+  marca: MyString
+  modelo: MyString
+  ano: 1
+  cor: MyString
+  motor: MyString
+  tombamento: MyString
+  g_status_veiculo: one
+
+two:
+  numero_interno: MyString
+  placa: MyString
+  chassi: MyString
+  renavam: MyString
+  marca: MyString
+  modelo: MyString
+  ano: 1
+  cor: MyString
+  motor: MyString
+  tombamento: MyString
+  g_status_veiculo: two

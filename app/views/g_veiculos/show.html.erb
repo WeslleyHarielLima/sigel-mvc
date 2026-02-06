@@ -1,0 +1,118 @@
+<!-- Page Header -->
+<div class="sigel-page-header mb-4">
+  <div class="sigel-page-title">
+    <iconify-icon icon="solar:layers-bold-duotone" style="font-size: 2.2rem;"></iconify-icon>
+    <h1>
+      Detalhes de
+      <%= t("activerecord.models.g_veiculo.one", default: "G veiculo") %>
+    </h1>
+  </div>
+</div>
+<div class="sigel-card">
+  <div class="sigel-card-header">
+    <h5>
+      <iconify-icon icon="solar:clipboard-text-bold-duotone" class="me-2"></iconify-icon>
+      Informações do Registro
+    </h5>
+  </div>
+  <div class="sigel-card-body">
+    <div class="row g-4">
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Numero interno</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.numero_interno.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Placa</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.placa.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Chassi</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.chassi.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Renavam</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.renavam.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Marca</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.marca.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Modelo</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.modelo.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Ano</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.ano.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Cor</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.cor.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Motor</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.motor.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">Tombamento</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.tombamento.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sigel-detail-item">
+            <span class="sigel-detail-label">G status veiculo</span>
+            <div class="sigel-detail-value">
+              <%= @g_veiculo.g_status_veiculo.to_s.presence || "-" %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="sigel-card-footer d-flex justify-content-end">
+    <div>
+      <%= link_to g_veiculos_path, class: "btn btn-sigel-outline" do %>
+      Voltar para lista
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

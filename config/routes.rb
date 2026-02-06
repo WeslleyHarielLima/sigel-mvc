@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :g_veiculos
   resources :a_unidades
   resources :a_orgaos
   resources :a_tipos_usuarios
