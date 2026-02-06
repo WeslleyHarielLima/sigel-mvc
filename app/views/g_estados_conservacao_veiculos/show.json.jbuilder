@@ -1,0 +1,1 @@
+json.partial! "g_estados_conservacao_veiculos/g_estado_conservacao_veiculo", g_estado_conservacao_veiculo: @g_estado_conservacao_veiculo

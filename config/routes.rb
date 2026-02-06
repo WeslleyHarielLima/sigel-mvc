@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :g_estados_conservacao_veiculos
   resources :g_tipos_itens_checklists
   resources :g_vistorias_veiculos
   resources :g_tipos_combustiveis
