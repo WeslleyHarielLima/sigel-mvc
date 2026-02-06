@@ -71,7 +71,7 @@
           <thead>
             <tr>
               <th class="sigel-th">
-                <%= sort_link(@q, :g_veiculo, "G veiculo") %>
+                <%= sort_link(@q, :g_veiculo, "Veículo") %>
               </th>
               <th class="sigel-th">
                 <%= sort_link(@q, :user, "User") %>
@@ -89,10 +89,10 @@
             <% @g_vistorias_veiculos.each do |g_vistoria_veiculo| %>
               <tr class="sigel-table-row">
                 <td>
-                  <%= truncate(g_vistoria_veiculo.g_veiculo.to_s) %>
+                  <%= truncate(g_vistoria_veiculo.g_veiculo&.placa) %>
                 </td>
                 <td>
-                  <%= truncate(g_vistoria_veiculo.user.to_s) %>
+                  <%= truncate(g_vistoria_veiculo.user_responsavel&.nome) %>
                 </td>
                 <td>
                   <%= truncate(g_vistoria_veiculo.data_vistoria.to_s) %>

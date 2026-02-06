@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# app/controllers/g_vistorias_veiculos_controller.rb
 class GVistoriasVeiculosController < ApplicationController
   before_action :set_g_vistoria_veiculo, only: %i[show edit update destroy]
 
@@ -19,7 +18,7 @@ class GVistoriasVeiculosController < ApplicationController
 
   def create
     @g_vistoria_veiculo = GVistoriaVeiculo.new(g_vistoria_veiculo_params)
-    @g_vistoria_veiculo.user_id_responsavel = current_user.id
+    @g_vistoria_veiculo.user_responsavel = current_user
 
     if @g_vistoria_veiculo.save
       redirect_to g_vistorias_veiculos_path, notice: t("messages.created_successfully")
@@ -52,8 +51,11 @@ class GVistoriasVeiculosController < ApplicationController
   end
 
   def g_vistoria_veiculo_params
-    permitted_attributes = GVistoriaVeiculo.column_names.reject { |col| [ "deleted_at", "created_by", "updated_by" ].include?(col) }
-    params.require(:g_vistoria_veiculo).permit(permitted_attributes.map(&:to_sym))
+    params.require(:g_vistoria_veiculo).permit(
+      :g_veiculo_id,
+      :data_vistoria,
+      :observacoes
+    )
   end
 
   def handle_not_found
