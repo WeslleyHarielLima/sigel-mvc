@@ -1,54 +1,59 @@
-# frozen_string_literal: true
+# db/seeds.rb
 
-puts "Criando usuário administrador..."
-User.find_or_create_by!(email: "admin@sigel.com") do |user|
-  user.nome = "Administrador"
-  user.cpf = "00000000000"
-  user.password = "password123"
-  user.password_confirmation = "password123"
-  user.role = "admin"
+ActiveRecord::Base.transaction do
+  puts "🌎 Criando país, estado e município..."
+
+  pais = GPais.find_or_create_by!(descricao: "Brasil", sigla: "BR")
+
+  estado = GEstado.find_or_create_by!(
+    descricao: "Rondônia",
+    uf: "RO",
+    g_pais: pais
+  )
+
+  municipio = GMunicipio.find_or_create_by!(
+    descricao: "Porto Velho",
+    codigo_ibge: 1100205,
+    g_estado: estado
+  )
+
+  puts "🏢 Criando status e órgão..."
+
+  status_ativo = AStatus.find_or_create_by!(descricao: "Ativo")
+
+  orgao = AOrgao.find_or_create_by!(descricao: "Prefeitura de Porto Velho")
+
+  unidade = AUnidade.find_or_create_by!(
+    nome_fantasia: "Secretaria de Transportes",
+    a_orgao: orgao,
+    a_status: status_ativo,
+    g_municipio: municipio,
+    cnpj: "00.000.000/0001-00",
+    endereco: "Av. Sete de Setembro, 123",
+    telefone: "(69) 99999-9999",
+    codigo_interno: "SETRANS-PVH"
+  )
+
+  puts "👤 Criando tipos de usuário..."
+
+  tipo_admin        = ATipoUsuario.find_or_create_by!(descricao: "admin")
+  tipo_gerenciador  = ATipoUsuario.find_or_create_by!(descricao: "gerenciador")
+  tipo_vistoriador  = ATipoUsuario.find_or_create_by!(descricao: "vistoriador")
+
+  puts "🔐 Criando usuário admin..."
+
+  user = User.find_or_initialize_by(email: "admin@gmail.com")
+  user.assign_attributes(
+    nome: "Administrador SIGEL",
+    cpf: "00000000000",
+    password: "123456",
+    password_confirmation: "123456",
+    role: "admin",
+    a_unidade: unidade,
+    a_tipo_usuario: tipo_admin,
+    a_status: status_ativo
+  )
+  user.save!
+
+  puts "✅ Seeds finalizados com sucesso!"
 end
-puts "Usuário admin criado: admin@sigel.com / password123"
-
-puts "\nCriando tipos de veículos..."
-tipos = [
-  "Automóvel",
-  "Motocicleta",
-  "Caminhão",
-  "Ônibus",
-  "Van",
-  "Utilitário",
-  "Reboque",
-  "Trator"
-]
-
-tipos.each do |descricao|
-  GTipoVeiculo.find_or_create_by!(descricao: descricao)
-  puts "  - #{descricao}"
-end
-
-puts "\nCriando veículos de exemplo..."
-tipo_automovel = GTipoVeiculo.find_by(descricao: "Automóvel")
-tipo_moto = GTipoVeiculo.find_by(descricao: "Motocicleta")
-tipo_caminhao = GTipoVeiculo.find_by(descricao: "Caminhão")
-
-veiculos = [
-  { numero_interno: "V001", placa: "ABC1234", chassi: "9BWZZZ377VT004251", renavam: "12345678901", marca: "Volkswagen", modelo: "Gol", ano: 2020, cor: "Branco", motor: "1.0 Flex", status: "pendente", apto: false, g_tipo_veiculo: tipo_automovel },
-  { numero_interno: "V002", placa: "DEF5678", chassi: "9BWZZZ377VT004252", renavam: "12345678902", marca: "Fiat", modelo: "Uno", ano: 2019, cor: "Prata", motor: "1.0 Flex", status: "verificado_apto", apto: true, g_tipo_veiculo: tipo_automovel },
-  { numero_interno: "V003", placa: "GHI9012", chassi: "9BWZZZ377VT004253", renavam: "12345678903", marca: "Honda", modelo: "CG 160", ano: 2021, cor: "Vermelho", motor: "160cc", status: "em_leilao", apto: true, g_tipo_veiculo: tipo_moto },
-  { numero_interno: "V004", placa: "JKL3456", chassi: "9BWZZZ377VT004254", renavam: "12345678904", marca: "Yamaha", modelo: "Factor 150", ano: 2020, cor: "Preto", motor: "150cc", status: "arrematado", apto: true, g_tipo_veiculo: tipo_moto },
-  { numero_interno: "V005", placa: "MNO7890", chassi: "9BWZZZ377VT004255", renavam: "12345678905", marca: "Chevrolet", modelo: "Onix", ano: 2022, cor: "Azul", motor: "1.0 Turbo", status: "impedido", apto: false, g_tipo_veiculo: tipo_automovel },
-  { numero_interno: "V006", placa: "PQR1234", chassi: "9BWZZZ377VT004256", renavam: "12345678906", marca: "Mercedes-Benz", modelo: "Atego 1719", ano: 2018, cor: "Branco", motor: "Diesel", status: "pendente", apto: false, g_tipo_veiculo: tipo_caminhao }
-]
-
-veiculos.each do |attrs|
-  GVeiculo.find_or_create_by!(placa: attrs[:placa]) do |v|
-    v.assign_attributes(attrs)
-  end
-  puts "  - #{attrs[:marca]} #{attrs[:modelo]} (#{attrs[:placa]})"
-end
-
-puts "\nSeed concluído!"
-puts "Total de tipos de veículos: #{GTipoVeiculo.count}"
-puts "Total de veículos: #{GVeiculo.count}"
-puts "Total de usuários: #{User.count}"
