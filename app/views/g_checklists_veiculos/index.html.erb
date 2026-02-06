@@ -3,86 +3,62 @@
   <div class="sigel-page-title">
     <iconify-icon icon="solar:layers-bold-duotone" class="sigel-page-icon"></iconify-icon>
     <h1 class="sigel-page-title-text">
-      <%= t("activerecord.models.g_checklist_veiculo.other", default: "G checklists veiculos") %>
+      <%= t("activerecord.models.g_checklist_veiculo.other", default: "G checklists veículos") %>
     </h1>
   </div>
   <%= link_to new_g_checklist_veiculo_path, class: "btn btn-sigel-primary d-flex align-items-center gap-2" do %>
-  <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
-  <span>Novo Registro</span>
+    <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
+    <span>Novo Registro</span>
   <% end %>
 </div>
-<!-- Filtros - Colapsável -->
+<!-- Filtros -->
 <div class="mb-4">
   <button class="btn w-100 sigel-card sigel-filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosForm">
     <span class="sigel-filter-title">
       <iconify-icon icon="solar:filter-bold-duotone"></iconify-icon>
       Filtros de Pesquisa
     </span>
-    <iconify-icon
-      icon="solar:chevron-down-bold"
-      class="collapse-icon sigel-collapse-icon"
-    ></iconify-icon>
+    <iconify-icon icon="solar:chevron-down-bold" class="collapse-icon sigel-collapse-icon"></iconify-icon>
   </button>
   <div class="collapse" id="filtrosForm">
     <div class="sigel-card sigel-filter-body">
       <div class="sigel-card-body">
         <%= search_form_for @q, url: g_checklists_veiculos_path, method: :get do |f| %>
-        <div class="row g-3">
-          
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  <strong>G vistoria veiculo</strong>
-                </label>
-                <%= f.search_field :g_vistoria_veiculo_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  <strong>G tipo item checklist veiculo</strong>
-                </label>
-                <%= f.search_field :g_tipo_item_checklist_veiculo_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  <strong>G estado conservacao veiculo</strong>
-                </label>
-                <%= f.search_field :g_estado_conservacao_veiculo_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  <strong>Resultado</strong>
-                </label>
-                <%= f.search_field :resultado_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-            
-              <div class="col-lg-3 col-md-6">
-                <label class="sigel-form-label">
-                  <strong>Observacao</strong>
-                </label>
-                <%= f.search_field :observacao_cont, class: "form-control sigel-form-control", placeholder: "Pesquisar..." %>
-              </div>
-            
-          <div class="col-12 d-flex gap-2">
-            <%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
-            <%= link_to g_checklists_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
-            <iconify-icon icon="solar:restart-bold-duotone"></iconify-icon>
-            Limpar
-            <% end %>
+          <div class="row g-3">
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Vistoria (veículo)</strong></label>
+              <%= f.search_field :g_vistoria_veiculo_g_veiculo_placa_cont, class: "form-control sigel-form-control", placeholder: "Placa do veículo..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Tipo do item</strong></label>
+              <%= f.search_field :g_tipo_item_checklist_descricao_cont, class: "form-control sigel-form-control", placeholder: "Descrição do item..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Estado de conservação</strong></label>
+              <%= f.search_field :g_estado_conservacao_veiculo_descricao_cont, class: "form-control sigel-form-control", placeholder: "Estado..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Resultado</strong></label>
+              <%= f.search_field :resultado_cont, class: "form-control sigel-form-control", placeholder: "Resultado..." %>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <label class="sigel-form-label"><strong>Observação</strong></label>
+              <%= f.search_field :observacao_cont, class: "form-control sigel-form-control", placeholder: "Observação..." %>
+            </div>
+            <div class="col-12 d-flex gap-2">
+              <%= f.submit "Aplicar Filtros", class: "btn btn-sigel-primary d-flex align-items-center gap-2" %>
+              <%= link_to g_checklists_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+                <iconify-icon icon="solar:restart-bold-duotone"></iconify-icon>
+                Limpar
+              <% end %>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-<!-- Tabela de Registros -->
+<!-- Tabela -->
 <div class="sigel-card">
   <div class="sigel-card-header">
     <h5>
@@ -95,110 +71,53 @@
   </div>
   <div class="sigel-card-body p-0">
     <% if @g_checklists_veiculos.any? %>
-    <div class="table-responsive">
-      <table class="table sigel-table mb-0 align-middle">
-        <thead>
-          <tr>
-            
-              
-                <th class="sigel-th">
-                  <%= sort_link(@q, :g_vistoria_veiculo, "G vistoria veiculo") %>
-                </th>
-              
-              
-                <th class="sigel-th">
-                  <%= sort_link(@q, :g_tipo_item_checklist_veiculo, "G tipo item checklist veiculo") %>
-                </th>
-              
-              
-                <th class="sigel-th">
-                  <%= sort_link(@q, :g_estado_conservacao_veiculo, "G estado conservacao veiculo") %>
-                </th>
-              
-              
-                <th class="sigel-th">
-                  <%= sort_link(@q, :resultado, "Resultado") %>
-                </th>
-              
-              
-                <th class="sigel-th">
-                  <%= sort_link(@q, :observacao, "Observacao") %>
-                </th>
-              
-            <th class="sigel-th-actions">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @g_checklists_veiculos.each do |g_checklist_veiculo| %>
-          <tr class="sigel-table-row">
-            
-              
-                <td>
-                  <%= truncate(g_checklist_veiculo.g_vistoria_veiculo.to_s) %>
+      <div class="table-responsive">
+        <table class="table sigel-table mb-0 align-middle">
+          <thead>
+            <tr>
+              <th><%= sort_link(@q, :g_vistoria_veiculo_g_veiculo_placa, "Veículo") %></th>
+              <th><%= sort_link(@q, :g_tipo_item_checklist_descricao, "Tipo do item") %></th>
+              <th><%= sort_link(@q, :g_estado_conservacao_veiculo_descricao, "Estado conservação") %></th>
+              <th><%= sort_link(@q, :resultado, "Resultado") %></th>
+              <th><%= sort_link(@q, :observacao, "Observação") %></th>
+              <th class="sigel-th-actions">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @g_checklists_veiculos.each do |g_checklist_veiculo| %>
+              <tr>
+                <td><%= g_checklist_veiculo.g_vistoria_veiculo&.g_veiculo&.placa %></td>
+                <td><%= g_checklist_veiculo.g_tipo_item_checklist&.descricao %></td>
+                <td><%= g_checklist_veiculo.g_estado_conservacao_veiculo&.descricao %></td>
+                <td><%= g_checklist_veiculo.resultado %></td>
+                <td><%= truncate(g_checklist_veiculo.observacao.to_s, length: 50) %></td>
+                <td class="sigel-td-actions">
+                  <div class="d-inline-flex gap-2 sigel-actions">
+                    <%= link_to g_checklist_veiculo_path(g_checklist_veiculo), class: "sigel-action-btn" do %>
+                      <iconify-icon icon="solar:eye-bold"></iconify-icon>
+                    <% end %>
+                    <%= link_to edit_g_checklist_veiculo_path(g_checklist_veiculo), class: "sigel-action-btn" do %>
+                      <iconify-icon icon="solar:pen-bold"></iconify-icon>
+                    <% end %>
+                    <%= button_to g_checklist_veiculo_path(g_checklist_veiculo), method: :delete, form: { data: { turbo_confirm: "Tem certeza?" } }, class: "sigel-action-btn sigel-action-btn-danger" do %>
+                      <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                    <% end %>
+                  </div>
                 </td>
-              
-              
-                <td>
-                  <%= truncate(g_checklist_veiculo.g_tipo_item_checklist_veiculo.to_s) %>
-                </td>
-              
-              
-                <td>
-                  <%= truncate(g_checklist_veiculo.g_estado_conservacao_veiculo.to_s) %>
-                </td>
-              
-              
-                <td>
-                  <%= truncate(g_checklist_veiculo.resultado.to_s) %>
-                </td>
-              
-              
-                <td>
-                  <%= truncate(g_checklist_veiculo.observacao.to_s) %>
-                </td>
-              
-            <td class="sigel-td-actions">
-              <div class="d-inline-flex gap-2 sigel-actions">
-                <%= link_to g_checklist_veiculo_path(g_checklist_veiculo), class: "sigel-action-btn", title: "Visualizar" do %>
-                <iconify-icon icon="solar:eye-bold"></iconify-icon>
-                <% end %>
-                <%= link_to edit_g_checklist_veiculo_path(g_checklist_veiculo), class: "sigel-action-btn", title: "Editar" do %>
-                <iconify-icon icon="solar:pen-bold"></iconify-icon>
-                <% end %>
-                <button type="button" class="sigel-action-btn sigel-action-btn-danger js-open-delete-modal" data-delete-url="<%= g_checklist_veiculo_path(g_checklist_veiculo) %>">
-                  <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <!-- Paginação -->
-    <div class="sigel-card-footer">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="text-muted">
-          Exibindo <strong><%= @g_checklists_veiculos.size %></strong> de
-          <strong><%= @g_checklists_veiculos.total_count rescue @g_checklists_veiculos.count %></strong> registros
-        </div>
-        <div>
-          <% if defined?(@pagy) && @pagy.pages > 1 %>
-          <%== pagy_bootstrap_nav(@pagy) %>
-          <% end %>
-        </div>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-    </div>
+      <div class="sigel-card-footer">
+        <%== pagy_bootstrap_nav(@pagy) if defined?(@pagy) %>
+      </div>
     <% else %>
-    <div class="sigel-empty-state">
-      <iconify-icon icon="solar:folder-open-bold-duotone" class="sigel-empty-icon"></iconify-icon>
-      <h5 class="mt-3 sigel-empty-title">Nenhum registro encontrado</h5>
-      <p class="text-muted">Cadastre um novo registro para começar</p>
-      <%= link_to new_g_checklist_veiculo_path, class: "btn btn-sigel-primary mt-3" do %>
-      <iconify-icon icon="solar:add-circle-bold-duotone" class="me-2"></iconify-icon>
-      Novo Registro
-      <% end %>
-    </div>
+      <div class="sigel-empty-state text-center p-5">
+        <h5>Nenhum registro encontrado</h5>
+        <p class="text-muted">Cadastre um novo registro para começar</p>
+        <%= link_to "Novo Registro", new_g_checklist_veiculo_path, class: "btn btn-sigel-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

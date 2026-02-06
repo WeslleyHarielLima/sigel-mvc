@@ -12,6 +12,7 @@
       </div>
     </div>
   <% end %>
+  <!-- Stepper -->
   <div class="sigel-card mb-4">
     <div class="sigel-card-body">
       <div class="sigel-stepper">
@@ -23,7 +24,7 @@
           <div class="sigel-step-label">Etapa 1</div>
         </div>
         <div class="sigel-step-line"></div>
-        <div class="sigel-step " data-step="2">
+        <div class="sigel-step" data-step="2">
           <div class="sigel-step-icon">
             <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
             <div class="sigel-step-number">2</div>
@@ -33,6 +34,7 @@
       </div>
     </div>
   </div>
+  <!-- Etapa 1 -->
   <div class="sigel-form-step active" data-step="1">
     <div class="sigel-card">
       <div class="sigel-card-header">
@@ -44,78 +46,71 @@
       <div class="sigel-card-body">
         <div class="row">
           <div class="col-md-6 mb-4">
-            <label class="sigel-form-label">
-              <strong>G vistoria veiculo</strong>
-            </label>
-            <%= f.input :g_vistoria_veiculo,
-                    label: false,
-                    placeholder: "G vistoria veiculo",
-                    input_html: { class: "form-control sigel-form-control" } %>
+            <label class="sigel-form-label"><strong>Vistoria do veículo</strong></label>
+            <%= f.input :g_vistoria_veiculo_id,
+              collection: @g_vistorias_veiculos.map { |v| ["#{v.g_veiculo&.placa} - #{v.data_vistoria}", v.id] },
+              include_blank: "Selecione...",
+              label: false,
+              input_html: { class: "form-control sigel-form-control" } %>
           </div>
           <div class="col-md-6 mb-4">
-            <label class="sigel-form-label">
-              <strong>G tipo item checklist veiculo</strong>
-            </label>
-            <%= f.input :g_tipo_item_checklist,
-                    label: false,
-                    placeholder: "G tipo item checklist veiculo",
-                    input_html: { class: "form-control sigel-form-control" } %>
+            <label class="sigel-form-label"><strong>Tipo do item do checklist</strong></label>
+            <%= f.input :g_tipo_item_checklist_id,
+              collection: @g_tipos_itens_checklists.map { |t| [t.descricao, t.id] },
+              include_blank: "Selecione...",
+              label: false,
+              input_html: { class: "form-control sigel-form-control" } %>
           </div>
           <div class="col-md-6 mb-4">
-            <label class="sigel-form-label">
-              <strong>G estado conservacao veiculo</strong>
-            </label>
-            <%= f.input :g_estado_conservacao_veiculo,
-                    label: false,
-                    placeholder: "G estado conservacao veiculo",
-                    input_html: { class: "form-control sigel-form-control" } %>
+            <label class="sigel-form-label"><strong>Estado de conservação</strong></label>
+            <%= f.input :g_estado_conservacao_veiculo_id,
+              collection: @g_estados_conservacao_veiculos.map { |e| [e.descricao, e.id] },
+              include_blank: "Selecione...",
+              label: false,
+              input_html: { class: "form-control sigel-form-control" } %>
           </div>
           <div class="col-md-6 mb-4">
-            <label class="sigel-form-label">
-              <strong>Resultado</strong>
-            </label>
+            <label class="sigel-form-label"><strong>Resultado</strong></label>
             <%= f.input :resultado,
-                    label: false,
-                    placeholder: "Resultado",
-                    input_html: { class: "form-control sigel-form-control" } %>
+              label: false,
+              placeholder: "Resultado",
+              input_html: { class: "form-control sigel-form-control" } %>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="sigel-form-step " data-step="2">
+  <!-- Etapa 2 -->
+  <div class="sigel-form-step" data-step="2">
     <div class="sigel-card">
       <div class="sigel-card-header">
         <h5>
           <iconify-icon icon="solar:document-text-bold-duotone"></iconify-icon>
-          Etapa 2: Dados do Registro
+          Etapa 2: Observações
         </h5>
       </div>
       <div class="sigel-card-body">
         <div class="row">
           <div class="col-md-6 mb-4">
-            <label class="sigel-form-label">
-              <strong>Observacao</strong>
-            </label>
+            <label class="sigel-form-label"><strong>Observação</strong></label>
             <%= f.input :observacao,
-                    as: :text,
-                    label: false,
-                    placeholder: "Observacao",
-                    input_html: { class: "form-control sigel-form-control", rows: 4 } %>
+              as: :text,
+              label: false,
+              placeholder: "Observações do checklist...",
+              input_html: { class: "form-control sigel-form-control", rows: 4 } %>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- Botões -->
   <div class="sigel-card">
     <div class="sigel-card-body">
       <div class="d-flex gap-3 justify-content-between align-items-center">
-        <div>
-          <%= link_to g_checklists_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
-            <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
-            <span>Cancelar</span>
-          <% end %>
-        </div>
+        <%= link_to g_checklists_veiculos_path, class: "btn btn-sigel-outline d-flex align-items-center gap-2" do %>
+          <iconify-icon icon="solar:close-circle-bold-duotone"></iconify-icon>
+          <span>Cancelar</span>
+        <% end %>
         <div class="d-flex gap-2">
           <button type="button" class="btn btn-sigel-outline d-flex align-items-center gap-2" id="prevBtn" style="display: none;">
             <iconify-icon icon="solar:arrow-left-bold"></iconify-icon>
@@ -126,9 +121,9 @@
             <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
           </button>
           <%= f.submit @g_checklist_veiculo.new_record? ? "Criar" : "Atualizar",
-              class: "btn btn-sigel-primary d-flex align-items-center gap-2",
-              id: "submitBtn",
-              style: "display: none;" %>
+            class: "btn btn-sigel-primary d-flex align-items-center gap-2",
+            id: "submitBtn",
+            style: "display: none;" %>
         </div>
       </div>
     </div>
@@ -138,76 +133,46 @@
   (function() {
     let currentStep = 1;
     const totalSteps = document.querySelectorAll('.sigel-form-step').length;
-
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
     const submitBtn = document.getElementById('submitBtn');
 
     function showStep(step) {
-      // Hide all steps
       document.querySelectorAll('.sigel-form-step').forEach(el => {
         el.style.display = 'none';
         el.classList.remove('active');
       });
 
-      // Show current step
       const currentStepEl = document.querySelector(`.sigel-form-step[data-step="${step}"]`);
       if (currentStepEl) {
         currentStepEl.style.display = 'block';
         currentStepEl.classList.add('active');
       }
 
-      // Update stepper header
       document.querySelectorAll('.sigel-step').forEach(el => {
         const stepNum = parseInt(el.dataset.step);
         el.classList.remove('active', 'completed');
-
         if (stepNum < step) el.classList.add('completed');
         if (stepNum === step) el.classList.add('active');
       });
 
-      // Controls visibility
       prevBtn.style.display = step === 1 ? 'none' : 'flex';
 
-      // Next vs Submit button logic
-      if (totalSteps <= 1) {
-          nextBtn.classList.add('d-none');
-          submitBtn.classList.remove('d-none');
-          submitBtn.style.display = 'flex';
-      } else if (step === totalSteps) {
-        nextBtn.classList.add('d-none');
-        submitBtn.classList.remove('d-none');
+      if (step === totalSteps) {
+        nextBtn.style.display = 'none';
         submitBtn.style.display = 'flex';
       } else {
-        nextBtn.classList.remove('d-none');
-        submitBtn.classList.add('d-none');
+        nextBtn.style.display = 'flex';
         submitBtn.style.display = 'none';
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Initialize logic if steps exist
     if (totalSteps > 0) {
-        nextBtn.onclick = () => {
-          if (currentStep < totalSteps) {
-            currentStep++;
-            showStep(currentStep);
-          }
-        };
-
-        prevBtn.onclick = () => {
-          if (currentStep > 1) {
-            currentStep--;
-            showStep(currentStep);
-          }
-        };
-
-        showStep(1);
-    } else {
-        // Fallback if no steps generated (e.g. no fields)
-        if(submitBtn) submitBtn.style.display = 'flex';
-        if(nextBtn) nextBtn.style.display = 'none';
+      nextBtn.onclick = () => { if (currentStep < totalSteps) showStep(++currentStep); };
+      prevBtn.onclick = () => { if (currentStep > 1) showStep(--currentStep); };
+      showStep(1);
     }
   })();
 </script>
