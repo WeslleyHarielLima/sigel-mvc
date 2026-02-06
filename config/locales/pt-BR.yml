@@ -67,6 +67,9 @@ pt-BR:
       g_status_leilao_veiculo:
         one: "Status do Leilão do Veículo"
         other: "Status dos Leilões dos Veículos"
+      g_tipo_veiculo:
+        one: "Tipo de Veículo"
+        other: "Tipos de Veículos"
 
       user:
         one: "Usuário"
