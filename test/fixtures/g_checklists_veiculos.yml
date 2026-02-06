@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  g_vistoria_veiculo: one
+  g_tipo_item_checklist_veiculo: one
+  g_estado_conservacao_veiculo: one
+  resultado: MyString
+  observacao: MyText
+
+two:
+  g_vistoria_veiculo: two
+  g_tipo_item_checklist_veiculo: two
+  g_estado_conservacao_veiculo: two
+  resultado: MyString
+  observacao: MyText
