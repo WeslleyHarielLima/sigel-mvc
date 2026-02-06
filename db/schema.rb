@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_06_084810) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_06_085320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -144,6 +144,18 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_06_084810) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "g_tipos_itens_checklists", force: :cascade do |t|
+    t.string "descricao", null: false
+    t.string "criterio_objetivo"
+    t.decimal "peso", precision: 5, scale: 2, null: false
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_g_tipos_itens_checklists_on_deleted_at"
   end
 
   create_table "g_tipos_veiculos", force: :cascade do |t|
