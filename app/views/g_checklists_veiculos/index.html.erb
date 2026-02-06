@@ -6,10 +6,6 @@
       <%= t("activerecord.models.g_checklist_veiculo.other", default: "G checklists veículos") %>
     </h1>
   </div>
-  <%= link_to new_g_checklist_veiculo_path, class: "btn btn-sigel-primary d-flex align-items-center gap-2" do %>
-    <iconify-icon icon="solar:add-circle-bold-duotone"></iconify-icon>
-    <span>Novo Registro</span>
-  <% end %>
 </div>
 <!-- Filtros -->
 <div class="mb-4">
@@ -116,7 +112,6 @@
       <div class="sigel-empty-state text-center p-5">
         <h5>Nenhum registro encontrado</h5>
         <p class="text-muted">Cadastre um novo registro para começar</p>
-        <%= link_to "Novo Registro", new_g_checklist_veiculo_path, class: "btn btn-sigel-primary" %>
       </div>
     <% end %>
   </div>
